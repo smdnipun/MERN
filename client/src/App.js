@@ -5,6 +5,7 @@ import Navbar from "./component/Navbar";
 import Home from "./component/Home";
 import Registration from "./component/comman/Registration/Registration";
 
+import StudentApp from "./StudentApp";
 
 
 function App() {
@@ -12,8 +13,9 @@ function App() {
     <Router>
     <div className="App">
       <Navbar/>
-      <Route path = "/home" exact component = {Home}/>
       <Route path = "/reg" exact component = {Registration}/>
+
+      <Route path = "/student" exact component={StudentApp}/>
     </div>
   </Router>
   )
