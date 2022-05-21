@@ -1,36 +1,14 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 function Navbar() {
     return(
-
-
-<ul class="nav flex-column">
-
-<li class="nav-item">
-
-  <a class="nav-link active" href="#">Active</a>
-
-</li>
-
-<li class="nav-item">
-
-  <a class="nav-link" href="#">Link</a>
-
-</li>
-
-<li class="nav-item">
-
-  <a class="nav-link" href="#">Link</a>
-
-</li>
-
-<li class="nav-item">
-
-  <a class="nav-link disabled" href="#">Disabled</a>
-
-</li>
-
-</ul>
+        <div>
+           <Link to = "/student">Student</Link>
+          <Link to = "/student">Admin</Link>
+        </div>
+        
+        
     )
 }
 export default Navbar;
