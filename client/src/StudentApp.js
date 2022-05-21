@@ -1,21 +1,18 @@
-
 import './App.css';
 import {BrowserRouter as Router, Route} from 'react-router-dom';
 import Navbar from "./component/Navbar";
 import Home from "./component/Home";
-import StudentApp from "./StudentApp";
+import Reg from "./component/student/Reg";
 
 
-function App() {
+export default function StudentApp() {
   return (
     <Router>
     <div className="App">
       <Navbar/>
       <Route path = "/home" exact component = {Home}/>
-      <Route path = "/student" exact component={StudentApp}/>
+      <Route path = "/reg" exact component = {Reg}/>
     </div>
   </Router>
   )
 }
-
-export default App;
