@@ -10,7 +10,7 @@ const ObjectId = require("mongodb").ObjectId;
 
 
 // This section will help you get a list of all the records.
-recordRoutes.route("/record").get(function (req, res) {
+recordRoutes.route("/user").get(function (req, res) {
   let db_connect = dbo.getDb("MERN");
   db_connect
     .collection("Student")
@@ -22,7 +22,7 @@ recordRoutes.route("/record").get(function (req, res) {
 });
 
 // This section will help you get a single record by id
-recordRoutes.route("/record/:id").get(function (req, res) {
+recordRoutes.route("/user/:id").get(function (req, res) {
   let db_connect = dbo.getDb();
   let myquery = { _id: ObjectId( req.params.id )};
   db_connect
@@ -34,13 +34,21 @@ recordRoutes.route("/record/:id").get(function (req, res) {
 });
 
 // This section will help you create a new record.
-recordRoutes.route("/record/add").post(function (req, response) {
+recordRoutes.route("/user/add").post(function (req, response) {
   let db_connect = dbo.getDb();
   let myobj = {
     name: req.body.name,
     position: req.body.position,
+    email: req.body.email,
+    phone: req.body.phone,
+    address: req.body.address,
+    id: req.body.id,
+    faculty: req.body.faculty,
+    specialization: req.body.specialization,
+    password: req.body.password,
+    rpassword: req.body.rpassword
   };
-  db_connect.collection("Student").insertOne(myobj, function (err, res) {
+  db_connect.collection("user").insertOne(myobj, function (err, res) {
     if (err) throw err;
     response.json(res);
   });
@@ -52,9 +60,16 @@ recordRoutes.route("/update/:id").post(function (req, response) {
   let myquery = { _id: ObjectId( req.params.id )};  
   let newvalues = {    
     $set: {      
-      name: req.body.name,     
-      position: req.body.position,      
-      level: req.body.level,    
+      name: req.body.name,
+      position: req.body.position,
+      email: req.body.email,
+      phone: req.body.phone,
+      address: req.body.address,
+      id: req.body.id,
+      faculty: req.body.faculty,
+      specialization: req.body.specialization,
+      password: req.body.password,
+      rpassword: req.body.rpassword  
   }, } 
 });
 
