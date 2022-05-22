@@ -1,6 +1,6 @@
 import React from "react";
 
-export default function SdashBoard(){
+export default function StudentDash(){
 
     return(
         <div>

@@ -1,13 +1,6 @@
 import React from "react";
 import { Route,Routes } from "react-router-dom";
-import SdashBoard from "./student/sDashBoard";
-
-
-
-
-
-
-
+import StudentDash from "./student/StudentDash";
 
 const StudentApp =()=>{
 
@@ -15,16 +8,8 @@ const StudentApp =()=>{
         <>
         <div>
             <Routes>
-           <Route exact path={'/sDash'} element={<SdashBoard/>}/>
+           <Route exact path={'/sDash'} element={<StudentDash/>}/>
             </Routes>    
-
-        
-            
-           {/* <Fpage/> */}
-         
-            
-    
-            
         </div>
         </>
     )
