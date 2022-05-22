@@ -19,7 +19,7 @@ const App =()=>{
             <Route exact path="/edituser" element={<Updateusers/>}/>
             </Routes>    
 
-            <NavBar/>
+           
             
            {/* <Fpage/> */}
          
