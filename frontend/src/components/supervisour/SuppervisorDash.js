@@ -1,6 +1,6 @@
 import React from "react";
 
-export default function SupdashBoard(){
+export default function SuppervisorDash(){
 
     return(
         <div>
