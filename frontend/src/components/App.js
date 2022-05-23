@@ -14,9 +14,9 @@ const App =()=>{
             <Routes>
            <Route exact path={'/'} element={<Login/>}/>
            <Route exact path="/reg" element={<Registration/>}/>
-            </Routes>    
+       
 
-            <NavBar/>
+            
             
            {/* <Fpage/> */}
          

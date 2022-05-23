@@ -1,5 +1,5 @@
 import { useState } from 'react';
-
+import axios from 'axios';
 export default function SupCreateMarkingSchemes() {
   const [formFields, setFormFields] = useState([
     { citerion: '', vgood: '',avg:'',poor:'',mark:'' },
@@ -14,19 +14,32 @@ export default function SupCreateMarkingSchemes() {
 
   async function Submit(e){
     e.preventDefault();
-  
-  const newItem = { ...formFields};
+  console.log(formFields)
+ 
 
-  await fetch("http://localhost:5000/markingScheme/add", {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify(newItem),
-  }).catch((error) => {
-    window.alert(error);
-    return;
-  });
+  // const exercise = {
+
+  //   citerion: this.state.citerion,
+
+  //   vgood: this.state.vgood,
+
+  //   avg: this.state.avg,
+
+  //   poor: this.state.poor,
+
+  //   mark: this.state.mark
+
+  // }
+
+
+
+  // console.log(exercise)
+
+
+
+  axios.post('http://localhost:5000/markingScheme/add/', formFields)
+
+    .then((res) => console.log(res.data))
 
 }
 

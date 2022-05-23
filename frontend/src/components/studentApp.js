@@ -2,7 +2,7 @@ import React from "react";
 import { Route,Routes } from "react-router-dom";
 import SdashBoard from "./student/sDashBoard";
 import Creategroups from "./student/Creategroups"
-import StudentDash from "./student/StudentDash";
+import StudentDash from "./student/sDashBoard";
 
 const StudentApp =()=>{
 
