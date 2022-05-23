@@ -14,6 +14,15 @@ const App =()=>{
             <Routes>
            <Route exact path={'/'} element={<Login/>}/>
            <Route exact path="/reg" element={<Registration/>}/>
+            </Routes>    
+
+            <NavBar/>
+            
+           {/* <Fpage/> */}
+         
+            
+    
+            
             <Route exact path="/userlist" element={<Viewusers/>}/>
             <Route exact path="/edituser" element={<Updateusers/>}/>
             </Routes> 
