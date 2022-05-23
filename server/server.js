@@ -10,6 +10,7 @@ app.use(cors());
 app.use(express.json());
 app.use(require("./routes/cus"));
 app.use(require("./routes/user"));
+app.use(require("./routes/markingScheme"))
 
 
 // get driver connection

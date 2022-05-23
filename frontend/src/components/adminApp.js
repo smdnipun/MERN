@@ -1,7 +1,8 @@
 import React from "react";
 import { Route,Routes } from "react-router-dom";
 import AdashBoard from "./admin/aDashBoard";
-import CreateMarkingSchemes from "./admin/createMarkingS";
+import PanelCreateMarkingSchemes from "./admin/PanelCreateMarkingS";
+import SupCreateMarkingSchemes from "./admin/SupCreateMarking"
 
 
 
@@ -19,7 +20,8 @@ const AdminApp =()=>{
         <div>
             <Routes>
            <Route exact path={'/aDash'} element={<AdashBoard/>}/>
-           <Route exact path={'/createMarking'} element={<CreateMarkingSchemes/>}/>
+           <Route exact path={'/pcreateMarking'} element={<PanelCreateMarkingSchemes/>}/>
+           <Route exact path={'/smarking'} element={<SupCreateMarkingSchemes/>}/>
             </Routes>    
         
         
