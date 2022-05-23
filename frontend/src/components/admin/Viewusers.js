@@ -12,18 +12,7 @@ const User = (props) => (
     <td>{props.user.faculty}</td>
     <td>{props.user.specialization}</td>
     <td>
-      <Link className="btn btn-link" to={`/edituser/${props.user._id}`}>
-        Edit
-      </Link>{" "}
-      |
-      <button
-        className="btn btn-link"
-        onClick={() => {
-          props.deleteUser(props.user._id);
-        }}
-      >
-        Delete
-      </button>
+
     </td>
   </tr>
 );

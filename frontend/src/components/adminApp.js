@@ -3,15 +3,12 @@ import { Route,Routes } from "react-router-dom";
 import AdashBoard from "./admin/aDashBoard";
 import PanelCreateMarkingSchemes from "./admin/PanelCreateMarkingS";
 import SupCreateMarkingSchemes from "./admin/SupCreateMarking"
+import Viewusers from "./admin/Viewusers";
+import Updateusers from "./admin/Updateusers";
+import Addfiles from "./admin/Addfiles";
 
 
-
-
-
-
-
-
-
+import CreateMarkingSchemes from "./admin/createMarkingS";
 
 const AdminApp =()=>{
 
@@ -22,15 +19,15 @@ const AdminApp =()=>{
            <Route exact path={'/aDash'} element={<AdashBoard/>}/>
            <Route exact path={'/pcreateMarking'} element={<PanelCreateMarkingSchemes/>}/>
            <Route exact path={'/smarking'} element={<SupCreateMarkingSchemes/>}/>
-            </Routes>    
+            
         
         
             
+           <Route exact path="/userlist" element={<Viewusers/>}/>
+            <Route exact path="/edituser" element={<Updateusers/>}/>
+            <Route exact path="/addfiles" element={<Addfiles/>}/>
+            </Routes>          
            {/* <Fpage/> */}
-         
-            
-    
-            
         </div>
         </>
     )
