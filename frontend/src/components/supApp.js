@@ -1,30 +1,15 @@
 import React from "react";
 import { Route,Routes } from "react-router-dom";
-import SupdashBoard from "./Supervisour/supDashBoard";
-
-
-
-
-
-
+import SuppervisorDash from "./supervisour/SuppervisorDash";
 
 
 const SupApp =()=>{
-
     return(
         <>
         <div>
             <Routes>
-           <Route exact path={'/supDash'} element={<SupdashBoard/>}/>
+           <Route exact path={'/supDash'} element={<SuppervisorDash/>}/>
             </Routes>    
-
-        
-            
-           {/* <Fpage/> */}
-         
-            
-    
-            
         </div>
         </>
     )

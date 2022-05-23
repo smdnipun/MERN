@@ -12,6 +12,7 @@ import Updateusers from "../components/admin/Updateusers";
 
 
 
+import CreateMarkingSchemes from "./admin/createMarkingS";
 
 const AdminApp =()=>{
 
@@ -26,11 +27,10 @@ const AdminApp =()=>{
         
         
             
+                <Route exact path={'/aDash'} element={<AdashBoard/>}/>
+                <Route exact path={'/createMarking'} element={<CreateMarkingSchemes/>}/>
+            </Routes>      
            {/* <Fpage/> */}
-         
-            
-    
-            
         </div>
         </>
     )
