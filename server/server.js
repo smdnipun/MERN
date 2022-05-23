@@ -10,9 +10,11 @@ const port = process.env.PORT || 5000;
 app.use(cors());
 app.use(express.json());
 
-const adminfile = require("./routes/adminfile")
+const adminfile = require("./routes/adminfile.routes")
+const markingScheme=require("./routes/markingScheme.routes")
 
 app.use('/adminfile', adminfile)
+app.use('/markingScheme',markingScheme)
 
 const uri = process.env.ATLAS_URI
 mongoose.connect(uri, { useNewUrlParser: true, useUnifiedTopology: true })
