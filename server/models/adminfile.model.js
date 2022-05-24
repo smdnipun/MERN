@@ -6,11 +6,11 @@ const adminfiles = new Schema(
     {
         name:{
             type:String,
-            require:true,
+           
         },
         description: {
              type:String,
-             require:true,   
+          
         }
     }
 )
