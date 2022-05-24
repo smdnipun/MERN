@@ -18,10 +18,6 @@ const AdminApp =()=>{
            <Route exact path={'/aDash'} element={<AdashBoard/>}/>
            <Route exact path={'/pcreateMarking'} element={<PanelCreateMarkingSchemes/>}/>
            <Route exact path={'/smarking'} element={<SupCreateMarkingSchemes/>}/>
-            
-        
-        
-            
            <Route exact path="/userlist" element={<Viewusers/>}/>
             <Route exact path="/edituser" element={<Updateusers/>}/>
             <Route exact path="/addfiles" element={<Addfiles/>}/>
