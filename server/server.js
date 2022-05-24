@@ -12,9 +12,13 @@ app.use(express.json());
 
 const adminfile = require("./routes/adminfile.routes")
 const markingScheme=require("./routes/markingScheme.routes")
+const group=require("./routes/group.routes")
+
 
 app.use('/adminfile', adminfile)
 app.use('/markingScheme',markingScheme)
+app.use('/group',group)
+
 
 const uri = process.env.ATLAS_URI
 mongoose.connect(uri, { useNewUrlParser: true, useUnifiedTopology: true })
