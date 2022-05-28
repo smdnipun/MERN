@@ -1,175 +1,96 @@
-import React, { useState } from "react";
-import { useNavigate } from "react-router";
+import React, { useEffect, useState } from 'react';
+import axios from 'axios';
 
-export default function Registration() {
-  const [form, setForm] = useState({
-    name: "",
-    position: "",
-    email: "",
-    phone: "",
-    address: "",
-    id: "",
-    faculty: "",
-    specialization: "",
-    password:"",
-    rpassword:"",
-  });
+export default function Registration(){
 
-//   const navigate = useNavigate();
 
-  // These methods will update the state properties.
-  function updateForm(value) {
-    return setForm((prev) => {
-      return { ...prev, ...value };
-    });
-  }
+    const [name, setName] = useState('')
+    const [position, setPosition] = useState('')
+    const [email, setEmail] = useState('')
+    const [phone, setPhone] = useState('')
+    const [address, setAddress] = useState('')
+    const [id, setId] = useState('')
+    const [specialization, setSpecialization] = useState('')
+    const [password, setPassword] = useState('')
+    const [rpassword, setRpassword] = useState('')
 
-  // This function will handle the submission.
-  async function onSubmit(e) {
-    e.preventDefault();
+    var Group = {
+       name, position, email, phone, address, id, specialization, password, rpassword
+    }
 
-    // When a post request is sent to the create url, we'll add a new record to the database.
-    const newItem = { ...form };
+    const passtouser= async () => {
+      try {
+        const resp = await axios.post('/user/add', Group)
+        console.log(resp.data)
+      } catch (err) {
+        // Handle Error Here
+        console.error(err)
+      }
+    }
+    console.log(Group.position);
 
-    await fetch("http://localhost:5000/user/add", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(newItem),
-    }).catch((error) => {
-      window.alert(error);
-      return;
-    });
 
-    setForm({
-        name: "",
-        position: "",
-        email: "",
-        phone: "",
-        address: "",
-        id: "",
-        faculty: "",
-        specialization: "",
-        password:"",
-        rpassword:"",
-    });
-    // navigate("/reg");
-  }
+    
+        return (
+            <div>
 
-  // This following section will display the form that takes the input from the user.
-  return (
-      <div className="container">
-        <h3>Registration</h3>
-        <form onSubmit={onSubmit}>
-          <div className="form-group">
-            <label htmlFor="name">Name</label>
-            <input
-              type="text"
-              className="form-control"
-              id="name"
-              value={form.name}
-              onChange={(e) => updateForm({ name: e.target.value })}
-            />
-          </div>
+                <h2>User Registration</h2>
+                <form>
+                        
+                       <label>Name</label>
+                       <input value={name} onChange={(e) => setName(e.target.value)}/>
+                       {/* <input value={form.name} onChange={(e) => addForm({name:e.target.value})}/> */}
 
-          <div className="form-group">
-            <label htmlFor="position">Position</label>
-            <input
-              type="text"
-              className="form-control"
-              id="position"
-              value={form.position}
-              onChange={(e) => updateForm({ position: e.target.value })}
-            />
-          </div>
+                       <br></br>
+    
+                       <label>Select position</label>
+                       <select value={position} onChange={(e) => setPosition(e.target.value)}>
+                       <option value="Student">Student</option>
+                       <option value="Supervisor">Supervisor</option>
+                       <option value="Panel Member">Panel Member</option>
+                       <option value="Admin">Admin</option>
+                       </select>
+                       <br></br>
 
-          <div className="form-group">
-            <label htmlFor="email">Email</label>
-            <input
-              type="text"
-              className="form-control"
-              id="email"
-              value={form.email}
-              onChange={(e) => updateForm({ email: e.target.value })}
-            />
-          </div>
+                        <label>Email</label>
+                        <input  value={email} onChange={(e) => setEmail(e.target.value)}/>
+                        <br></br>
 
-          <div className="form-group">
-            <label htmlFor="phone">Contact Number</label>
-            <input
-              type="text"
-              className="form-control"
-              id="phone"
-              value={form.phone}
-              onChange={(e) => updateForm({  phone: e.target.value })}
-            />
-          </div>
+                        <label>Phone</label>
+                        <input value={phone} onChange={(e) => setPhone(e.target.value)}/>
+                        <br></br>
+                    
+                        <label>Address</label>
+                        <input  value={address} onChange={(e) => setAddress(e.target.value)}/>
+                        <br></br>
 
-          <div className="form-group">
-            <label htmlFor="address">Address</label>
-            <input
-              type="text"
-              className="form-control"
-              id="address"
-              value={form.address}
-              onChange={(e) => updateForm({ address: e.target.value })}
-            />
-          </div>
-          <div className="form-group">
-            <label htmlFor="id">User ID</label>
-            <input
-              type="text"
-              className="form-control"
-              id="id"
-              value={form.id}
-              onChange={(e) => updateForm({ id: e.target.value })}
-            />
-          </div>
-          <div className="form-group">
-            <label htmlFor="faculty">Faculty</label>
-            <input
-              type="text"
-              className="form-control"
-              id="faculty"
-              value={form.faculty}
-              onChange={(e) => updateForm({ faculty: e.target.value })}
-            />
-          </div>
-          <div className="form-group">
-            <label htmlFor="specialization">Specialization</label>
-            <input
-              type="text"
-              className="form-control"
-              id="specialization"
-              value={form.specialization}
-              onChange={(e) => updateForm({ specialization: e.target.value })}
-            />
-          </div>
-          <div className="form-group">
-            <label htmlFor="password">Enter the Password</label>
-            <input
-              type="text"
-              className="form-control"
-              id="password"
-              value={form.password}
-              onChange={(e) => updateForm({ password: e.target.value })}
-            />
-          </div>
-          <div className="form-group">
-            <label htmlFor="rpassword">Re enter the password</label>
-            <input
-              type="text"
-              className="form-control"
-              id="rpassword"
-              value={form.rpassword}
-              onChange={(e) => updateForm({ rpassword: e.target.value })}
-            />
-          </div>
-          <button type="submit" className="btn btn-primary">
-            Submit
-          </button>
-        </form>
-      </div>
-  );
+                        <label>User ID</label>
+                        <input value={id} onChange={(e) => setId(e.target.value)}/>
+                        <br></br>
+                    
+                        <label>Select Specailization</label>
+                       <select value={specialization} onChange={(e) => setSpecialization(e.target.value)}>
+                       <option value="Software Engineering">Software Engineering</option>
+                       <option value="Data Science">Data Science</option>
+                       <option value="Cyber Security">Cyber Security</option>
+                       <option value="Information Technology">Information Technology</option>
+                       </select>
+                       <br></br>
+
+
+                        <label>Enter the Password</label>
+                        <input value={password} onChange={(e) => setPassword(e.target.value)}/>
+                        <br></br>
+                    
+                        <label>Re enter the Password</label>
+                        <input  value={rpassword} onChange={(e) => setRpassword(e.target.value)}/>
+                        <br></br>
+                    
+                       
+                        <button onClick={passtouser} type='submit'>Register</button>
+    
+                </form>
+            </div>
+        )
 }
+

@@ -6,6 +6,7 @@ import SupCreateMarkingSchemes from "./admin/SupCreateMarking"
 import Viewusers from "./admin/Viewusers";
 import Updateusers from "./admin/Updateusers";
 import Addfiles from "./admin/Addfiles";
+import Viewgroups from "./admin/Viewusers";
 
 
 
@@ -21,6 +22,8 @@ const AdminApp =()=>{
            <Route exact path="/userlist" element={<Viewusers/>}/>
             <Route exact path="/edituser" element={<Updateusers/>}/>
             <Route exact path="/addfiles" element={<Addfiles/>}/>
+            <Route exact path="/grplist" element={<Viewgroups/>}/>
+
             </Routes>          
            {/* <Fpage/> */}
         </div>

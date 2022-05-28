@@ -1,118 +1,82 @@
-import React, { useState } from "react";
-import { useNavigate } from "react-router";
+import React, { useEffect, useState } from 'react';
+import axios from 'axios';
 
-export default function Registration() {
-  const [form, setForm] = useState({
-    gid: "",
-    first: "",
-    second: "",
-    third: "",
-    forth: "",
-  });
+export default function Creategroups(){
 
-//   const navigate = useNavigate();
 
-  // These methods will update the state properties.
-  function updateForm(value) {
-    return setForm((prev) => {
-      return { ...prev, ...value };
-    });
-  }
+    const [gid, setGid] = useState('')
+    const [first, setFirst] = useState('')
+    const [email1, setEmail1] = useState('')
+    const [second, setSecond] = useState('')
+    const [email2, setEmail2] = useState('')
+    const [third, setThird] = useState('')
+    const [email3, setEmail3] = useState('')
+    const [forth, setForth] = useState('')
+    const [email4, setEmail4] = useState('')
+    
 
-  // This function will handle the submission.
-  async function onSubmit(e) {
-    e.preventDefault();
+    var Group = {
+       gid, first, email1, second, email2, third, email3, forth, email4
+    }
 
-    // When a post request is sent to the create url, we'll add a new record to the database.
-    const newItem = { ...form };
+    const passtogroup= async () => {
+      try {
+        const resp = await axios.post('/group/add', Group)
+        console.log(resp.data)
+      } catch (err) {
+        // Handle Error Here
+        console.error(err)
+      }
+    }
 
-    await fetch("http://localhost:5000/group/add", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(newItem),
-    }).catch((error) => {
-      window.alert(error);
-      return;
-    });
+    
+        return (
+            <div>
 
-    setForm({
-        gid: "",
-        first: "",
-        second: "",
-        third: "",
-        forth: "",
-    });
-    // navigate("/reg");
-  }
+                <h2>Create Group</h2>
+                <form>
+                        
+                       <label>Group ID</label>
+                       <input value={gid} onChange={(e) => setGid(e.target.value)}/>
+                       <br></br>
+    
+                        <label>First Member</label>
+                        <input value={first} onChange={(e) => setFirst(e.target.value)}/>
+                        <br></br>
+                    
+                        <label>First Member Email</label>
+                        <input  value={email1} onChange={(e) => setEmail1(e.target.value)}/>
+                        <br></br>
 
-  // This following section will display the form that takes the input from the user.
-  return (
-      <div className="container">
-        <h3>Registration</h3>
-        <form onSubmit={onSubmit}>
+                        <label>Second Member</label>
+                        <input value={second} onChange={(e) => setSecond(e.target.value)}/>
+                        <br></br>
+                    
+                        <label>Second Member Email</label>
+                        <input  value={email2} onChange={(e) => setEmail2(e.target.value)}/>
+                        <br></br>
 
-        
-         <div className="form-group">
-            <label htmlFor="gid">Group ID</label>
-            <input
-              type="text"
-              className="form-control"
-              id="gid"
-              value={form.gid}
-              onChange={(e) => updateForm({ gid: e.target.value })}
-            />
-          </div>
+                        <label>Third Member</label>
+                        <input value={third} onChange={(e) => setThird(e.target.value)}/>
+                        <br></br>
+                    
+                        <label>Third Member Email</label>
+                        <input  value={email3} onChange={(e) => setEmail3(e.target.value)}/>
+                        <br></br>
 
-          <div className="form-group">
-            <label htmlFor="first">First Member Name</label>
-            <input
-              type="text"
-              className="form-control"
-              id="first"
-              value={form.first}
-              onChange={(e) => updateForm({ first: e.target.value })}
-            />
-          </div>
-
-          <div className="form-group">
-            <label htmlFor="second">Second Member Name</label>
-            <input
-              type="text"
-              className="form-control"
-              id="second"
-              value={form.second}
-              onChange={(e) => updateForm({ second: e.target.value })}
-            />
-          </div>
-
-          <div className="form-group">
-            <label htmlFor="second">Third Member Name</label>
-            <input
-              type="text"
-              className="form-control"
-              id="third"
-              value={form.third}
-              onChange={(e) => updateForm({ third: e.target.value })}
-            />
-          </div>
-
-          <div className="form-group">
-            <label htmlFor="second">Forth Member Name</label>
-            <input
-              type="text"
-              className="form-control"
-              id="forth"
-              value={form.forth}
-              onChange={(e) => updateForm({ forth: e.target.value })}
-            />
-          </div>
-
-          <button type="submit" className="btn btn-primary">
-            Submit
-          </button>
-        </form>
-      </div>
-  );
+                        <label>Forth Member</label>
+                        <input value={forth} onChange={(e) => setForth(e.target.value)}/>
+                        <br></br>
+                    
+                        <label>First Member Email</label>
+                        <input  value={email4} onChange={(e) => setEmail4(e.target.value)}/>
+                        <br></br>
+                    
+                       
+                        <button onClick={passtogroup} type='submit'>Create</button>
+    
+                </form>
+            </div>
+        )
 }
+
