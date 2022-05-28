@@ -1,55 +1,24 @@
 import { useState } from 'react';
-import axios from 'axios';
+import axios from 'axios'
+import NavBar from '../common/navBar';
 export default function SupCreateMarkingSchemes() {
+  const [selectSub,setSelectSub]=useState();
+  const [selectPosition,setPosition]=useState();
   const [formFields, setFormFields] = useState([
-    { citerion: '', vgood: '',avg:'',poor:'',mark:'' },
+    { citerion: '', vgood: '',avg:'',poor:'',totMark:'',mark:"",specalization:(selectSub),position:(selectPosition) }
   ])
 
-  const handleFormChange = (event, index) => {
-    let data = [...formFields];
-    data[index][event.target.name] = event.target.value;
-    setFormFields(data);
-  }
-
-
-  async function Submit(e){
-    e.preventDefault();
-  console.log(formFields)
  
-
-  // const exercise = {
-
-  //   citerion: this.state.citerion,
-
-  //   vgood: this.state.vgood,
-
-  //   avg: this.state.avg,
-
-  //   poor: this.state.poor,
-
-  //   mark: this.state.mark
-
-  // }
-
-
-
-  // console.log(exercise)
-
-
-
-  axios.post('http://localhost:5000/markingScheme/add/', formFields)
-
-    .then((res) => console.log(res.data))
-
-}
-
   const addFields = () => {
     let object = {
       citerion: '', 
       vgood: '',
       avg:'',
       poor:'',
-      mark:''
+      totMark:'',
+      mark:'',
+      specalization:(selectSub),
+      position:(selectPosition)
     }
 
     setFormFields([...formFields, object])
@@ -60,42 +29,82 @@ export default function SupCreateMarkingSchemes() {
     data.splice(index, 1)
     setFormFields(data)
   }
+ const handleFormChange = (event, index) => {
+    let data = [...formFields];
+    data[index][event.target.name] = event.target.value;
+    setFormFields(data);
+  }
+  async function Submit(e){
+    e.preventDefault();
+  console.log(formFields)
+  
+
+  axios
+
+    .post('http://localhost:5000/markingScheme/add/', formFields)
+
+    .then((res) => console.log(res.data))
+
+}
 
   return (
-    <div className="App">
+    <div>
+      <NavBar/>
+    <div className="container">
+    <h1>Create Marking Scehme</h1>
+<select value={selectSub} 
+       onChange={e=>setSelectSub(e.target.value)}>
+    <option  selected="selected">Information technology</option>
+    <option  selected="selected">Software engineering</option>
+    <option  selected="selected">Data science</option>
+    <option  selected="selected">Cyber security</option>
+    <option  selected="selected">Intractive media</option>
+    <option  selected="selected">Network engineering</option>
+  </select><br/><br/>
       <form onSubmit={Submit}>
+   
+
+  <select  value={selectPosition}
+  onChange={e=>setPosition(e.target.value)} 
+
+  >
+    <option  selected="selected">Panel member</option>
+    <option  selected="selected">Supervisour</option>
+ 
+  </select><br/><br/>
+
         {formFields.map((form, index) => {
           return (
             <div key={index}>
-              <input
+              <textarea
                 name='citerion'
                 placeholder='Citerion'
                 onChange={event => handleFormChange(event, index)}
                 value={form.citerion}
               />
-              <input
+              <textarea
                 name='vgood'
                 placeholder='Very good'
                 onChange={event => handleFormChange(event, index)}
                 value={form.vgood}
               />
-              <input
+              <textarea
                 name='avg'
                 placeholder='Average'
                 onChange={event => handleFormChange(event, index)}
                 value={form.avg}
               />
-              <input
+              <textarea
                 name='poor'
                 placeholder='Poor'
                 onChange={event => handleFormChange(event, index)}
                 value={form.poor}
               />
               <input
-                name='mark'
+                name='totMark'
                 placeholder='Total mark'
                 onChange={event => handleFormChange(event, index)}
-                value={form.mark}
+                value={form.totMark}
               />
 
 
@@ -107,7 +116,9 @@ export default function SupCreateMarkingSchemes() {
       </form>
       <button onClick={addFields}>Add More..</button>
       <br />
-      <button onClick={Submit}>Submit</button>
+      <br/><br/>
+      <button className='center col-2' onClick={Submit}>Submit</button>
+    </div>
     </div>
   );
 }

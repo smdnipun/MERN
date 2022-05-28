@@ -15,6 +15,7 @@ const markingScheme=require("./routes/markingScheme.routes")
 const group=require("./routes/group.routes")
 const user=require("./routes/user.routes")
 const topic=require("./routes/topic.routes")
+const mark=require("./routes/mark.routes")
 
 
 
@@ -23,6 +24,7 @@ app.use('/markingScheme',markingScheme)
 app.use('/group',group)
 app.use('/user',user)
 app.use('/topic',topic)
+app.use('/marks',mark)
 
 
 
