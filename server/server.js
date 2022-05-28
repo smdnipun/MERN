@@ -17,6 +17,19 @@ const marks=require("./routes/mark.routes")
 app.use('/adminfile', adminfile)
 app.use('/markingScheme',markingScheme)
 app.use('/marks',marks)
+const group=require("./routes/group.routes")
+const user=require("./routes/user.routes")
+const topic=require("./routes/topic.routes")
+
+
+
+app.use('/adminfile', adminfile)
+app.use('/markingScheme',markingScheme)
+app.use('/group',group)
+app.use('/user',user)
+app.use('/topic',topic)
+
+
 
 const uri = process.env.ATLAS_URI
 mongoose.connect(uri, { useNewUrlParser: true, useUnifiedTopology: true })
