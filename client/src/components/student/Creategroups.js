@@ -32,50 +32,73 @@ export default function Creategroups(){
     
         return (
             <div>
+            <center>
 
-                <h2>Create Group</h2>
-                <form>
-                        
-                       <label>Group ID</label>
-                       <input value={gid} onChange={(e) => setGid(e.target.value)}/>
-                       <br></br>
+            <div className=" form">
+            <div className="forminit">
+            <h3 className="navi">Create Groups</h3>
+            
+            <div className="form-group">
+                  <label>Group Name</label>
+                  <input className="form-control"  value={gid} onChange={(e) => setGid(e.target.value)}/>
+            <br></br>
+            </div>
     
-                        <label>First Member</label>
-                        <input value={first} onChange={(e) => setFirst(e.target.value)}/>
-                        <br></br>
-                    
-                        <label>First Member Email</label>
-                        <input  value={email1} onChange={(e) => setEmail1(e.target.value)}/>
-                        <br></br>
+            <div className="form-group">
+                  <label>First Member</label>
+                  <input className="form-control"  value={first} onChange={(e) => setFirst(e.target.value)}/>
+            <br></br>
+            </div>
 
-                        <label>Second Member</label>
-                        <input value={second} onChange={(e) => setSecond(e.target.value)}/>
-                        <br></br>
-                    
-                        <label>Second Member Email</label>
-                        <input  value={email2} onChange={(e) => setEmail2(e.target.value)}/>
-                        <br></br>
+            <div className="form-group">
+              <label>First Member Email</label>
+              <input className="form-control"  value={email1} onChange={(e) => setEmail1(e.target.value)}/>
+            <br></br>
+            </div>
 
-                        <label>Third Member</label>
-                        <input value={third} onChange={(e) => setThird(e.target.value)}/>
-                        <br></br>
-                    
-                        <label>Third Member Email</label>
-                        <input  value={email3} onChange={(e) => setEmail3(e.target.value)}/>
-                        <br></br>
+            <div className="form-group">
+                 <label>Second Member</label>
+                 <input className="form-control"  value={second} onChange={(e) => setSecond(e.target.value)}/>
+            <br></br>
+            </div>  
 
-                        <label>Forth Member</label>
-                        <input value={forth} onChange={(e) => setForth(e.target.value)}/>
-                        <br></br>
+            <div className="form-group">
+                <label>Second Member Email</label>
+                <input className="form-control"  value={email2} onChange={(e) => setEmail2(e.target.value)}/>
+            <br></br>
+            </div>
+
+            <div className="form-group">
+                <label>Third Member</label>
+                <input className="form-control" value={third} onChange={(e) => setThird(e.target.value)}/>
+            <br></br>
+            </div>
                     
-                        <label>First Member Email</label>
-                        <input  value={email4} onChange={(e) => setEmail4(e.target.value)}/>
-                        <br></br>
+            <div className="form-group">
+                <label>Third Member Email</label>
+                <input className="form-control"  value={email3} onChange={(e) => setEmail3(e.target.value)}/>
+            <br></br>
+            </div>
+
+            <div className="form-group">
+                <label>Forth Member</label>
+                <input className="form-control" value={forth} onChange={(e) => setForth(e.target.value)}/>
+            <br></br>
+            </div>
+
+            <div className="form-group">
+              <label>Forth Member Email</label>
+              <input className="form-control"  value={email4} onChange={(e) => setEmail4(e.target.value)}/>
+            <br></br>
+            </div>
                     
-                       
-                        <button onClick={passtogroup} type='submit'>Create</button>
+              <button className="btn btn-primary" onClick={passtogroup} type='submit'>Create</button>
     
-                </form>
+            </div>
+            </div>
+
+            </center>
+  
             </div>
         )
 }

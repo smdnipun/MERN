@@ -27,9 +27,12 @@ const setData = (data) => {
   // This following section will display the table with the records of individuals.
   return (
       <div>
-        <h3>Registered Users</h3>
+        <center>
+
+        <h3 className="navi">Registered Users</h3>
+        <br></br>
         <table
-          className="table table-striped"
+          class="table"
           style={{ marginTop: 50, width: 700 }}
         >
           <thead>
@@ -61,6 +64,9 @@ const setData = (data) => {
               }
           </tbody>
         </table>
+
+        </center>
+       
       </div>
   )
 }
