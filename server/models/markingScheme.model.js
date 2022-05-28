@@ -3,42 +3,28 @@ const mongoose = require('mongoose')
 const Schema = mongoose.Schema
 
 const markingScheme = new Schema(
-    {
+   [ {
         citerion:{
             type:String,
-            
+            require:true,
         },
         vgood: {
              type:String,
-          
+             require:true,   
         },
         avg: {
             type:String,
-           
+            require:true,   
        },
        poor: {
         type:String,
-       
+        require:true,   
         },
-        totMark: {
+        mark: {
          type:String,
-           
-        },
-
-        subject:{
-            type:String,
-
-        },
-        specalization:{
-            type:String            
-
-        },
-        position:{
-            type:String
-
+        require:true,   
         }
-    
-    }
+    }]
 )
 
 const MarkingScheme = mongoose.model('markingScheme', markingScheme)
