@@ -1,22 +1,25 @@
 const router = require('express').Router()
-let MarkingScheme = require('../models/markingScheme.model')
+let Marks = require('../models/mark.model')
 
 router.route('/').get((req, res) => {
-    MarkingScheme.find()
-    .then((markingScheme) => res.json(markingScheme))
+    Marks.find()
+    .then((marks) => res.json(marks))
     .catch((err) => res.status(400).json('Error:' + err ))
 })
 
 router.route('/add').post((req,res) => {
     
-       MarkingScheme.insertMany(req.body)
-       .then(val=>{
-           res.json('done');
-       }).catch(function(error){
-        console.log(error)    
-    });
-        
-  
+    const group = req.body.group
+    const total = req.body.total;
+
+    const mark = new Marks({
+        group,
+        total,
+    })
+    mark
+        .save()
+        .then(()=> res.json('marks added'))
+        .catch((err) => res.status(400).json('Error:' + err))
     
 
 })
