@@ -41,20 +41,23 @@ useEffect(() => {
 
     return (
         <div>
-            <h2>Group List</h2>
-            <table>
-                <tr>
-                    <th>Group Id</th>
-                    <th>First Member</th>
-                    <th>First Member Email</th>
-                    <th>Second Member</th>
-                    <th>Second Member Email</th>
-                    <th>Third Member</th>
-                    <th>Third Member Email</th>
-                    <th>Forth Member</th>
-                    <th>Forth Member Email</th>
-                    <th>Allocate Panel Member</th>
 
+            <center>
+
+            <h3 className="navi">Registered Groups</h3>
+            <br></br>
+            <table class= "table">
+                <tr>
+                <th scope="col">Group Name</th>
+                <th scope="col">First Member</th>
+                <th  scope="col">First Member Email</th>
+                <th  scope="col">Second Member</th>
+                <th  scope="col">Second Member Email</th>
+                <th  scope="col">Third Member</th>
+                <th  scope="col">Third Member Email</th>
+                <th  scope="col">Forth Member</th>
+                <th  scope="col">Forth Member Email</th>
+                <th  scope="col">Allocate Panel Member</th>
 
                 </tr>
                 {Item.map((data) => {
@@ -82,6 +85,9 @@ useEffect(() => {
                 )})}
                
             </table>
+
+            </center>
+           
         </div>
     )
 }

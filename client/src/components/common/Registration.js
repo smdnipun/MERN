@@ -33,63 +33,83 @@ export default function Registration(){
     
         return (
             <div>
-
-                <h2>User Registration</h2>
-                <form>
+            <center>
+                <div className=" form">
+                <div className="forminit">
+                <h3 className="navi">User Registration</h3>
                         
-                       <label>Name</label>
-                       <input value={name} onChange={(e) => setName(e.target.value)}/>
+                       <div className="form-group">
+                       <label htmlFor="Name" >Name</label>
+                       <input className="form-control"value={name} onChange={(e) => setName(e.target.value)}/>
                        {/* <input value={form.name} onChange={(e) => addForm({name:e.target.value})}/> */}
-
+                       </div>
                        <br></br>
-    
-                       <label>Select position</label>
-                       <select value={position} onChange={(e) => setPosition(e.target.value)}>
+
+                       <div className="form-group">
+                       <label htmlFor="position">Select position</label>
+                       <select  class="form-select" value={position} onChange={(e) => setPosition(e.target.value)}>
                        <option value="Student">Student</option>
                        <option value="Supervisor">Supervisor</option>
                        <option value="Panel Member">Panel Member</option>
                        <option value="Admin">Admin</option>
                        </select>
+                       </div>
                        <br></br>
 
-                        <label>Email</label>
-                        <input  value={email} onChange={(e) => setEmail(e.target.value)}/>
+                       <div className="form-group">
+                        <label htmlFor="Email">Email</label>
+                        <input className="form-control" value={email} onChange={(e) => setEmail(e.target.value)}/>
+                        </div>
                         <br></br>
 
-                        <label>Phone</label>
-                        <input value={phone} onChange={(e) => setPhone(e.target.value)}/>
+                        <div className="form-group">
+                        <label htmlFor="Phone">Phone</label>
+                        <input className="form-control"value={phone} onChange={(e) => setPhone(e.target.value)}/>
+                        </div>
                         <br></br>
                     
-                        <label>Address</label>
-                        <input  value={address} onChange={(e) => setAddress(e.target.value)}/>
+                        <div className="form-group">
+                        <label htmlFor="Address">Address</label>
+                        <input type="address" className="form-control" value={address} onChange={(e) => setAddress(e.target.value)}/>
+                        </div>
                         <br></br>
 
-                        <label>User ID</label>
-                        <input value={id} onChange={(e) => setId(e.target.value)}/>
+                        <div className="form-group">
+                        <label htmlFor="ID">User ID</label>
+                        <input className="form-control" value={id} onChange={(e) => setId(e.target.value)}/>
+                        </div>
                         <br></br>
                     
-                        <label>Select Specailization</label>
-                       <select value={specialization} onChange={(e) => setSpecialization(e.target.value)}>
+                        <div className="form-group">
+                        <label htmlFor="Specailization">Select Specailization</label>
+                       <select  class="form-select" value={specialization} onChange={(e) => setSpecialization(e.target.value)}>
                        <option value="Software Engineering">Software Engineering</option>
                        <option value="Data Science">Data Science</option>
                        <option value="Cyber Security">Cyber Security</option>
                        <option value="Information Technology">Information Technology</option>
                        </select>
+                       </div>
                        <br></br>
 
-
-                        <label>Enter the Password</label>
-                        <input value={password} onChange={(e) => setPassword(e.target.value)}/>
+                       <div className="form-group">
+                        <label htmlFor="Password">Enter the Password</label>
+                        <input type= "password" className="form-control" value={password} onChange={(e) => setPassword(e.target.value)}/>
+                        </div>
                         <br></br>
                     
-                        <label>Re enter the Password</label>
-                        <input  value={rpassword} onChange={(e) => setRpassword(e.target.value)}/>
+                        <div className="form-group">
+                        <label htmlFor="Password">Re enter the Password</label>
+                        <input type= "password" className="form-control" value={rpassword} onChange={(e) => setRpassword(e.target.value)}/>
+                        </div>
                         <br></br>
                     
                        
-                        <button onClick={passtouser} type='submit'>Register</button>
+                        <button className="btn btn-primary" onClick={passtouser} type='submit'>Register</button>
     
-                </form>
+                </div>
+            </div>
+            </center>
+
             </div>
         )
 }

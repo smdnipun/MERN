@@ -53,37 +53,46 @@ useEffect(() => {
 
     
         return (
-            <div>
-
-                <h2>Register Topic</h2>
-                <form>
-                        
-                       <label>Group ID</label>
-                       <select class="form-select"  value={gid} onChange={(e) => setGid(e.target.value)} >
-                        {                          
-                            groups.map(u=>(
-                            <option value={u.gid}>{u.gid}</option>
-                        ))}
-                       </select>
-    
-                        <label>Research Topic</label>
-                        <input value={topic} onChange={(e) => setTopic(e.target.value)}/>
-                        <br></br>
-                    
-                        <label>Specialization</label>
-                        <select class="form-select"  value={specialization} onChange={(e) => setSpecialization(e.target.value)} >
-                            <option>Software Engineering</option>
-                            <option>Data Science</option>
-                            <option>Cyber Security</option>
-                            <option>Information Technology</option>
-
-                        </select>
-                        <br></br>
-  
-                        <button onClick={pass} type='submit'>Submit</button>
-    
-                </form>
+        <div>
+          <center>
+            <div className=" form">
+            <div className="forminit">
+            <h3 className="navi">User Registration</h3>
+            
+            <div className="form-group">
+                <label>Group ID</label>
+                <select class="form-select"  value={gid} onChange={(e) => setGid(e.target.value)} >
+                {                          
+                    groups.map(u=>(
+                    <option value={u.gid}>{u.gid}</option>
+                    ))}
+                </select>
             </div>
+            <br></br>
+
+            
+            <div className="form-group">
+              <label>Research Topic</label>
+              <input className="form-control" value={topic} onChange={(e) => setTopic(e.target.value)}/>
+            </div>
+            <br></br>
+
+            <div className="form-group">
+              <label>Specialization</label>
+              <select class="form-select"  value={specialization} onChange={(e) => setSpecialization(e.target.value)} >
+                  <option>Software Engineering</option>
+                  <option>Data Science</option>
+                  <option>Cyber Security</option>
+                  <option>Information Technology</option>
+              </select>    
+            </div>
+            <br></br>
+  
+            <button onClick={pass} type='submit'>Submit</button>
+          </div>
+          </div>
+          </center>
+          </div>
         )
 }
 
