@@ -1,92 +1,73 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import axios from 'axios';
 
-const User = (props) => (
-  <tr>
-    <td>{props.user.name}</td>
-    <td>{props.user.position}</td>
-    <td>{props.user.email}</td>
-    <td>{props.user.phone}</td>
-    <td>{props.user.address}</td>
-    <td>{props.user.id}</td>
-    <td>{props.user.faculty}</td>
-    <td>{props.user.specialization}</td>
-    <td>
-
-    </td>
-  </tr>
-);
-
-export default function Viewusers() {
+export default function Viewgroups() {
   const [users, setUsers] = useState([]);
 
-  // This method fetches the records from the database.
-  useEffect(() => {
-    async function getUsers() {
-      const response = await fetch(`http://localhost:5000/user/`);
+// This method fetches the records from the database.
+useEffect(() => {
+  axios.get('/user')
+      .then((response) => {
+          setUsers(response.data);
+      })
+}, [])
 
-      if (!response.ok) {
-        const message = `An error occurred: ${response.statusText}`;
-        window.alert(message);
-        return;
-      }
-
-      const users = await response.json();
-      setUsers(users);
-    }
-
-    getUsers();
-
-    return;
-  }, [users.length]);
-
-  //This method will delete a record
-  async function deleteUser(id) {
-    await fetch(`http://localhost:5000/${id}`, {
-      method: "DELETE",
-    });
-
-    const newUsers = users.filter((el) => el._id !== id);
-    setUsers(newUsers);
-  }
-
-  // This method will map out the records on the table
-  function userList() {
-    return users.map((user) => {
-      return (
-        <User
-          user={user}
-          deleteUser={() => deleteUser(user._id)}
-          key={user._id}
-        />
-      );
-    });
-  }
+const setData = (data) => {
+    let { name, position, email, phone, address, id, specialization } = data;
+    localStorage.setItem('name', name);
+    localStorage.setItem('position', position);
+    localStorage.setItem('email', email);
+    localStorage.setItem('phone', phone);
+    localStorage.setItem('address', address)
+    localStorage.setItem('id', id)
+    localStorage.setItem('specialization', specialization)
+}
 
   // This following section will display the table with the records of individuals.
   return (
-  
       <div>
-        <h3>Users</h3>
+        <center>
+
+        <h3 className="navi">Registered Users</h3>
+        <br></br>
         <table
-          className="table table-striped"
+          class="table"
           style={{ marginTop: 50, width: 700 }}
         >
           <thead>
-            
             <tr>
               <th>Name</th>
               <th>Position</th>
               <th>Email</th>
-              <th>Contact Number</th>
+              <th>Phone</th>
               <th>Address</th>
               <th>User ID</th>
-              <th>Faculty</th>
               <th>Specialization</th>
+
             </tr>
           </thead>
-          <tbody>{userList()}</tbody>
+          <tbody>
+              {
+                    users.map(g=>(
+                        <tr>
+                            <td>{g.name}</td>
+                            <td>{g.position}</td>
+                            <td>{g.email}</td>
+                            <td>{g.phone}</td>
+                            <td>{g.address}</td>
+                            <td>{g.id}</td>
+                            <td>{g.specialization}</td>
+                            <td>  <Link to={'/edituser'}><button onClick={()=>setData(data)}>update</button></Link></td>
+                        </tr>
+                    ))
+              }
+          </tbody>
         </table>
+
+        </center>
+       
       </div>
   )
 }
+
