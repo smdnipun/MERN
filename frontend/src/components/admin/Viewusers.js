@@ -73,6 +73,7 @@ export default function Viewusers() {
           style={{ marginTop: 50, width: 700 }}
         >
           <thead>
+            
             <tr>
               <th>Name</th>
               <th>Position</th>

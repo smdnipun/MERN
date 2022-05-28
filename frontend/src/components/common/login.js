@@ -1,15 +1,106 @@
-import React from "react";
+import React, { useState, useEffect } from 'react'
+import { useNavigate } from 'react-router'
+import axios from 'axios'
 
 
-export default function Login(){
+export default function Login(props) {
+  useEffect(() => {
+    const loggedInUser = localStorage.getItem('user')
+    if (localStorage.getItem('admin')) {
+      window.location = '/admin'
+    }
+    if (loggedInUser != null) {
+      window.location = '/'
+    }
+  }, [])
 
-    return(
-        <div>
-            <a href="/sDash">student</a><br/><br/><br/>
-            <a href="/aDash">admin</a><br/><br/><br/>
-            <a href="/pDash">panel member</a><br/><br/><br/>
-            <a href="/supDash">supervisour</a><br/><br/><br/>
+  //  const [details, setDetails]=useState({email:"",password:""});
+  const [email, setEmail] = useState('')
+  const [password, setPassword] = useState('')
+
+  if (props.logout) {
+    localStorage.removeItem('admin')
+    localStorage.removeItem('user')
+    window.location = '/'
+  }
+
+  const submitHandler = (e) => {
+    e.preventDefault()
+    if (props.admin) {
+      axios
+        .post('http://localhost:5000/admin/login', {
+          email: email,
+          password: password,
+        })
+        .then((res) => {
+          if (res.data == 'granted') {
+            // localStorage.setItem("user", email);
+            localStorage.setItem('admin', true)
+            window.location = '/admin'
+          } else {
             
+            alert("Invalid Credntials")
+          }
+        })
+    } else {
+      axios
+        .post('http://localhost:5000/customer/login', {
+          email: email,
+          password: password,
+        })
+        .then((res) => {
+          if (res.data == 'granted') {
+            localStorage.setItem('user', email)
+            window.location = '/'
+          } else {
+            
+            alert("Invalid Credntials")
+          }
+        })
+    }
+  }
+
+  return (
+    <div>
+      <div className='center'>
+        <div className='form-toggle'></div>
+        <div className='form-panel one'>
+          <div className='form-header'>
+            <h1>Account Login</h1>
+          </div>
+          <div className='form-content'>
+            <form onSubmit={submitHandler}>
+              <div className='form-group'>
+                <label for='username'>Username</label>
+                <input
+                  classNameName='center'
+                  type='text'
+                  id='username'
+                  name='username'
+                  required='required'
+                  onChange={(e) => setEmail(e.target.value)}
+                  value={email}
+                />
+              </div>
+              <div className='form-group'>
+                <label for='password'>Password</label>
+                <input
+                  type='password'
+                  id='password'
+                  name='password'
+                  required='required'
+                  onChange={(e) => setPassword(e.target.value)}
+                  value={password}
+                />
+              </div>
+
+              <div className='center'>
+                <button type='submit'>Log In</button>
+              </div>
+            </form>
+          </div>
         </div>
-    )
+      </div>
+    </div>
+  )
 }

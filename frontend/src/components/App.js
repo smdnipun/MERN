@@ -5,6 +5,7 @@ import NavBar from "./common/navBar";
 import Registration from "../components/common/Registration";
 import Viewusers from "../components/admin/Viewusers";
 import Updateusers from "../components/admin/Updateusers";
+import Calculations from "./admin/test";
 
 const App =()=>{
 
@@ -25,6 +26,7 @@ const App =()=>{
             
             <Route exact path="/userlist" element={<Viewusers/>}/>
             <Route exact path="/edituser" element={<Updateusers/>}/>
+            <Route exact path="/cal" element={<Calculations/>}/>
             </Routes> 
         </div>
         </>

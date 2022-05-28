@@ -12,15 +12,14 @@ app.use(express.json());
 
 const adminfile = require("./routes/adminfile.routes")
 const markingScheme=require("./routes/markingScheme.routes")
+const marks=require("./routes/mark.routes")
 
 app.use('/adminfile', adminfile)
 app.use('/markingScheme',markingScheme)
+app.use('/marks',marks)
 
 const uri = process.env.ATLAS_URI
 mongoose.connect(uri, { useNewUrlParser: true, useUnifiedTopology: true })
-
-// get driver connection
-// const dbo = require("./db/conn");
 
 const connection = mongoose.connection
 connection.once('open', () => {
