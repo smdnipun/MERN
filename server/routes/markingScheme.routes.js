@@ -8,23 +8,17 @@ router.route('/').get((req, res) => {
 })
 
 router.route('/add').post((req,res) => {
-    const citerion = req.body.citerion
-    const vgood = req.body.vgood
-    const avg=req.body.avg
-    const poor=req.body.poor
-    const mark=req.body.mark 
+    
+       MarkingScheme.insertMany(req.body)
+       .then(val=>{
+           res.json('done');
+       }).catch(function(error){
+        console.log(error)    
+    });
+        
+  
+    
 
-    const newadminfile = new MarkingScheme([{
-        citerion,
-        vgood,
-        avg,
-        poor,
-        mark
-    }])
-    newadminfile
-        .save()
-        .then(()=> res.json('markingScheme added'))
-        .catch((err) => res.status(400).json('Error:' + err))
 })
 
 // router.route('/:id').get((req, res) => {
