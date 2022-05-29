@@ -24,6 +24,7 @@ const setData = (data) => {
     localStorage.setItem('specialization', specialization)
 }
 
+
   // This following section will display the table with the records of individuals.
   return (
       <div>
@@ -58,7 +59,9 @@ const setData = (data) => {
                             <td>{g.address}</td>
                             <td>{g.id}</td>
                             <td>{g.specialization}</td>
-                            <td>  <Link to={'/edituser'}><button onClick={()=>setData(data)}>update</button></Link></td>
+                             <td> <Link to={'/edituser'}>
+                        <button onClick={()=>setData(data)}>update</button>
+                        </Link></td>
                         </tr>
                     ))
               }

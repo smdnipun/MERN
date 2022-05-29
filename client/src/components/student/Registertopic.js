@@ -7,6 +7,8 @@ export default function Registertopic(){
     const [gid, setGid] = useState('')
     const [specialization, setSpecialization] = useState('')
     const [topic, setTopic] = useState('')
+    const [status, setStatus] = useState('')
+
     const [groups, setGroups] = useState([]);
     
        
@@ -38,8 +40,7 @@ useEffect(() => {
 
 
     var Topic = {
-       gid, specialization, topic
-    }
+       gid, specialization, topic , status    }
 
     const pass= async () => {
       try {
@@ -87,6 +88,18 @@ useEffect(() => {
               </select>    
             </div>
             <br></br>
+
+            <div className="form-group">
+              <label>Status</label>
+              <select class="form-select"  value={status} onChange={(e) => setStatus(e.target.value)} >
+                  <option>Pending</option>
+                  <option>Accepted</option>
+                  <option>Rejected</option>
+              </select>    
+            </div>
+            <br></br>
+
+
   
             <button onClick={pass} type='submit'>Submit</button>
           </div>
