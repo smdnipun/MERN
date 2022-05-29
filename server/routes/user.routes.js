@@ -7,6 +7,19 @@ router.route('/').get((req, res) => {
     .catch((err) => res.status(400).json('Error:' + err ))
 })
 
+
+router.route("/:email").get(function (req, res) {
+    
+    let myquery = { email: Object( req.params.email )};
+
+      User
+        .findOne(myquery, function (err, result) {
+          if (err) throw err;
+          res.json(result);
+          
+        });
+   });
+
 router.route('/add').post((req,res) => {
     const name = req.body.name
     const position = req.body.position
@@ -47,6 +60,21 @@ router.route('update/:id').post((req, res) => {
       })
       .catch((err) => res.status(400).json('Error: ' + err))
   })
+
+
+  router.route('/login').post((req, res) => {
+    
+      User
+      .findOne({ email: req.body.email }, function (err, result) {
+        if (err) throw err
+        if (result.password === req.body.password) {
+          res.json('granted')
+        } else {
+          res.json('denied')
+        }
+      })
+  })
+  
 
 //   const update = async (ctx) => {
 //     let uin = ctx.request.body;

@@ -23,7 +23,7 @@ export default function NavBar(){
         <NavDropdown.Item href="">Separated link</NavDropdown.Item>
       </NavDropdown>
     </Nav>
-    <Nav>
+    <Nav> 
       <Nav.Link href="#">More deets</Nav.Link>
       <Nav.Link eventKey={2} href="">
         Dank memes
@@ -33,13 +33,29 @@ export default function NavBar(){
   </Container>
 </Navbar>
 <Nav defaultActiveKey="" className="flex-column">
-  <Nav.Link href="/">Active</Nav.Link>
-  <Nav.Link eventKey="link-1">Link</Nav.Link>
-  <Nav.Link eventKey="link-2">Link</Nav.Link>
-  <Nav.Link eventKey="disabled" disabled>
-    Disabled
-  </Nav.Link>
+  {localStorage.getItem('userP')=='Panel Memeber' ? (
+  <>
+   <Nav.Link href="/">Active</Nav.Link>
+  <Nav.Link eventKey="">Evaluvate topics</Nav.Link>
+  <Nav.Link eventKey="">Evaluvate presentation</Nav.Link>
+  </>
+  ): localStorage.getItem('userP')=='Supervisour' ?(
+  <>
+  
+   <Nav.Link href="">Evaluvate Document</Nav.Link>
+  <Nav.Link eventKey="">Accept Topics</Nav.Link>
+  <Nav.Link eventKey="">Student Gropus</Nav.Link>
+  
+  </>
+ ) :(
+
+    <p>{localStorage.getItem('userP')}</p>
+
+  )
+  
+  }
 </Nav>
         </div>
     )
+  
 }
