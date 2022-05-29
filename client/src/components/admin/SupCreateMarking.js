@@ -5,7 +5,7 @@ export default function SupCreateMarkingSchemes() {
   const [selectSub,setSelectSub]=useState();
   const [selectPosition,setPosition]=useState();
   const [formFields, setFormFields] = useState([
-    { citerion: '', vgood: '',avg:'',poor:'',totMark:'',mark:"",specalization:(selectSub),position:(selectPosition) }
+    { citerion: '', vgood: '',avg:'',poor:'',totMark:'',mark:"",specalization:'',position:'' }
   ])
 
  
@@ -26,7 +26,7 @@ export default function SupCreateMarkingSchemes() {
 
   const removeFields = (index) => {
     let data = [...formFields];
-    data.splice(index, 1)
+    data.splice(index, 0)
     setFormFields(data)
   }
  const handleFormChange = (event, index) => {
@@ -39,11 +39,11 @@ export default function SupCreateMarkingSchemes() {
   console.log(formFields)
   
 
-  axios
+  // axios
 
-    .post('http://localhost:5000/markingScheme/add/', formFields)
+  //   .post('http://localhost:5000/markingScheme/add/', formFields)
 
-    .then((res) => console.log(res.data))
+  //   .then((res) => console.log(res.data))
 
 }
 

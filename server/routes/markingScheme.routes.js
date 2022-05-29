@@ -7,6 +7,17 @@ router.route('/').get((req, res) => {
     .catch((err) => res.status(400).json('Error:' + err ))
 })
 
+router.route("/:position").get(function (req, res) { 
+    let myquery ={ 
+        position: Object( req.params.position )};
+
+      MarkingScheme
+        .find(myquery, function (err, result) {
+          if (err) throw err;
+          res.json(result);
+          
+        });
+   });
 router.route('/add').post((req,res) => {
     
        MarkingScheme.insertMany(req.body)
@@ -20,6 +31,9 @@ router.route('/add').post((req,res) => {
     
 
 })
+
+
+
 
 // router.route('/:id').get((req, res) => {
 //     Exercise.findById(req.params.id)

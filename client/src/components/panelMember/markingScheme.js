@@ -13,25 +13,30 @@ export default function ViewMarkingSchemes() {
   const [total, setTotal] = useState(0);
 
   const navigate = useNavigate();
-  console.log(group)
+  // console.log(group)
   const setVal = (e, i) => {
     let items = [data];
     let tot = 0;
-    if (e.target.value == "") {
+
+    if (Number.isNaN(e.target.value)) {
       items[0][i].mark = 0;
+      console.log(e.target.value)
     } else {
       items[0][i].mark = parseInt(e.target.value);
     }
 
     items[0].forEach((e) => {
-      tot += e.mark;
-    });
+      if (Number.isNaN(items[0][i].mark)) {
+        items[0][i].mark = 0;
+        console.log(e.target.value)
+       } tot += e.mark;
+  });
 
     if(tot>50){
       alert('please enter marks correctly')
       window.location('/')
     }
-    console.log(total)
+    // console.log(total)
     setTotal(tot);
   };
   
@@ -63,14 +68,16 @@ export default function ViewMarkingSchemes() {
   }
 
   const loadData = () => {
+    let p=localStorage.getItem('userP')
     axios
-      .get("http://localhost:5000/markingScheme/")
+      .get(`http://localhost:5000/markingScheme/${p}`)
       .then((response) => {
         // console.log(response.data);
         // console.log(data.length);
-        if (data.length == 0) {
+       
           setData(response.data);
-        }
+          console.log(response.data)
+        
       })
       .catch(function (error) {
         console.log(error);
@@ -94,7 +101,7 @@ export default function ViewMarkingSchemes() {
               <th>Poor</th>
               <th>Mark</th>
             </tr>
-
+          
             {data.map((markingScheme,index) => {
               return (
                 <tr>
@@ -129,7 +136,7 @@ export default function ViewMarkingSchemes() {
                   <>
                     <tr>
                       <td>{markingScheme.citerion}</td>
-                      {/* <td>
+                       {/* <td>
                         <input type='text'
                          onChange={(e)=>setComm(e,index)} />
                       </td> */}
@@ -150,7 +157,7 @@ export default function ViewMarkingSchemes() {
                   <input
                     type="text"
                     value={total}
-                    onChange={(e) => setData(e.target.value)}
+                    // onChange={(e) => setData(e.target.value)}
                   />
                 </td>
               </tr>
