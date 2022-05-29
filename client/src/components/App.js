@@ -12,7 +12,7 @@ const App =()=>{
         <div>
             <Routes>
            <Route exact path={'/'} element={<Login/>}/>
-       
+           <Route exact path="/logout" element={<Login logout={true} />} />
            <Route exact path={'/reg'} element={<Registration/>}/>
 
        

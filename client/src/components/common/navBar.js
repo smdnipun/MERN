@@ -25,6 +25,18 @@ export default function NavBar(){
     </Nav>
     <Nav> 
       <Nav.Link href="#">More deets</Nav.Link>
+      {
+            localStorage.getItem('user') != null ? (
+              <>
+                <a href='/logout' className='btn btn-outline-dark'>
+                  <i className='fa fa-sign-in me-1'></i> Logout
+                </a>
+              </>
+            ):(
+              <>
+              <p>no user</p>
+              </>
+            )}
       <Nav.Link eventKey={2} href="">
         Dank memes
       </Nav.Link>
@@ -49,7 +61,7 @@ export default function NavBar(){
   </>
  ) :(
 
-    <p>{localStorage.getItem('userP')}</p>
+    <p>not found:{localStorage.getItem('userP')}</p>
 
   )
   
