@@ -15,31 +15,24 @@ export default function NavBar(){
     <Nav className="me-auto">
       <Nav.Link href="">Features</Nav.Link>
       <Nav.Link href="">Pricing</Nav.Link>
-      <NavDropdown title="Dropdown" id="collasible-nav-dropdown">
-        <NavDropdown.Item href="#action/3.1">Action</NavDropdown.Item>
-        <NavDropdown.Item href="#action/3.2">Another action</NavDropdown.Item>
-        <NavDropdown.Item href="#action/3.3">Something</NavDropdown.Item>
-        <NavDropdown.Divider />
-        <NavDropdown.Item href="">Separated link</NavDropdown.Item>
-      </NavDropdown>
     </Nav>
     <Nav> 
       <Nav.Link href="#">More deets</Nav.Link>
-      <Nav.Link eventKey={2} href="">
-        Dank memes
+      <Nav.Link href="/logout">
+        logout
       </Nav.Link>
     </Nav>
   </Navbar.Collapse>
   </Container>
 </Navbar>
 <Nav defaultActiveKey="" className="flex-column">
-  {localStorage.getItem('userP')=='Panel Memeber' ? (
+  {localStorage.getItem('userP')=='Panel Member' ? (
   <>
    <Nav.Link href="/">Active</Nav.Link>
   <Nav.Link eventKey="">Evaluvate topics</Nav.Link>
   <Nav.Link eventKey="">Evaluvate presentation</Nav.Link>
   </>
-  ): localStorage.getItem('userP')=='Supervisour' ?(
+  ): localStorage.getItem('userP')=='Supervisor' ?(
   <>
   
    <Nav.Link href="">Evaluvate Document</Nav.Link>
