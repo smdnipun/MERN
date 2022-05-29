@@ -19,6 +19,7 @@ router.route('/add').post((req,res) => {
     const rpassword= req.body.rpassword
 
 
+
     const newUser = new User({
         name,position,email,phone,address,id,specialization,password,rpassword
     })

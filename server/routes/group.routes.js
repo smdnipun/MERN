@@ -1,5 +1,6 @@
 const router = require('express').Router()
 let Group = require('../models/group.model')
+// var uuid = require('uuid');
 
 router.route('/').get((req, res) => {
     Group.find()
@@ -8,7 +9,9 @@ router.route('/').get((req, res) => {
 })
 
 router.route('/add').post((req,res) => {
-    const gid = req.body.gid
+
+    // const gid = uuidv4()
+    const gid= req.body.gid
     const first = req.body.first
     const email1= req.body.email1
     const second = req.body.second
@@ -17,6 +20,7 @@ router.route('/add').post((req,res) => {
     const email3= req.body.email3
     const forth = req.body.forth
     const email4= req.body.email4
+
 
     const newGroup = new Group({
         gid,first,email1,second,email2,third,email3,forth,email4

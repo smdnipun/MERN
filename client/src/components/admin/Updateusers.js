@@ -6,26 +6,28 @@ import { Link } from 'react-router-dom';
 
 export default function Updateusers() {
 
-const [name, setName] = useState('')
-const [position, setPosition] = useState('')
-const [email, setEmail] = useState('')
-const [phone, setPhone] = useState('')
-const [address, setAddress] = useState('')
-const [id, setID] = useState('')
-const [specialization, setSpecialization] = useState('')
+    const [name, setName] = useState('')
+    const [position, setPosition] = useState('')
+    const [email, setEmail] = useState('')
+    const [phone, setPhone] = useState('')
+    const [address, setAddress] = useState('')
+    const [id, setId] = useState('')
+    const [specialization, setSpecialization] = useState('')
+    
 
+    var Group = {
+       name, position, email, phone, address, id, specialization,
+    }
 
-const Updateuser = () => {
-    axios.put(`/user/update/${id}`, {
-        name,
-        position,
-        email,
-        phone,
-        address,
-        id,
-        specialization    
-	})
-}
+    const Updateuser= async () => {
+      try {
+        const resp = await axios.post('/user/update/:id', Group)
+        console.log(resp.data)
+      } catch (err) {
+        // Handle Error Here
+        console.error(err)
+      }
+    }
 
 useEffect(() => {
         setName(localStorage.getItem('name'))
@@ -64,7 +66,7 @@ useEffect(() => {
                     <br></br>
 
                     <label>User ID</label>
-                    <input  value={id} onChange={(e) => setID(e.target.value)}/>
+                    <input  value={id} onChange={(e) => setId(e.target.value)}/>
                     <br></br>
 
                     
