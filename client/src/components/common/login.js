@@ -8,6 +8,8 @@ import axios from 'axios'
 export default function Login(props) {
   useEffect(() => {
     const loggedInUser = localStorage.getItem('user')
+    localStorage.setItem('userS',data.specialization)
+              localStorage.setItem('userP',data.position)
   
     if (loggedInUser != null) {
      
@@ -23,6 +25,7 @@ export default function Login(props) {
   if (props.logout) {
     
     localStorage.removeItem('user')
+    localStorage.removeItem('userP')
     window.location = '/'
   }
 
@@ -39,10 +42,10 @@ export default function Login(props) {
           if (res.data == 'granted') {
               console.log("success")
             localStorage.setItem('user', email)
-       
+            window.location='/viewMarking'
         
 
-            window.location='/viewMarking'
+            
            
           } else {
             
@@ -56,8 +59,8 @@ export default function Login(props) {
           })
           .then(function (response) {
               setData(response.data)
-              localStorage.setItem('userS',data.specialization)
-              localStorage.setItem('userP',data.position)
+              console.log(response.data)
+              
        
     
           })
