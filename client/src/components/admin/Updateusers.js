@@ -15,29 +15,31 @@ export default function Updateusers() {
     const [specialization, setSpecialization] = useState('')
     
 
-    var Group = {
-       name, position, email, phone, address, id, specialization,
-    }
+    const Updateuser = () => {
+      axios.put(`/user/update/${Id}`, {
+          name,
+          position,
+          email,
+          phone,
+          address,
+          id,
+          specialization
+    })
+  }
+  
+    const [Id, setID] = useState(null);
+  
+  useEffect(() => {
+          setID(localStorage.getItem('Id'))
+          setName(localStorage.getItem('name'));
+          setPosition(localStorage.getItem('position'));
+          setEmail(localStorage.getItem('email'));
+          setPhone(localStorage.getItem('phone'));
+          setAddress(localStorage.getItem('address'));
+          setId(localStorage.getItem('id'));
+          setSpecialization(localStorage.getItem('specialization'));
 
-    const Updateuser= async () => {
-      try {
-        const resp = await axios.post('/user/update/:id', Group)
-        console.log(resp.data)
-      } catch (err) {
-        // Handle Error Here
-        console.error(err)
-      }
-    }
-
-useEffect(() => {
-        setName(localStorage.getItem('name'))
-        setPosition(localStorage.getItem('position'));
-        setEmail(localStorage.getItem('email'));
-        setPhone(localStorage.getItem('phone'));
-        setAddress(localStorage.getItem('address'));
-        setID(localStorage.getItem('id'));
-        setSpecialization(localStorage.getItem('specialization'));
-}, []);
+  }, []);
 
     return (
         <div>
