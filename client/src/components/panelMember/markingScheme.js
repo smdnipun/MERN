@@ -1,117 +1,106 @@
-import React, { useState, useEffect } from "react";
-import NavBar from "../common/navBar";
-import axios from "axios";
-import { useNavigate } from "react-router";
-import Table from "react-bootstrap/Table";
-
+import React, { useState, useEffect } from 'react'
+import NavBar from '../common/navBar'
+import axios from 'axios'
+import { useNavigate } from 'react-router'
+import Table from 'react-bootstrap/Table'
 
 export default function ViewMarkingSchemes() {
-  const [data, setData] = useState([]);
-  const [test,setTest]=useState([])
-  const [values, setValues] = useState({ val: [] });
+  const [data, setData] = useState([])
+  const [test, setTest] = useState([])
+  const [values, setValues] = useState({ val: [] })
   // const [Comment, setComment]=useState({comm:[]});
-  const [group,setGroupNo]=useState('');
-  const [total, setTotal] = useState(0);
-  let p=localStorage.getItem('userP')
-  let s=localStorage.getItem('userS')
-  const navigate = useNavigate();
+  const [group, setGroupNo] = useState('')
+  const [total, setTotal] = useState(0)
+  let p = localStorage.getItem('userP')
+  let s = localStorage.getItem('userS')
+  const navigate = useNavigate()
   // console.log(group)
   const setVal = (e, i) => {
-    let items = [data];
-    let tot = 0;
+    let items = [data]
+    let tot = 0
 
     if (Number.isNaN(e.target.value)) {
-      items[0][i].mark = 0;
+      items[0][i].mark = 0
       console.log(e.target.value)
     } else {
-      items[0][i].mark = parseInt(e.target.value);
+      items[0][i].mark = parseInt(e.target.value)
     }
 
     items[0].forEach((e) => {
       if (Number.isNaN(items[0][i].mark)) {
-        items[0][i].mark = 0;
+        items[0][i].mark = 0
         console.log(e.target.value)
-       } tot += e.mark;
-  });
+      }
+      tot += e.mark
+    })
 
-    if(tot>50){
+    if (tot > 50) {
       alert('please enter marks correctly')
       window.location('/')
     }
     // console.log(total)
-    setTotal(tot);
-  };
-  
-  function handleChange(event) {
-    let vals = [...values.val];
-    vals[this] = event.target.value;
-    setValues({ val: [...values.val, ""] });
-
+    setTotal(tot)
   }
 
+  function handleChange(event) {
+    let vals = [...values.val]
+    vals[this] = event.target.value
+    setValues({ val: [...values.val, ''] })
+  }
 
+  async function Submit(e) {
+    e.preventDefault()
 
-    async function Submit(e){
-      e.preventDefault();
-    
-
-    const newItem={
+    const newItem = {
       group,
       total,
-    
-
     }
     axios
 
       .post('http://localhost:5000/marks/add', newItem)
 
       .then((res) => console.log(res.data))
-
   }
 
-  
   const loadData = () => {
-
     axios
-  .post('http://localhost:5000/markingScheme/check',{
-  specalization:s,
-  position:p
-})
-.then((res)=>{
-  setData(res.data)
-  console.log(res.data)
-  console.log(s,p)
-
-})
+      .post('http://localhost:5000/markingScheme/check', {
+        specalization: s,
+        position: p,
+      })
+      .then((res) => {
+        setData(res.data)
+        console.log(res.data)
+        console.log(s, p)
+      })
     // axios
     //   .get(`http://localhost:5000/markingScheme/${p}`)
     //   .then((response) => {
     //     // console.log(response.data);
     //     // console.log(data.length);
-       
+
     //       setData(response.data);
     //       console.log(response.data)
-        
+
     //   })
     //   .catch(function (error) {
     //     console.log(error);
     //   })
-      // &&
-      // axios.get(`http://localhost:5000/markingScheme/${s}`)
-      // .then((response)=>{
+    // &&
+    // axios.get(`http://localhost:5000/markingScheme/${s}`)
+    // .then((response)=>{
 
-
-      // })
-  };
+    // })
+  }
 
   useEffect(() => {
-    loadData();
-  }, []);
+    loadData()
+  }, [])
 
   return (
     <div>
       <NavBar />
-      <div className="container">
+      <div className='container'>
         <Table>
           <tbody>
             <tr>
@@ -121,8 +110,8 @@ export default function ViewMarkingSchemes() {
               <th>Poor</th>
               <th>Mark</th>
             </tr>
-          
-            {data.map((markingScheme,index) => {
+
+            {data.map((markingScheme, index) => {
               return (
                 <tr>
                   <td>{markingScheme.citerion}</td>
@@ -131,7 +120,7 @@ export default function ViewMarkingSchemes() {
                   <td>{markingScheme.poor}</td>
                   <td>{markingScheme.totMark}</td>
                 </tr>
-              );
+              )
             })}
           </tbody>
         </Table>
@@ -139,8 +128,11 @@ export default function ViewMarkingSchemes() {
         <form onSubmit={Submit}>
           {/* striped bordered hover variant="dark" */}
           <label>Group Number :</label>
-          <input type='text' id="groupNo" 
-          onChange={(e)=>setGroupNo(e.target.value)}/>
+          <input
+            type='text'
+            id='groupNo'
+            onChange={(e) => setGroupNo(e.target.value)}
+          />
           <Table>
             <thead>
               <tr>
@@ -156,26 +148,25 @@ export default function ViewMarkingSchemes() {
                   <>
                     <tr>
                       <td>{markingScheme.citerion}</td>
-                       {/* <td>
+                      {/* <td>
                         <input type='text'
                          onChange={(e)=>setComm(e,index)} />
                       </td> */}
                       <td>
                         <input
-                          type="number"
+                          type='number'
                           onChange={(e) => setVal(e, index)}
                         />
                       </td>
                     </tr>
                   </>
-                );
+                )
               })}
               <tr>
-               
-                <td>Total Mark    :</td>
+                <td>Total Mark :</td>
                 <td>
                   <input
-                    type="text"
+                    type='text'
                     value={total}
                     // onChange={(e) => setData(e.target.value)}
                   />
@@ -183,9 +174,9 @@ export default function ViewMarkingSchemes() {
               </tr>
             </tbody>
           </Table>
-          <button type="submit">Submit marks</button>
+          <button type='submit'>Submit marks</button>
         </form>
       </div>
     </div>
-  );
+  )
 }
