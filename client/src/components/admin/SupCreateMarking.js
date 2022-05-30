@@ -4,8 +4,9 @@ import NavBar from '../common/navBar';
 export default function SupCreateMarkingSchemes() {
   const [selectSub,setSelectSub]=useState();
   const [selectPosition,setPosition]=useState();
+  const [selectEvaluType,setEvaluType]=useState();
   const [formFields, setFormFields] = useState([
-    { citerion: '', vgood: '',avg:'',poor:'',totMark:'',mark:"",specalization:'',position:'' }
+    { citerion: '', vgood: '',avg:'',poor:'',totMark:'',mark:"",specalization:'',position:'',evaluation:'' }
   ])
 
  
@@ -18,7 +19,8 @@ export default function SupCreateMarkingSchemes() {
       totMark:'',
       mark:'',
       specalization:(selectSub),
-      position:(selectPosition)
+      position:(selectPosition),
+      evaluation:(selectEvaluType)
     }
 
     setFormFields([...formFields, object])
@@ -73,6 +75,15 @@ export default function SupCreateMarkingSchemes() {
  
   </select><br/><br/>
 
+  <select  value={selectEvaluType}
+  onChange={e=>setEvaluType(e.target.value)} 
+
+  >
+    <option  selected="selected">Evaluation 1</option>
+    <option  selected="selected">Evaluation 2</option>
+    <option  selected="selected">Final Evaluation</option>
+ 
+  </select><br/><br/>
         {formFields.map((form, index) => {
           return (
             <div key={index}>

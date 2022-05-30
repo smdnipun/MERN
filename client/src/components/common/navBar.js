@@ -9,22 +9,26 @@ export default function NavBar(){
         <div>
 <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
   <Container>
-  <Navbar.Brand href="">React-Bootstrap</Navbar.Brand>
+  <Navbar.Brand href="">RPMT</Navbar.Brand>
   <Navbar.Toggle aria-controls="responsive-navbar-nav" />
   <Navbar.Collapse id="responsive-navbar-nav">
     <Nav className="me-auto">
-      <Nav.Link href="">Features</Nav.Link>
-      <Nav.Link href="">Pricing</Nav.Link>
-      <NavDropdown title="Dropdown" id="collasible-nav-dropdown">
-        <NavDropdown.Item href="#action/3.1">Action</NavDropdown.Item>
-        <NavDropdown.Item href="#action/3.2">Another action</NavDropdown.Item>
-        <NavDropdown.Item href="#action/3.3">Something</NavDropdown.Item>
-        <NavDropdown.Divider />
-        <NavDropdown.Item href="">Separated link</NavDropdown.Item>
-      </NavDropdown>
+      <Nav.Link href="">Contact</Nav.Link>
+      <Nav.Link href="">About us</Nav.Link>
     </Nav>
+    <Nav>
+      <div>
+      <p>{localStorage.getItem("userI")}</p>
+      <p>{localStorage.getItem("userN")}</p>
+       
+
+      </div>
+     
+
+    </Nav>
+
     <Nav> 
-      <Nav.Link href="#">More deets</Nav.Link>
+
       {
             localStorage.getItem('user') != null ? (
               <>
@@ -37,9 +41,7 @@ export default function NavBar(){
               <p>no user</p>
               </>
             )}
-      <Nav.Link eventKey={2} href="">
-        Dank memes
-      </Nav.Link>
+  
     </Nav>
   </Navbar.Collapse>
   </Container>
@@ -47,7 +49,7 @@ export default function NavBar(){
 <Nav defaultActiveKey="" className="flex-column">
   {localStorage.getItem('userP')=='Panel Member' ? (
   <>
-   <Nav.Link href="/">Active</Nav.Link>
+  
   <Nav.Link eventKey="">Evaluvate topics</Nav.Link>
   <Nav.Link eventKey="">Evaluvate presentation</Nav.Link>
   </>
@@ -59,7 +61,25 @@ export default function NavBar(){
   <Nav.Link eventKey="">Student Gropus</Nav.Link>
   
   </>
- ) :(
+ ): localStorage.getItem('userP')=='Admin' ?(
+    <>
+       <Nav.Link href="">Create Panel</Nav.Link>
+      <Nav.Link eventKey="/sMarking">Create MarkingScehme</Nav.Link>
+      <Nav.Link eventKey="">View Marks</Nav.Link>
+
+    </>
+
+ ): localStorage.getItem('userP')=='Student' ?(
+   <>
+        <Nav.Link href="">Group</Nav.Link>
+        <Nav.Link eventKey="">Documents</Nav.Link>
+        <Nav.Link eventKey="">Templates</Nav.Link>
+        <Nav.Link href="">Document Submission</Nav.Link>
+  
+   
+   </>
+ )
+ :(
 
     <p>not found:{localStorage.getItem('userP')}</p>
 
