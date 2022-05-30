@@ -36,6 +36,9 @@ const markingScheme = new Schema(
         position:{
             type:String
 
+        },
+        evaluation:{
+            type:String
         }
     
     }

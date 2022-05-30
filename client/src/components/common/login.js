@@ -27,6 +27,8 @@ export default function Login(props) {
     localStorage.removeItem('user')
     localStorage.removeItem('userP')
     localStorage.removeItem('userS')
+    localStorage.RemoveItem('userN',response.data.name)
+    localStorage.RemoveItem('userI',response.data.id)
     window.location = '/'
   }
 
@@ -62,6 +64,8 @@ export default function Login(props) {
               console.log(data)
               localStorage.setItem('userS',response.data.specialization)
               localStorage.setItem('userP',response.data.position)
+              localStorage.setItem('userN',response.data.name)
+              localStorage.setItem('userI',response.data.id)
 
               window.location='/viewMarking'
     
@@ -80,7 +84,7 @@ export default function Login(props) {
         <div className='form-panel one'>
           <div className='form-header'>
             <h1>Account Login</h1>
-          <p>{data.name}</p>
+         
           </div>
           <div className='form-content'>
             <form onSubmit={submitHandler}>

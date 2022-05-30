@@ -4,8 +4,9 @@ import NavBar from '../common/navBar';
 export default function SupCreateMarkingSchemes() {
   const [selectSub,setSelectSub]=useState();
   const [selectPosition,setPosition]=useState();
+  const [selectEvaluType,setEvaluType]=useState();
   const [formFields, setFormFields] = useState([
-    { citerion: '', vgood: '',avg:'',poor:'',totMark:'',mark:"",specalization:'',position:'' }
+    { citerion: '', vgood: '',avg:'',poor:'',totMark:'',mark:"",specalization:'',position:'',evaluation:'' }
   ])
 
  
@@ -18,7 +19,8 @@ export default function SupCreateMarkingSchemes() {
       totMark:'',
       mark:'',
       specalization:(selectSub),
-      position:(selectPosition)
+      position:(selectPosition),
+      evaluation:(selectEvaluType)
     }
 
     setFormFields([...formFields, object])
@@ -39,11 +41,11 @@ export default function SupCreateMarkingSchemes() {
   console.log(formFields)
   
 
-  // axios
+  axios
 
-  //   .post('http://localhost:5000/markingScheme/add/', formFields)
+    .post('http://localhost:5000/markingScheme/add/', formFields)
 
-  //   .then((res) => console.log(res.data))
+    .then((res) => console.log(res.data))
 
 }
 
@@ -54,12 +56,12 @@ export default function SupCreateMarkingSchemes() {
     <h1>Create Marking Scehme</h1>
 <select value={selectSub} 
        onChange={e=>setSelectSub(e.target.value)}>
-    <option  selected="selected">Information technology</option>
-    <option  selected="selected">Software engineering</option>
-    <option  selected="selected">Data science</option>
-    <option  selected="selected">Cyber security</option>
-    <option  selected="selected">Intractive media</option>
-    <option  selected="selected">Network engineering</option>
+    <option  selected="selected">Information Technology</option>
+    <option  selected="selected">Software Engineering</option>
+    <option  selected="selected">Data Science</option>
+    <option  selected="selected">Cyber Security</option>
+    <option  selected="selected">Intractive Media</option>
+    <option  selected="selected">Network Engineering</option>
   </select><br/><br/>
       <form onSubmit={Submit}>
    
@@ -68,11 +70,20 @@ export default function SupCreateMarkingSchemes() {
   onChange={e=>setPosition(e.target.value)} 
 
   >
-    <option  selected="selected">Panel member</option>
-    <option  selected="selected">Supervisour</option>
+    <option  selected="selected">Panel Member</option>
+    <option  selected="selected">Supervisor</option>
  
   </select><br/><br/>
 
+  <select  value={selectEvaluType}
+  onChange={e=>setEvaluType(e.target.value)} 
+
+  >
+    <option  selected="selected">Evaluation 1</option>
+    <option  selected="selected">Evaluation 2</option>
+    <option  selected="selected">Final Evaluation</option>
+ 
+  </select><br/><br/>
         {formFields.map((form, index) => {
           return (
             <div key={index}>
