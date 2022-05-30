@@ -18,6 +18,29 @@ router.route("/:position").get(function (req, res) {
           
         });
    });
+
+   router.route("/:specalization").get(function (req, res) { 
+    let myquery ={ 
+        position: Object( req.params.position )};
+
+      MarkingScheme
+        .find(myquery, function (err, result) {
+          if (err) throw err;
+          res.json(result);
+          
+        });
+   });
+
+   router.route('/check').post((req, res) => {
+    console.log(req.body.specalization,req.body.position)
+    MarkingScheme
+    .find({ specalization: req.body.specalization , position:req.body.position }, function (err, result) {
+      if (err) throw err
+       res.json(result)
+    })
+})
+
+
 router.route('/add').post((req,res) => {
     
        MarkingScheme.insertMany(req.body)

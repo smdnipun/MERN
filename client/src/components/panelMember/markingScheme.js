@@ -7,11 +7,13 @@ import Table from "react-bootstrap/Table";
 
 export default function ViewMarkingSchemes() {
   const [data, setData] = useState([]);
+  const [test,setTest]=useState([])
   const [values, setValues] = useState({ val: [] });
   // const [Comment, setComment]=useState({comm:[]});
   const [group,setGroupNo]=useState('');
   const [total, setTotal] = useState(0);
-
+  let p=localStorage.getItem('userP')
+  let s=localStorage.getItem('userS')
   const navigate = useNavigate();
   // console.log(group)
   const setVal = (e, i) => {
@@ -67,21 +69,39 @@ export default function ViewMarkingSchemes() {
 
   }
 
+  
   const loadData = () => {
-    let p=localStorage.getItem('userP')
+
     axios
-      .get(`http://localhost:5000/markingScheme/${p}`)
-      .then((response) => {
-        // console.log(response.data);
-        // console.log(data.length);
+  .post('http://localhost:5000/markingScheme/check',{
+  specalization:s,
+  position:p
+})
+.then((res)=>{
+  setData(res.data)
+  console.log(res.data)
+  console.log(s,p)
+
+})
+    // axios
+    //   .get(`http://localhost:5000/markingScheme/${p}`)
+    //   .then((response) => {
+    //     // console.log(response.data);
+    //     // console.log(data.length);
        
-          setData(response.data);
-          console.log(response.data)
+    //       setData(response.data);
+    //       console.log(response.data)
         
-      })
-      .catch(function (error) {
-        console.log(error);
-      });
+    //   })
+    //   .catch(function (error) {
+    //     console.log(error);
+    //   })
+      // &&
+      // axios.get(`http://localhost:5000/markingScheme/${s}`)
+      // .then((response)=>{
+
+
+      // })
   };
 
   useEffect(() => {
