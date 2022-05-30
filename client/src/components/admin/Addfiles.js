@@ -1,68 +1,78 @@
 import React, {useState} from 'react'
 import axios from 'axios';
 
-const Addfiles = () => {
 
-    const [newFile, setFile] = useState(
-        {
-            name: '',
-            description: '',
-        }
-    )
+const Add = () => {
 
-    const formchange = (value) =>{
-        return setFile((prev)=>{
-            return{...prev, ...value }
-        })
+    const [name, setName] = useState("");
+    const [description, setDescription] = useState("");
+    const [file, setFile] = useState([]);
+
+    const onChangeFile = e => {
+        setFile(e.target.files[0]);
     }
 
-
-    const onSubmit = (e) => {
+    const changeonClick = (e) => {
         e.preventDefault();
 
-            const newitem = {...newFile};
+        const formData = new FormData();
 
-        //   const exercise = {
-        //     name: this.useState.name,
-        //     description: this.useState.description,
-        //     }
+        formData.append("name", name);
+        formData.append("description", description);
+        formData.append("file", file);
 
-        axios.post('http://localhost:5000/adminfile/add', newitem)
-             .then(res => {
-                console.log(res);
-             })
-             .catch(err =>{
-                 console.log(err);
-             })
-    }
+        setName("");
+        setDescription("");
+
+        axios
+            .post("/adminfile/add", formData)
+            .then((res) => setMessage(res.data))
+            .catch((err) => {
+                console.log(err);
+            });
+    };
 
   return (
-    <div>
-        <h2>Addfiles</h2>
-        <form onSubmit={onSubmit}>
-            <label>Name</label>
-            <input
-                type='text'
-                placeholder='name'
-                id='name'
-                value= {newFile.name}
-                onChange={(e)=>formchange({name:e.target.value})}
-                />
-                <br/>
-            <label>description</label>
-            <input
-                type='description'
-                id = 'description'
-                placeholder='description'
-                value= {newFile.description}
-                onChange={(e)=>formchange({description:e.target.value})}
-                />
-                <br/>
-            <input type='submit'/>    
-        </form>
+        <div style={{ maxWidth: 500, margin: "auto" }}>
+            <form onSubmit={changeonClick} encType="multipart/form-data" >
+                <div className="form-group">  
+                    <label>Name</label>
+                    <input 
+                        type="text" 
+                        value={name} required
+                        onChange={(e)=> setName(e.target.value)}
+                        className="form-control"/>
+                </div>
 
+                <div className="form-group">  
+                    <input
+                         type="text"  
+                         placeholder="Description" 
+                         value={description} required
+                        onChange={(e)=>setDescription(e.target.value)}
+                        className="form-control"/>
+                </div>
+
+
+                Upload Pdf
+
+                <div className="form-group">
+                    <input 
+                        type="file" multiple  
+                        filename="file"
+                        className="form-control-file" 
+                        onChange={onChangeFile}/>
+                </div>
+
+            <button className="mt-2" 
+                type="submit" 
+                variant="primary"
+                size="lg">
+                Upload
+            </button>      
+        </form>
     </div>
   )
 }
 
-export default Addfiles
+export default Add
