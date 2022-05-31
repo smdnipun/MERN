@@ -7,9 +7,10 @@ export default function Registertopic(){
     const [gid, setGid] = useState('')
     const [specialization, setSpecialization] = useState('')
     const [topic, setTopic] = useState('')
-    const [status, setStatus] = useState('')
+    const [status, setStatus] = useState('pending')
 
     const [groups, setGroups] = useState([]);
+
     
        
 useEffect(() => {
@@ -29,6 +30,7 @@ useEffect(() => {
             const groups = await responseu.json();
       
             setGroups(groups);
+
           }
     
           getGroups();
@@ -89,15 +91,6 @@ useEffect(() => {
             </div>
             <br></br>
 
-            <div className="form-group">
-              <label>Status</label>
-              <select class="form-select"  value={status} onChange={(e) => setStatus(e.target.value)} >
-                  <option>Pending</option>
-                  <option>Accepted</option>
-                  <option>Rejected</option>
-              </select>    
-            </div>
-            <br></br>
 
 
   

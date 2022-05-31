@@ -1,10 +1,12 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
+import nextId from 'react-id-generator';
 
 export default function Creategroups(){
 
 
-    const [gid, setGid] = useState('')
+    const gid= nextId();
+    const [specialization, setSpecialization] = useState('')
     const [first, setFirst] = useState('')
     const [email1, setEmail1] = useState('')
     const [second, setSecond] = useState('')
@@ -13,10 +15,12 @@ export default function Creategroups(){
     const [email3, setEmail3] = useState('')
     const [forth, setForth] = useState('')
     const [email4, setEmail4] = useState('')
+    const [pmember, setPmember] = useState('none')
+
     
 
     var Group = {
-       gid, first, email1, second, email2, third, email3, forth, email4
+       gid, specialization, first, email1, second, email2, third, email3, forth, email4, pmember
     }
 
     const passtogroup= async () => {
@@ -41,8 +45,20 @@ export default function Creategroups(){
             <div className="form-group">
                   <label>Group Name</label>
                   <input className="form-control"  value={gid} onChange={(e) => setGid(e.target.value)}/>
-            <br></br>
             </div>
+            <br></br>
+
+            <div className="form-group">
+              <label>Specialization</label>
+              <select class="form-select"  value={specialization} onChange={(e) => setSpecialization(e.target.value)} >
+                  <option>Software Engineering</option>
+                  <option>Data Science</option>
+                  <option>Cyber Security</option>
+                  <option>Information Technology</option>
+              </select>    
+            </div>
+            <br></br>
+
     
             <div className="form-group">
                   <label>First Member</label>

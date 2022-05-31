@@ -8,6 +8,10 @@ const group = new Schema(
             type:String,
             require:true,
         },
+        specialization:{
+            type:String,
+            require:true,
+        },
         first: {
              type:String,
              require:true,   
@@ -40,6 +44,7 @@ const group = new Schema(
             type:String,
             require:true,   
         },
+       
     }
 )
 
