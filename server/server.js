@@ -16,6 +16,7 @@ const group=require("./routes/group.routes")
 const user=require("./routes/user.routes")
 const topic=require("./routes/topic.routes")
 const mark=require("./routes/mark.routes")
+const schedule=require("./routes/schedule.routes")
 
 
 
@@ -25,6 +26,7 @@ app.use('/group',group)
 app.use('/user',user)
 app.use('/topic',topic)
 app.use('/marks',mark)
+app.use('/schedule',schedule)
 
 
 
