@@ -8,6 +8,19 @@ router.route('/').get((req, res) => {
     .catch((err) => res.status(400).json('Error:' + err ))
 })
 
+
+router.route("/:id").get(function (req, res) {
+    
+    let myquery = {_id: Object( req.params.id )};
+
+      Group
+        .find(myquery, function (err, result) {
+          if (err) throw err;
+          res.json(result);
+          
+        });
+   });
+
 router.route('/add').post((req,res) => {
 
     // const gid = uuidv4()
