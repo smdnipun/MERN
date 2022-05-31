@@ -49,6 +49,7 @@ useEffect(() => {
             <table class= "table">
                 <tr>
                 <th scope="col">Group Name</th>
+                <th scope="col">Specialization</th>
                 <th scope="col">First Member</th>
                 <th  scope="col">First Member Email</th>
                 <th  scope="col">Second Member</th>
@@ -64,6 +65,7 @@ useEffect(() => {
                      return (
                 <tr>
                     <td>{data.gid}</td>
+                    <td>{data.specialization}</td>
                     <td>{data.first}</td>
                     <td>{data.email1}</td>
                     <td>{data.second}</td>

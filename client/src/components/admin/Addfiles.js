@@ -1,5 +1,6 @@
 import React, {useState} from 'react'
 import axios from 'axios';
+import { useNavigate } from "react-router";
 
 
 const Add = () => {
@@ -10,7 +11,9 @@ const Add = () => {
 
     const onChangeFile = e => {
         setFile(e.target.files[0]);
+        
     }
+ const navi = new useNavigate();
 
     const changeonClick = (e) => {
         e.preventDefault();
@@ -23,18 +26,47 @@ const Add = () => {
 
         setName("");
         setDescription("");
+        console.log(name);
+        console.log(description);
+        for (var value of formData.values()) {
+            console.log(value);
+         }
 
         axios
             .post("/adminfile/add", formData)
-            .then((res) => setMessage(res.data))
+            .then((res) => {
+                setMessage(res.data);
+                navi("/addfiles");
+            } )
             .catch((err) => {
                 console.log(err);
             });
+            
+            
     };
+   
+
+    // const Data = {
+    //     name,
+    //     description
+    // }
+
+    // const sub= async () => {
+    //     try {
+    //       const resp = await axios.post('/adminfile/add', Data)
+    //       console.log(resp.data)
+          
+    //     } catch (err) {
+    //       // Handle Error Here
+    //       console.error(err)
+    //     }
+    //     console.log(Data);
+    //   }
 
   return (
         <div style={{ maxWidth: 500, margin: "auto" }}>
             <form onSubmit={changeonClick} encType="multipart/form-data" >
+            
                 <div className="form-group">  
                     <label>Name</label>
                     <input 
@@ -45,6 +77,7 @@ const Add = () => {
                 </div>
 
                 <div className="form-group">  
+                    <label>Description</label>
                     <input
                          type="text"  
                          placeholder="Description" 
@@ -67,10 +100,12 @@ const Add = () => {
             <button className="mt-2" 
                 type="submit" 
                 variant="primary"
-                size="lg">
+                size="lg"
+               >
                 Upload
             </button>      
         </form>
+       
     </div>
   )
 }

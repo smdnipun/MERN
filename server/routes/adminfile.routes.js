@@ -5,7 +5,8 @@ const File = require('../models/adminfile.model');
 
 const storage = multer.diskStorage({
   destination: (req, file, callback) => {
-    callback(null, ".././frontend/public/upload");
+    callback(null, "upload");
+// destination: "upload",
   },
   filename: (req, file, callback) => {
     callback(null, file.originalname);
@@ -22,7 +23,7 @@ router.get("/get", (req, res) => {
 });
 
 //ADD NEW DATA
-router.post("/add", upload.single("filepdf"), (req, res) => {
+router.post("/add", upload.single("file"), (req, res) => {
   const newfile = new File({
     name: req.body.name,
     description: req.body.description,
