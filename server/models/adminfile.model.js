@@ -12,7 +12,7 @@ const adminfiles = new Schema(
              type:String,
           
         },
-        file:{
+        filepdf:{
             type:String,
         }
     }
