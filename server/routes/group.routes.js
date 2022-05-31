@@ -18,6 +18,18 @@ router.route('/check').post((req, res) => {
     })
 })
 
+router.route("/:id").get(function (req, res) {
+    
+    let myquery = {_id: Object( req.params.id )};
+
+      Group
+        .find(myquery, function (err, result) {
+          if (err) throw err;
+          res.json(result);
+          
+        });
+   });
+
 router.route('/add').post((req,res) => {
 
     // const gid = uuidv4()
