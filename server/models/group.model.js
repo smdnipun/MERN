@@ -13,10 +13,7 @@ const group = new Schema({
   co_supervisor: {
     type: String,
   },
-  panelMember1: {
-    type: String,
-  },
-  panelMember2: {
+  panelMember: {
     type: String,
   },
   first: {
