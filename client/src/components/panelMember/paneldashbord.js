@@ -2,9 +2,17 @@ import React from "react";
 
 export default function PdashBoard(){
 
+
+
+
+
     return(
         <div>
-            <p>hi panel member</p>
+            <card>
+                <h2>Group ID:</h2>
+                <h3>evaluation 1</h3>
+                <button>View</button>
+            </card>        
         </div>
     )
 

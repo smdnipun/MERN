@@ -65,7 +65,7 @@ export default function Login(props) {
               localStorage.setItem('userN', response.data.name)
               localStorage.setItem('userI', response.data.id)
 
-              window.location = '/viewMarking'
+              window.location = '/dashBoard'
             })
         } else if (res.data == 'denied') {
           SweatAlert('Incorrect Password')
