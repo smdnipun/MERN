@@ -16,6 +16,9 @@ const group = new Schema({
   panelMember: {
     type: String,
   },
+  specialization: {
+    type: String,
+  },
   first: {
     type: String,
     require: true,
