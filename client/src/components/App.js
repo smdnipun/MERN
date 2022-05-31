@@ -4,6 +4,7 @@ import Login from "./common/login";
 import NavBar from "./common/navBar";
 import Registration from "../components/common/Registration";
 import Test from "./admin/jhgj";
+import DashBoard from "./common/dashBoard";
 
 
 const App =()=>{
@@ -15,7 +16,7 @@ const App =()=>{
            <Route exact path={'/'} element={<Login/>}/>
            <Route exact path="/logout" element={<Login logout={true} />} />
            <Route exact path={'/reg'} element={<Registration/>}/>
-           {/* <Route exact path="/t" element={<Test/>}/> */}
+           <Route exact path="/dashBoard" element={<DashBoard/>}/>
 
        
 
