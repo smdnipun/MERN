@@ -2,25 +2,54 @@ const router = require('express').Router()
 let Topic = require('../models/topic.model')
 
 router.route('/').get((req, res) => {
-    Topic.find()
+  Topic.find()
     .then((topics) => res.json(topics))
-    .catch((err) => res.status(400).json('Error:' + err ))
+    .catch((err) => res.status(400).json('Error:' + err))
 })
 
-router.route('/add').post((req,res) => {
-    const gid = req.body.gid
-    const topic = req.body.topic
-    const specialization= req.body.specialization
-    const status= req.body.status
+router.route('/add').post((req, res) => {
+  const gid = req.body.gid
+  const topic = req.body.topic
+  const specialization = req.body.specialization
+  const status = req.body.status
 
+  const newTopic = new Topic({
+    gid,
+    topic,
+    specialization,
+    status,
+  })
+  newTopic
+    .save()
+    .then(() => res.json('Topic registered'))
+    .catch((err) => res.status(400).json('Error:' + err))
+})
 
-    const newTopic = new Topic({
-        gid, topic, specialization,status
-    })
-    newTopic
+router.route('/:specalization').get(function (req, res) {
+  let myquery = {
+    specialization: Object(req.params.specalization),
+  }
+
+  Topic.find(myquery, function (err, result) {
+    if (err) throw err
+    res.json(result)
+  })
+})
+
+router.route('/update/:id').post((req, res) => {
+  Topic.findById(req.params.id)
+    .then((topics) => {
+      topics.gid = req.body.gid
+      topics.topic = req.body.topic
+      topics.specialization = req.body.specialization
+      topics.status = req.body.status
+
+      topics
         .save()
-        .then(()=> res.json('Topic registered'))
-        .catch((err) => res.status(400).json('Error:' + err))
+        .then(() => res.json('Topic Accepted!'))
+        .catch((err) => res.status(400).json('Error: ' + err))
+    })
+    .catch((err) => res.status(400).json('Error: ' + err))
 })
 
 module.exports = router
