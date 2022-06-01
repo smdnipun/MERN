@@ -2,7 +2,30 @@ import React, { useState, useEffect } from 'react'
 import axios from 'axios'
 import NavBar from '../common/navBar'
 import Table from 'react-bootstrap/Table'
-import { Button } from 'react-bootstrap'
+
+const Topics = (props) => (
+  <>
+    {props.topics.status == 'pending' ? (
+      <tr>
+        <td>{props.topics.gid}</td>
+        <td>{props.topics.topic}</td>
+        <td>
+          <button
+            type='submit'
+            className='btn btn-primary'
+            onClick={() => {
+              props.update(props.topics)
+            }}
+          >
+            Accept
+          </button>
+        </td>
+      </tr>
+    ) : (
+      ''
+    )}
+  </>
+)
 
 export default function AcceptTopic() {
   const [data, setData] = useState([])
@@ -13,7 +36,6 @@ export default function AcceptTopic() {
     axios
       .get(`http://localhost:5000/topic/${sp}`)
       .then((response) => {
-        // console.log(data.length);
         setData(response.data)
         console.log(response.data)
       })
@@ -22,12 +44,30 @@ export default function AcceptTopic() {
       })
   }, [])
 
-  const Update = (top) => {
+  const Update = async (top) => {
     axios.post(`http://localhost:5000/topic/update/${top._id}`, {
-      gid: top.gid,
-      topic: top.topic,
-      specialization: top.specialization,
       status: 'Accepted',
+    })
+    let topicId = top.gid
+    axios
+      .get(`http://localhost:5000/group/searchByGid/${topicId}`)
+      .then((response) => {
+        const id = response.data[0]._id
+        axios.post(`http://localhost:5000/group/updateSupervisor/${id}`, {
+          supervisor: sname,
+        })
+      })
+      .catch(function (error) {
+        console.log(error)
+      })
+    setData(data.filter((el) => el._id != top._id))
+  }
+
+  const exerciseList = () => {
+    return data.map((currentTopic) => {
+      return (
+        <Topics topics={currentTopic} update={Update} key={currentTopic._id} />
+      )
     })
   }
 
@@ -35,38 +75,15 @@ export default function AcceptTopic() {
     <div>
       <NavBar />
       <div className='container'>
-        <Table>
-          <tbody>
+        <Table className='talbe'>
+          <thead className='thead-light'>
             <tr>
               <th>Group ID</th>
               <th>Topic</th>
               <th>Accept/Reject</th>
             </tr>
-
-            {data.map((topic) => {
-              return (
-                <>
-                  {topic.status == 'pending' ? (
-                    <tr>
-                      <td>{topic.gid}</td>
-                      <td>{topic.topic}</td>
-                      <td>
-                        <button
-                          type='submit'
-                          className='btn btn-primary'
-                          onClick={Update(topic)}
-                        >
-                          Accept
-                        </button>
-                      </td>
-                    </tr>
-                  ) : (
-                    ''
-                  )}
-                </>
-              )
-            })}
-          </tbody>
+          </thead>
+          <tbody>{exerciseList()}</tbody>
         </Table>
       </div>
     </div>
