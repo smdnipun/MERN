@@ -10,7 +10,11 @@ const PanelApp = () => {
       <div>
         <Routes>
           <Route exact path={'/pDash'} element={<PdashBoard />} />
-          <Route exact path='/viewMarking' element={<ViewMarkingSchemes />} />
+          <Route
+            exact
+            path='/viewMarking/:gid'
+            element={<ViewMarkingSchemes />}
+          />
           <Route exact path='/evaluate' element={<EvaluateTopice />} />
         </Routes>
 
