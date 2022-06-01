@@ -1,4 +1,5 @@
 const router = require('express').Router()
+const Mark = require('../models/mark.model')
 let Marks = require('../models/mark.model')
 
 router.route('/').get((req, res) => {
@@ -9,12 +10,26 @@ router.route('/').get((req, res) => {
 
 router.route('/add').post((req,res) => {
     
-    const group = req.body.group
-    const total = req.body.total;
-
-    const mark = new Marks({
-        group,
-        total,
+    const gid = req.body.gid
+    // const eval=req.body.evaluation1
+    // const evaluation2=req.body.evaluation2
+    // const finalevaluation=req.body.finalevaluation
+    const doc1="None"
+    const doc2="None"
+    const docfinal="None"
+    const ev1Mark="None"
+    const ev2Mark="None"
+    const finalevMark="None"
+   
+       const mark = new Marks({
+        gid,
+        ev1Mark,
+        ev2Mark,
+        finalevMark,
+        doc1,
+        doc2,
+        docfinal
+        
     })
     mark
         .save()
@@ -23,6 +38,21 @@ router.route('/add').post((req,res) => {
     
 
 })
+
+
+router.route('/update/ev1/:id').post((req, res) => {
+    Mark.findById(req.params.id)
+      .then((mark) => {
+        mark.ev1Mark = req.body.total
+      
+  
+        Mark.save()
+          .then(() => res.json('User Updated!'))
+          .catch((err) => res.status(400).json('Error: ' + err))
+      })
+      .catch((err) => res.status(400).json('Error: ' + err))
+  })
+
 
 // router.route('/:id').get((req, res) => {
 //     Exercise.findById(req.params.id)

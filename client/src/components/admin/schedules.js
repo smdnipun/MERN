@@ -10,14 +10,18 @@ let params = useParams();
   const [data, setData] = useState([ ] );
   const [evaluation1,setEv1]=useState('');
   const [evaluation2,setEv2]=useState('');
+  const [link1,setLink1]=useState('');
+  const [link2,setLink2]=useState('');
+  const [linkF,setLinkF]=useState('');
   const [final_evaluation,setFinalEv]=useState('');
-  const [groupID,setGroupID]=useState('')
+  
 
   const loadData=()=>{
-
-    axios.get(`http://localhost:5000/group/${params._id}`)
+    let p=(params.gid)
+    axios.get(`http://localhost:5000/group/get/${p}`)
     .then(function (response) {
       setData(response.data)
+      console.log(response.data)
       
     })
 
@@ -34,10 +38,13 @@ let params = useParams();
     e.preventDefault();
     const Obj={
 
-      groupID,
+      groupID:(params.gid),
       evaluation1,
       evaluation2,
-      final_evaluation
+      final_evaluation,
+      link1,
+      link2,
+      linkF
 
 
     }
@@ -59,28 +66,46 @@ let params = useParams();
         {data.map((group)=>{
           return(
             <>
-            <form onSubmit={Submit}>
-              <label>Group ID :</label>
-            <input type="text" value={group.gid} 
-            onFocus={e=>setGroupID(e.target.value)}
-            /><br/><br/>
+            <form className='container' onSubmit={Submit}>
+             
+
+            <h3>Group Id:{group.gid}</h3>
+            <br/><br/>
             <label>Evaluation 1 :</label>
             <input type='date'
             value={evaluation1}
             onChange={e=>setEv1(e.target.value)}
             /><br/><br/>
+            <label>Link :</label>
+              <input type='text' 
+              value={link1}
+              onChange={e=>setLink1(e.target.value)}
+              />
+            <br/><br/>
             <label>Evaluation 2 :</label>
             <input type='date'
              value={evaluation2}
              onChange={e=>setEv2(e.target.value)}
             /><br/><br/>
+            <label>Link :</label>
+            <input type='text'  
+            value={link2}
+            onChange={e=>setLink2(e.target.value)}
+            />
+            <br/><br/>
             <label>Final Evaluation :</label>
             <input type='date'
                value={final_evaluation}
                onChange={e=>setFinalEv(e.target.value)}
             
             /><br/><br/>
-            <button type="submit">Schedule dates</button>
+            <label>Link :</label>
+            <input type='text'  
+            value={linkF}
+            onChange={e=>setLinkF(e.target.value)}
+            />
+            <br/><br/>
+            <button className='btn btn-dark' type="submit">Schedule dates</button>
             </form>
             </>
           )

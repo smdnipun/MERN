@@ -33,7 +33,22 @@ export default function Creategroups(){
         // Handle Error Here
         console.error(err)
       }
+
+      const newItem = {
+          gid,
+          
+      }
+      axios
+
+      .post('http://localhost:5000/marks/add', newItem)
+
+      .then((res) => console.log(res.data))
+  
+
     }
+
+
+
 
     
         return (

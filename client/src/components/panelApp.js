@@ -1,5 +1,6 @@
 import React from 'react'
 import { Route, Routes } from 'react-router-dom'
+import EvaluateTopice from './panelMember/evaluateTopic'
 import ViewMarkingSchemes from './panelMember/markingScheme'
 import PdashBoard from './panelMember/paneldashbord'
 
@@ -10,6 +11,7 @@ const PanelApp = () => {
         <Routes>
           <Route exact path={'/pDash'} element={<PdashBoard />} />
           <Route exact path='/viewMarking' element={<ViewMarkingSchemes />} />
+          <Route exact path='/evaluate' element={<EvaluateTopice />} />
         </Routes>
 
         {/* <Fpage/> */}

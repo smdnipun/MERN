@@ -8,7 +8,7 @@ export default function SupCreateMarkingSchemes() {
   const [formFields, setFormFields] = useState([
     { citerion: '', vgood: '',avg:'',poor:'',totMark:'',mark:"",specalization:'',position:'',evaluation:'' }
   ])
-
+console.log(selectPosition,selectSub,selectEvaluType)
  
   const addFields = () => {
     let object = {
@@ -82,6 +82,9 @@ export default function SupCreateMarkingSchemes() {
     <option  selected="selected">Evaluation 1</option>
     <option  selected="selected">Evaluation 2</option>
     <option  selected="selected">Final Evaluation</option>
+    <option  selected="selected">Document 1</option>
+     <option selected="selected">Document 2</option>
+     <option selected="selected">Final Document</option>
  
   </select><br/><br/>
         {formFields.map((form, index) => {

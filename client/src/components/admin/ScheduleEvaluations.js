@@ -41,7 +41,7 @@ import NavBar from "../common/navBar";
                                 <td>{group.first}</td>
                                 <td></td>
                                 <NavLink
-                      to={`/groupSchedule/${group._id}`}
+                      to={`/groupSchedule/${group.gid}`}
                       className='btn btn-outline-dark me-2'
                     >
                       Schedule

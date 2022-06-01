@@ -23,14 +23,44 @@ router.route('/check').post((req, res) => {
 router.route('/:id').get(function (req, res) {
   let myquery = { _id: Object(req.params.id) }
 
+  Group.findOne(myquery, function (err, result) {
+    if (err) throw err
+    res.json(result)
+  })
+})
+
+router.route('/get/:gid').get(function (req, res) {
+  let myquery = { gid: Object(req.params.gid) }
+
   Group.find(myquery, function (err, result) {
     if (err) throw err
     res.json(result)
   })
 })
 
-router.route('panel/:panelMember').get(function (req, res) {
+//  router.route("panel/:panelMember").get(function (req, res) {
+
+//   let myquery = {panelMember: Object( req.params.panelMember )};
+
+//     Group
+//       .find(myquery, function (err, result) {
+//         if (err) throw err;
+//         res.json(result);
+
+//       });
+//  });
+
+router.route('/panel/:panelMember').get(function (req, res) {
   let myquery = { panelMember: Object(req.params.panelMember) }
+
+  Group.find(myquery, function (err, result) {
+    if (err) throw err
+    res.json(result)
+  })
+})
+
+router.route('/supervisour/:supervisor').get(function (req, res) {
+  let myquery = { supervisor: Object(req.params.supervisor) }
 
   Group.find(myquery, function (err, result) {
     if (err) throw err
