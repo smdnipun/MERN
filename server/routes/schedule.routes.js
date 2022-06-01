@@ -13,12 +13,18 @@ router.route('/add').post((req,res) => {
     const evaluation2 = req.body.evaluation2;
     const final_evaluation=req.body.final_evaluation
     const groupID=req.body.groupID
+    const link1=req.body.link1
+    const link2=req.body.link2
+    const linkF=req.body.linkF
 
     const mark = new Schedule({
         evaluation1,
         evaluation2,
         final_evaluation,
-        groupID
+        groupID,
+        link1,
+        link2,
+        linkF
     })
     mark
         .save()
@@ -27,6 +33,21 @@ router.route('/add').post((req,res) => {
     
 
 })
+
+
+router.route("/get/:groupID").get(function (req, res) {
+    
+    let myquery = {
+        groupID: Object( req.params.
+            groupID )};
+
+      Schedule
+        .find(myquery, function (err, result) {
+          if (err) throw err;
+          res.json(result);
+          
+        });
+   });
 
 // router.route('/:id').get((req, res) => {
 //     Exercise.findById(req.params.id)
