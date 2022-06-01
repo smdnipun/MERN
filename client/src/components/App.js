@@ -3,7 +3,6 @@ import { Route,Routes } from "react-router-dom";
 import Login from "./common/login";
 import NavBar from "./common/navBar";
 import Registration from "../components/common/Registration";
-import Test from "./admin/jhgj";
 import DashBoard from "./common/dashBoard";
 
 

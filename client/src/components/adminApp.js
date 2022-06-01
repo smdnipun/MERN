@@ -26,7 +26,7 @@ const AdminApp =()=>{
             <Route exact path="/addfiles" element={<Addfiles/>}/>
             <Route exact path="/grplist" element={<Viewgroups/>}/>
             <Route exact path="/schedule" element={<Schedule/>}/>
-            <Route exact path='/groupSchedule/:_id' element={<GroupSchedule/>}/>
+            <Route exact path='/groupSchedule/:gid' element={<GroupSchedule/>}/>
 
             </Routes>          
            {/* <Fpage/> */}

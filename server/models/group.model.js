@@ -23,7 +23,7 @@ const group = new Schema({
   email1: {
     type: String,
     require: true,
-  },
+  }, 
   second: {
     type: String,
     require: true,

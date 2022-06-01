@@ -18,6 +18,17 @@ const schedule = new Schema(
         
         groupID:{
             type:String
+        },
+        link1:{
+            type:String
+        },
+        
+        link2:{
+            type:String
+        },
+        
+        linkF:{
+            type:String
         }
         
            
