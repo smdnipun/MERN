@@ -85,15 +85,32 @@ router.route('/add').post((req,res) => {
     const email3= req.body.email3
     const forth = req.body.forth
     const email4= req.body.email4
-    const pmember= req.body.pmember
+    const supervisor= req.body.supervisor;
+    const co_supervisor=req.body.co_supervisor;
+    const panelMember= req.body.panelMember;
 
     const newGroup = new Group({
-        gid,specialization,first,email1,second,email2,third,email3,forth,email4,pmember
+        gid,specialization,first,email1,second,email2,third,email3,forth,email4,supervisor, co_supervisor, panelMember
     })
     newGroup
         .save()
         .then(()=> res.json('Group added'))
         .catch((err) => res.status(400).json('Error:' + err))
 })
+
+router.route('/update/:id').post((req, res) => {
+  Group.findById(req.params.id)
+    .then((groups) => {
+      groups.panelMember = req.body.panelMember
+      
+      groups
+        .save()
+        .then(() => res.json('Panel Member Allocated!'))
+        .catch((err) => res.status(400).json('Error: ' + err))
+    })
+    .catch((err) => res.status(400).json('Error: ' + err))
+})
+
+
 
 module.exports = router

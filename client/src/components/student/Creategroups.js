@@ -15,12 +15,14 @@ export default function Creategroups(){
     const [email3, setEmail3] = useState('')
     const [forth, setForth] = useState('')
     const [email4, setEmail4] = useState('')
-    const [pmember, setPmember] = useState('none')
+    const [supervisor, setSupervisor] = useState('none')
+    const [co_supervisor, setCo_supervisor] = useState('none')
+    const [panelMember, setPanelMember] = useState('none')
 
     
 
     var Group = {
-       gid, specialization, first, email1, second, email2, third, email3, forth, email4, pmember
+       gid, specialization, first, email1, second, email2, third, email3, forth, email4, panelMember,supervisor, co_supervisor
     }
 
     const passtogroup= async () => {

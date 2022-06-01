@@ -8,7 +8,8 @@ export default function Viewgroups() {
     const [users, setUsers] = useState([]);
     const [filtered, setFiltered] = useState([]);
     // const Id= nextId();
-   
+    const [panelMember, setPanelMember]= useState();
+
 useEffect(() => {
     axios.get('/group')
         .then((response) => {
@@ -37,6 +38,16 @@ useEffect(() => {
         
         return;
       },);
+
+      
+
+      const Update = (group) => {
+        axios.post(`http://localhost:5000/group/update/${group._id}`, {
+          panelMember: panelMember,
+         
+        })
+      }
+
 
 
     return (
@@ -75,13 +86,16 @@ useEffect(() => {
                     <td>{data.forth}</td>
                     <td>{data.email4}</td>
                     <td>
-                            <select class="form-select" aria-label="Default select example">
-                                {                          
-                               filtered.map(u=>(
-                                 <option value={u.name}>{u.name}</option>
-                                ))}
-                            </select>
-                            </td>
+                    <select value= {panelMember} class="form-select" aria-label="Default select example"  onChange={(e) => setPanelMember(e.target.value)}>
+                        {                          
+                            filtered.map(u=>(
+                            <option value={u.name}>{u.name}</option>
+                        ))}
+                    </select>
+                           <button  type='submit'
+                           className='btn btn-primary'
+                           onClick={Update(data)}>Update</button>
+                    </td>
 
                 </tr>
                 )})}
