@@ -53,7 +53,7 @@ export default function NavBar() {
         ) : localStorage.getItem('userP') == 'co-supervisor' ? (
           <>
             <Nav.Link href=''>Evaluvate Document</Nav.Link>
-            <NavLink to='/'>Accept Group</NavLink>
+            <NavLink to='/coSupAcceptTopic'>Accept Group</NavLink>
             <Nav.Link eventKey=''>Student Gropus</Nav.Link>
           </>
         ) : localStorage.getItem('userP') == 'Admin' ? (

@@ -89,7 +89,8 @@ export default function RequestCoSupervisor() {
     axios.post(`http://localhost:5000/topic/update/${topic._id}`, {
       status: 'cRequested',
     })
-    setUser(data.filter((el) => el._id != top._id))
+    setUser(user.filter((el) => el._id != top._id))
+    window.location.reload()
   }
 
   const loadComponent = () => {
@@ -124,6 +125,7 @@ export default function RequestCoSupervisor() {
   return (
     <div>
       <NavBar />
+      <h1>Co-Supervisor List</h1>
       <div>{loadComponent()}</div>
     </div>
   )
