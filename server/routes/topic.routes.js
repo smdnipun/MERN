@@ -36,12 +36,20 @@ router.route('/:specalization').get(function (req, res) {
   })
 })
 
+//search topic by email address
+router.route('/searchBygid/:gid').get((req, res) => {
+  let myquery = {
+    gid: Object(req.params.gid),
+  }
+  Topic.find(myquery, function (err, result) {
+    if (err) throw err
+    res.json(result)
+  })
+})
+
 router.route('/update/:id').post((req, res) => {
   Topic.findById(req.params.id)
     .then((topics) => {
-      topics.gid = req.body.gid
-      topics.topic = req.body.topic
-      topics.specialization = req.body.specialization
       topics.status = req.body.status
 
       topics

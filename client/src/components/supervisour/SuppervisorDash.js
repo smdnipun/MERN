@@ -1,15 +1,10 @@
-import React from "react";
+import React from 'react'
 
-export default function SuppervisorDash(){
-
-    return(
-        <div>
-            <p>hi supervisour</p>
-            <card>
-                
-            </card>
-
-        </div>
-    )
-
+export default function SuppervisorDash() {
+  return (
+    <div>
+      <p>hi supervisour</p>
+      <card></card>
+    </div>
+  )
 }
