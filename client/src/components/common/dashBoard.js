@@ -14,7 +14,8 @@ export default function DashBoard(){
       .then(function (response) {
         setData(response.data)
         console.log(response)
-        localStorage.setItem('gid',response.data.gid)
+        console.log(response.data[0]._id)
+        localStorage.setItem('groupID',response.data._id[0])
         
       })
   
@@ -35,8 +36,10 @@ export default function DashBoard(){
       axios.get(`http://localhost:5000/group/supervisour/${name}`)
       .then(function (response) {
         setSData(response.data)
-        console.log(response)
-        localStorage.setItem('gid',response.data.gid)
+        console.log(response.data[0]._id)
+        // localStorage.setItem('gid',response.data.gid)
+        localStorage.setItem('groupID',response.data._id[0])
+     
         
       })
   

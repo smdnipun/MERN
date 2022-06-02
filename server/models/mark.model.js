@@ -8,21 +8,7 @@ const mark = new Schema(
             type:String,
             
         },
-        evaluationType:{
-          type:String
-        },
-        ev1Mark:{
-            type:String
-        },
-          ev2Mark:{
-              type:String
-          },
-          finalevMark:{
-              type:String
-          },
-          evaluationType:{
-            type:String
-          },
+    
           ev1Mark:{
               type:String
           },

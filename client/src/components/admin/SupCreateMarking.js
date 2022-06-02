@@ -5,9 +5,7 @@ export default function SupCreateMarkingSchemes() {
   const [selectSub,setSelectSub]=useState();
   const [selectPosition,setPosition]=useState();
   const [selectEvaluType,setEvaluType]=useState();
-  const [formFields, setFormFields] = useState([
-    { citerion: '', vgood: '',avg:'',poor:'',totMark:'',mark:"",specalization:'',position:'',evaluation:'' }
-  ])
+  const [formFields, setFormFields] = useState([ ])
 console.log(selectPosition,selectSub,selectEvaluType)
  
   const addFields = () => {
