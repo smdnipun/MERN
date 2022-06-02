@@ -1,3 +1,4 @@
+
 import React, {useState} from 'react'
 import axios from 'axios';
 import { useNavigate } from "react-router";
@@ -213,7 +214,7 @@ export default function Addfiles() {
         <div>
             <DisfilesAdmin />
         </div>
+
     </div>
   )
 }
-

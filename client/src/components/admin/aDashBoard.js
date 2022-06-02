@@ -1,11 +1,9 @@
-import React from "react";
+import React from 'react'
 
-export default function AdashBoard(){
-
-    return(
-        <div>
-            <p>hi admin</p>
-        </div>
-    )
-
+export default function AdashBoard() {
+  return (
+    <div>
+      <p>hi admin</p>
+    </div>
+  )
 }

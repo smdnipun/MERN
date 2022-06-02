@@ -1,3 +1,4 @@
+
 import React from "react";
 import { Route,Routes } from "react-router-dom";
 import AdashBoard from "./admin/aDashBoard";
@@ -39,4 +40,4 @@ const AdminApp =()=>{
     )
 
 }
-export default AdminApp;
+export default AdminApp

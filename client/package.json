@@ -11,6 +11,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "@emailjs/browser": "^3.6.2",
     "axios": "^0.27.2",
     "bootstrap": "^5.1.3",
     "id-auto-increment": "^1.0.1",
@@ -18,6 +19,7 @@
     "react-bootstrap": "^2.4.0",
     "react-dom": "^17.0.2",
     "react-id-generator": "^3.0.2",
+    "react-loading-skeleton": "^3.1.0",
     "react-router": "^6.3.0",
     "react-router-dom": "^6.3.0",
     "react-scripts": "^5.0.1",
