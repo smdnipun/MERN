@@ -1,13 +1,15 @@
 import React, { useEffect, useState } from "react";
 import axios from 'axios';
+import NavBar from '../common/navBar';
 
 export default function Topics(){
 
    const [data , setData] = useState([]);
+   const sp = localStorage.getItem('userS')
 
     useEffect(() => {
         axios
-            .get(`http://localhost:5000/adminfile/get`)
+            .get(`http://localhost:5000/adminfile/get/${sp}`)
             .then((res) => {
                 setData(res.data)
             })
@@ -19,19 +21,16 @@ export default function Topics(){
         return (
            
              <div>
+                 <NavBar />
                 <div className = 'bod' style={{ maxWidth: 800, margin: "auto" }}>
                     <tr>
-                        <th>Name</th>
-                        <th>Description</th>
-                        <th>File</th>
+                        
                     </tr>
 
                     {data.map((row) => {
                         return(
-                            <div>
-
+                        <div>
                             <tr >
-                            
                                 Specialization : {row.specialization}<br/>
                                 description:{row.description}<br/><br/>
                                 Evaluation 1<br/>
@@ -54,12 +53,14 @@ export default function Topics(){
                                     Precentation Submition Start Date: {row.ev1doc}&emsp;&emsp;
                                     Precentation Submition end Date: {row.ev1doc}<br/><br/>
                                 </div>
-                                
-                                Document: {row.filepdf}<br/>
+
+                                <div>
+                                     Document: {row.filepdf}<br/>
+                                </div>
 
                             </tr>
                             <br/>
-                            </div>
+                        </div>
                         )
                     })}
                     
