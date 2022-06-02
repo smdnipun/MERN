@@ -3,7 +3,7 @@ const router = express.Router()
 const multer = require('multer')
 const File = require('../models/adminfile.model')
 
-import https from 'https';
+// import https from 'https';
 
 const storage = multer.diskStorage({
   destination: (req, file, callback) => {

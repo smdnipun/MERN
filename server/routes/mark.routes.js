@@ -36,7 +36,6 @@ router.route('/add').post((req, res) => {
 })
 
 router.route('/update/ev1/:id').post((req, res) => {
-<<<<<<< HEAD
     Mark.findById(req.params.id)
       .then((mark) => {
         mark.ev1Mark = req.body.mark
@@ -103,18 +102,6 @@ router.route('/update/ev1/:id').post((req, res) => {
   })
 
   
-=======
-  Mark.findById(req.params.id)
-    .then((mark) => {
-      mark.ev1Mark = req.body.total
-
-      Mark.save()
-        .then(() => res.json('User Updated!'))
-        .catch((err) => res.status(400).json('Error: ' + err))
-    })
-    .catch((err) => res.status(400).json('Error: ' + err))
-})
->>>>>>> Master
 
 // router.route('/:id').get((req, res) => {
 //     Exercise.findById(req.params.id)
