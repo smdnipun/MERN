@@ -12,6 +12,10 @@
   "license": "ISC",
   "dependencies": {
     "@emailjs/browser": "^3.6.2",
+    "@emotion/react": "^11.9.0",
+    "@emotion/styled": "^11.8.1",
+    "@mui/material": "^5.8.2",
+    "@mui/styled-engine-sc": "^5.8.0",
     "axios": "^0.27.2",
     "bootstrap": "^5.1.3",
     "id-auto-increment": "^1.0.1",
@@ -23,6 +27,7 @@
     "react-router": "^6.3.0",
     "react-router-dom": "^6.3.0",
     "react-scripts": "^5.0.1",
+    "styled-components": "^5.3.5",
     "sweetalert2": "^11.4.17",
     "uuid": "^8.3.2",
     "uuidv4": "^6.2.13"

@@ -2,24 +2,12 @@ import { useState } from 'react'
 import axios from 'axios'
 import NavBar from '../common/navBar'
 export default function SupCreateMarkingSchemes() {
-  const [selectSub, setSelectSub] = useState()
-  const [selectPosition, setPosition] = useState()
-  const [selectEvaluType, setEvaluType] = useState()
-  const [formFields, setFormFields] = useState([
-    {
-      citerion: '',
-      vgood: '',
-      avg: '',
-      poor: '',
-      totMark: '',
-      mark: '',
-      specalization: '',
-      position: '',
-      evaluation: '',
-    },
-  ])
-  console.log(selectPosition, selectSub, selectEvaluType)
-
+  const [selectSub,setSelectSub]=useState();
+  const [selectPosition,setPosition]=useState();
+  const [selectEvaluType,setEvaluType]=useState();
+  const [formFields, setFormFields] = useState([ ])
+console.log(selectPosition,selectSub,selectEvaluType)
+ 
   const addFields = () => {
     let object = {
       citerion: '',
