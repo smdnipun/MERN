@@ -1,24 +1,24 @@
-const express = require('express');
+const express = require('express')
 const router = express.Router()
-const multer = require("multer")
-const File = require('../models/adminfile.model');
+const multer = require('multer')
+const File = require('../models/adminfile.model')
 
 import https from 'https';
 
 const storage = multer.diskStorage({
   destination: (req, file, callback) => {
-    callback(null, "upload");
-// destination: "upload",
+    callback(null, 'upload')
+    // destination: "upload",
   },
   filename: (req, file, callback) => {
-    callback(null, file.originalname);
-  }
-}) 
+    callback(null, file.originalname)
+  },
+})
 
-const upload = multer({storage: storage});
+const upload = multer({ storage: storage })
 
 //GET ALL DATA
-router.get("/get", (req, res) => {
+router.get('/get', (req, res) => {
   File.find()
     .then((file) => {
       res.json(file)
@@ -28,7 +28,7 @@ router.get("/get", (req, res) => {
 });
 
 //ADD NEW DATA
-router.post("/add", upload.single("file"), (req, res) => {
+router.post('/add', upload.single('file'), (req, res) => {
   const newfile = new File({
     specialization: req.body.specialization,
     description: req.body.description,
@@ -46,20 +46,16 @@ router.post("/add", upload.single("file"), (req, res) => {
 
   newfile
     .save()
-    .then(() => res.json("new file posted.."))
-    .catch((err) => res.status(400).json(`Error: ${err}`));
-
-});
+    .then(() => res.json('new file posted..'))
+    .catch((err) => res.status(400).json(`Error: ${err}`))
+})
 
 //GET DATA BY ID
-router.get("/:id", (req, res) => {
+router.get('/:id', (req, res) => {
   File.findById(req.params.id)
-  .then((file) => res.json(file))
-  .catch((err) => res.status(400).json(`Error: ${err}`));
-});
-
-
-
+    .then((file) => res.json(file))
+    .catch((err) => res.status(400).json(`Error: ${err}`))
+})
 
 // const Storage = multer.diskStorage({
 //   destination: "uploads",
@@ -80,18 +76,18 @@ router.get("/:id", (req, res) => {
 //     const name = req.body.name
 //     const description = req.body.description
 //     const file = req.body.originalname
-    // const file = req.body.file.path.replace(/\\/g, "/");
+// const file = req.body.file.path.replace(/\\/g, "/");
 
-    // const newadminfile = new Adminfile({
-    //     name,
-    //     description,
-    //     file,
-    // })
-    // console.log(req.body.data)
-    // res.json(req.body.data.name)
-    // newadminfile
-    //     .save()
-    //     .then(()=> res.json('Adminfile added'))
-    //     .catch((err) => res.status(400).json('Error:' + err))
+// const newadminfile = new Adminfile({
+//     name,
+//     description,
+//     file,
+// })
+// console.log(req.body.data)
+// res.json(req.body.data.name)
+// newadminfile
+//     .save()
+//     .then(()=> res.json('Adminfile added'))
+//     .catch((err) => res.status(400).json('Error:' + err))
 // })
 module.exports = router

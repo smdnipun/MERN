@@ -50,6 +50,12 @@ export default function NavBar() {
             <NavLink to='/acceptTopic'>Accept Topics</NavLink>
             <Nav.Link eventKey=''>Student Gropus</Nav.Link>
           </>
+        ) : localStorage.getItem('userP') == 'co-supervisor' ? (
+          <>
+            <Nav.Link href=''>Evaluvate Document</Nav.Link>
+            <NavLink to='/coSupAcceptTopic'>Accept Group</NavLink>
+            <Nav.Link eventKey=''>Student Gropus</Nav.Link>
+          </>
         ) : localStorage.getItem('userP') == 'Admin' ? (
           <>
             <Nav.Link href=''>Create Panel</Nav.Link>
@@ -60,7 +66,7 @@ export default function NavBar() {
           <>
             <Nav.Link href=''>Group</Nav.Link>
             <Nav.Link eventKey=''>Documents</Nav.Link>
-            <Nav.Link eventKey=''>Templates</Nav.Link>
+            <NavLink to='/reqCo'>Request Supervisor</NavLink>
             <Nav.Link href=''>Document Submission</Nav.Link>
           </>
         ) : (

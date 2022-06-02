@@ -39,4 +39,4 @@ const AdminApp =()=>{
     )
 
 }
-export default AdminApp;
+export default AdminApp
