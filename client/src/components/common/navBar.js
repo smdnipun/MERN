@@ -69,6 +69,7 @@ export default function NavBar() {
             <Nav.Link eventKey=''>Documents</Nav.Link>
             <NavLink to='/reqCo'>Request Supervisor</NavLink>
             <NavLink to='/topic'>Research </NavLink>
+            <NavLink to='/paneltopic'>top </NavLink>
           </>
         ) : (
           <p>not found:{localStorage.getItem('userP')}</p>
