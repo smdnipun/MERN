@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from 'react'
-import axios from 'axios'
 import NavBar from '../common/navBar'
-import Table from 'react-bootstrap/Table'
+import axios from 'axios'
+import { Table } from 'react-bootstrap'
 
 const Topics = (props) => (
   <>
-    {props.topics.status == 'pending' ? (
+    {props.topics.status == 'cRequested' ? (
       <tr>
         <td>{props.topics.gid}</td>
         <td>{props.topics.topic}</td>
@@ -27,7 +27,7 @@ const Topics = (props) => (
   </>
 )
 
-export default function AcceptTopic() {
+export default function CoSupAcceptTopic() {
   const [data, setData] = useState([])
   let sp = localStorage.getItem('userS')
   let sname = localStorage.getItem('userN')
@@ -46,15 +46,15 @@ export default function AcceptTopic() {
 
   const Update = async (top) => {
     axios.post(`http://localhost:5000/topic/update/${top._id}`, {
-      status: 'Accepted',
+      status: 'cAccepted',
     })
     let topicId = top.gid
     axios
       .get(`http://localhost:5000/group/searchByGid/${topicId}`)
       .then((response) => {
         const id = response.data[0]._id
-        axios.post(`http://localhost:5000/group/updateSupervisor/${id}`, {
-          supervisor: sname,
+        axios.post(`http://localhost:5000/group/updateCoSupervisor/${id}`, {
+          co_supervisor: sname,
         })
       })
       .catch(function (error) {
@@ -74,6 +74,7 @@ export default function AcceptTopic() {
   return (
     <div>
       <NavBar />
+      <h1>Accept Topics</h1>
       <div className='container'>
         <Table className='talbe'>
           <thead className='thead-light'>

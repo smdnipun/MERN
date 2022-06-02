@@ -1,33 +1,29 @@
-import React, { useState, useEffect } from "react";
-import axios from "axios";
-import { useNavigate } from "react-router";
-import bootstrap from "react-bootstrap";
+import React, { useState, useEffect } from 'react'
+import axios from 'axios'
+import { useNavigate } from 'react-router'
+import bootstrap from 'react-bootstrap'
 
-export default function ViewMyGroup()
-{
+export default function ViewMyGroup() {
+  const [data, setData] = useState([])
 
-    const [data, setData]= useState([]);
+  let email = localStorage.getItem('user')
 
+  const loadData = () => {
+    axios
+      .post('http://localhost:5000/group/check', {
+        email: email,
+      })
+      .then((res) => {
+        setData(res.data)
+        console.log(res.data)
+      })
+  }
 
-    let email=localStorage.getItem('user')
+  useEffect(() => {
+    loadData()
+  }, [])
 
-    const loadData = () => {
-
-    axios.post('http://localhost:5000/group/check',{
-    email:email,
-    })
-   .then((res)=>{
-    setData(res.data)
-    console.log(res.data)
-
-    })
-    }
-
-    useEffect(() => {
-    loadData();
-    }, []);
-
-return(
+  return (
     <div>
         <h classname="navi">My Group Details</h>
         <table class="table">
@@ -57,7 +53,5 @@ return(
             })}
         </table>
     </div>
-)
-
+  )
 }
-

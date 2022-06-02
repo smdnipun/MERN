@@ -30,9 +30,13 @@ router.route('/:specalization').get(function (req, res) {
 })
 
 router.route('/check').post((req, res) => {
-  console.log(req.body.specalization, req.body.position)
+  console.log(req.body.specalization, req.body.position, req.body.evaluation)
   MarkingScheme.find(
-    { specalization: req.body.specalization, position: req.body.position },
+    {
+      specalization: req.body.specalization,
+      position: req.body.position,
+      evaluation: req.body.evaluation,
+    },
     function (err, result) {
       if (err) throw err
       res.json(result)

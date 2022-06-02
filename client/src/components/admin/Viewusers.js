@@ -1,10 +1,16 @@
-import React, { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
-import axios from 'axios';
+import React, { useEffect, useState } from 'react'
+import { Link } from 'react-router-dom'
+import axios from 'axios'
 
 export default function Viewgroups() {
-  const [users, setUsers] = useState([]);
+  const [users, setUsers] = useState([])
 
+  // This method fetches the records from the database.
+  useEffect(() => {
+    axios.get('/user').then((response) => {
+      setUsers(response.data)
+    })
+  }, [])
 
 // This method fetches the records from the database.
 useEffect(() => {
@@ -24,20 +30,15 @@ const setData = (data) => {
     localStorage.setItem('address', address)
     localStorage.setItem('id', id)
     localStorage.setItem('specialization', specialization)
-}
-
+  }
 
   // This following section will display the table with the records of individuals.
   return (
-      <div>
-        <center>
-
-        <h3 className="navi">Registered Users</h3>
+    <div>
+      <center>
+        <h3 className='navi'>Registered Users</h3>
         <br></br>
-        <table
-          class="table"
-          style={{ marginTop: 50, width: 700 }}
-        >
+        <table class='table' style={{ marginTop: 50, width: 700 }}>
           <thead>
             <tr>
               <th>Name</th>
@@ -47,7 +48,6 @@ const setData = (data) => {
               <th>Address</th>
               <th>User ID</th>
               <th>Specialization</th>
-
             </tr>
           </thead>
           <tbody>
@@ -69,10 +69,7 @@ const setData = (data) => {
               }
           </tbody>
         </table>
-
-        </center>
-       
-      </div>
+      </center>
+    </div>
   )
 }
-

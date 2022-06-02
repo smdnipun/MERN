@@ -1,13 +1,11 @@
-import React, { useEffect, useState } from 'react';
-import axios from 'axios';
-import { Link } from 'react-router-dom';
+import React, { useEffect, useState } from 'react'
+import axios from 'axios'
+import { Link } from 'react-router-dom'
 
 export default function Viewgroups() {
+  const [Item, setItem] = useState([])
+  const [users, setUsers] = useState([])
 
-    const [Item, setItem] = useState([]);
-    const [user, setUser] = useState([]);
-    // const Id= nextId();
-    const [panelMember, setPanelMember]= useState("");
 
 
     console.log(panelMember);
@@ -40,7 +38,9 @@ const loadData=() =>{
     
 
 
-      
+      setUsers(users)
+      setFiltered(filterusers)
+    
 
       const Update = (group) => {
         axios.post(`http://localhost:5000/group/update/${group._id}`, {
@@ -49,8 +49,7 @@ const loadData=() =>{
         console.log(group._id)
       }
 
-
-
+    
     return (
         <div>
 
@@ -113,3 +112,7 @@ const loadData=() =>{
         </div>
     )
 }
+
+                            
+
+                            

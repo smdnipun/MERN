@@ -1,18 +1,9 @@
-const mongoose = require('mongoose')
+const mongoose = require('mongoose');
 
 const Schema = mongoose.Schema
 
-const adminfiles = new Schema(
+const studentfile = new Schema (
     {
-        specialization:{
-            type:String,
-        },
-        description: {
-             type:String,
-        },
-        filepdf:{
-            type:String,
-        },
         ev1doc:{
             type:String,
         },
@@ -40,8 +31,9 @@ const adminfiles = new Schema(
         ev3per_end:{
             type:String, 
         },
+
     }
 )
 
-const Adminfile = mongoose.model('Adminfile', adminfiles)
-module.exports = Adminfile
+const Studentfile = mongoose.model('Studentfile', studentfile)
+module.export = Studentfile
