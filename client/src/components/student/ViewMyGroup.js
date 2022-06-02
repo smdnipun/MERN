@@ -25,24 +25,33 @@ export default function ViewMyGroup() {
 
   return (
     <div>
-      <h classname='navi'>My Group Details</h>
-      <table class='table'>
-        {data.map((g) => {
-          return (
-            <tr>
-              <tr>Group Name</tr>
-              <tr>{g.gid}</tr>
-              <tr />
-              <br></br>
-              <tr>Group Members</tr>
-              <tr>{g.first}</tr>
-              <tr>{g.second}</tr>
-              <tr>{g.third}</tr>
-              <tr>{g.forth}</tr>
-            </tr>
-          )
-        })}
-      </table>
+        <h classname="navi">My Group Details</h>
+        <table class="table">
+            {data.map((g)=>{
+                return (
+                    <tr>
+                    <tr>Group Name</tr>
+                    <tr>{g.gid}</tr>
+                    <tr/>
+                    <br></br>
+                    <tr>Group Members</tr>
+                    <tr>{g.first}</tr>
+                    <tr>{g.second}</tr>
+                    <tr>{g.third}</tr>
+                    <tr>{g.forth}</tr>
+                    <br></br>
+                    <tr>Panel Member</tr>
+                    <tr>{g.panelMember}</tr>
+                    <br></br>
+                    <tr>Supervisor</tr>
+                    <tr>{g.supervisor}</tr>
+                    <br></br>
+                    <tr>Co-Supervisor</tr>
+                    <tr>{g.co_supervisor}</tr>
+                </tr>
+                )
+            })}
+        </table>
     </div>
   )
 }

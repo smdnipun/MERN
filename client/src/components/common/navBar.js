@@ -65,7 +65,7 @@ export default function NavBar() {
           </>
         ) : localStorage.getItem('userP') == 'Student' ? (
           <>
-            <Nav.Link href=''>Group</Nav.Link>
+            <Nav.Link href='/grp'>Group</Nav.Link>
             <Nav.Link eventKey=''>Documents</Nav.Link>
             <NavLink to='/reqCo'>Request Supervisor</NavLink>
             <NavLink to='/topic'>Research </NavLink>
