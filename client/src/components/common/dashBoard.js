@@ -65,7 +65,7 @@ export default function DashBoard() {
                 return (
                   <>
                     <h2>Group ID:{group.gid}</h2>
-                    <h3>evaluation 1</h3>
+                    
                     <NavLink
                       to={`/viewMarking/${group.gid}`}
                       className='btn btn-outline-dark me-2'
@@ -85,7 +85,7 @@ export default function DashBoard() {
                 return (
                   <>
                     <h2>Group ID:{group.gid}</h2>
-                    <h3>evaluation 1</h3>
+                  
                     <NavLink
                       to={`/viewMarking/${group.gid}`}
                       className='btn btn-outline-dark me-2'
