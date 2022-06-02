@@ -61,13 +61,14 @@ export default function NavBar() {
             <Nav.Link href=''>Create Panel</Nav.Link>
             <Nav.Link eventKey='/sMarking'>Create MarkingScehme</Nav.Link>
             <Nav.Link eventKey=''>View Marks</Nav.Link>
+            <NavLink to='/addfiles'>Add Reseach </NavLink>
           </>
         ) : localStorage.getItem('userP') == 'Student' ? (
           <>
             <Nav.Link href=''>Group</Nav.Link>
             <Nav.Link eventKey=''>Documents</Nav.Link>
             <NavLink to='/reqCo'>Request Supervisor</NavLink>
-            <Nav.Link href=''>Document Submission</Nav.Link>
+            <NavLink to='/topic'>Research </NavLink>
           </>
         ) : (
           <p>not found:{localStorage.getItem('userP')}</p>

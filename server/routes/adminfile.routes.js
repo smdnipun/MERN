@@ -3,7 +3,7 @@ const router = express.Router()
 const multer = require('multer')
 const File = require('../models/adminfile.model')
 
-import https from 'https';
+// import https from 'https';
 
 const storage = multer.diskStorage({
   destination: (req, file, callback) => {
@@ -22,10 +22,20 @@ router.get('/get', (req, res) => {
   File.find()
     .then((file) => {
       res.json(file)
-      https.get(file.secure_url, (filepdf) => filepdf.pipe(res));
+      // https.get(file.secure_url, (filepdf) => filepdf.pipe(res));
     })
     .catch((err) => res.status(400).json(`Error: ${err}`));
 });
+
+router.get('/get/:specialization',(req,res) => {
+  let myquery = {
+    specialization: Object(req.params.specialization),
+  }
+  File.find(myquery, function (err, result) {
+    if (err) throw err
+    res.json(result)
+  })
+})
 
 //ADD NEW DATA
 router.post('/add', upload.single('file'), (req, res) => {
