@@ -35,16 +35,11 @@ export default function DashBoard() {
       .get(`http://localhost:5000/group/supervisour/${name}`)
       .then(function (response) {
         setSData(response.data)
-<<<<<<< HEAD
         console.log(response.data[0]._id)
         // localStorage.setItem('gid',response.data.gid)
         localStorage.setItem('groupID',response.data._id[0])
      
         
-=======
-        console.log(response)
-        localStorage.setItem('gid', response.data.gid)
->>>>>>> Master
       })
   }
 
