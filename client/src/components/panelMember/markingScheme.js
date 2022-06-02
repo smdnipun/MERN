@@ -11,6 +11,10 @@ export default function ViewMarkingSchemes() {
   const [test, setTest] = useState([])
   const [values, setValues] = useState({ val: [] })
   const [selectEvaluType, setEvaluType] = useState()
+<<<<<<< HEAD
+=======
+  // const [Comment, setComment]=useState({comm:[]});
+>>>>>>> Master
   const [group, setGroupNo] = useState('')
   const [total, setTotal] = useState(0)
   let p = localStorage.getItem('userP')
@@ -135,23 +139,34 @@ export default function ViewMarkingSchemes() {
   //using loged users specalization and position filter the markingSceheme
   const loadData = () => {
     let id = params.gid
+<<<<<<< HEAD
 
+=======
+>>>>>>> Master
     axios
       .get(`http://localhost:5000/schedule/get/${id}`)
       .then(function (response) {
         setSchedule(response.data)
+<<<<<<< HEAD
         console.log(response)
+=======
+        console.log(response.data)
+>>>>>>> Master
       })
   }
 
   const filter = (e) => {
     if (e === 'Evaluation 1') {
+<<<<<<< HEAD
       setEvaluType(e)
+=======
+>>>>>>> Master
       axios
         .post('http://localhost:5000/markingScheme/check', {
           specalization: s,
           position: p,
           evaluation: 'Evaluation 1',
+<<<<<<< HEAD
         })
         .then((res) => {
           setData(res.data)
@@ -166,6 +181,8 @@ export default function ViewMarkingSchemes() {
           specalization: s,
           position: p,
           evaluation: 'Evaluation 2',
+=======
+>>>>>>> Master
         })
         .then((res) => {
           setData(res.data)
@@ -173,22 +190,47 @@ export default function ViewMarkingSchemes() {
 
           console.log(s, p)
         })
+<<<<<<< HEAD
     } else if (e === 'Final Evaluation') {
       setEvaluType(e)
+=======
+    } else if (e === 'Evaluation 2') {
+>>>>>>> Master
       axios
         .post('http://localhost:5000/markingScheme/check', {
           specalization: s,
           position: p,
+<<<<<<< HEAD
+=======
+          evaluation: 'Evaluation 2',
+        })
+        .then((res) => {
+          setData(res.data)
+          console.log(res.data)
+          console.log(s, p)
+        })
+    } else if (e === 'Final Evaluation') {
+      axios
+        .post('http://localhost:5000/markingScheme/check', {
+          specalization: s,
+          position: p,
+>>>>>>> Master
           evaluation: 'Final Evaluation',
         })
         .then((res) => {
           setData(res.data)
+<<<<<<< HEAD
 
+=======
+>>>>>>> Master
           console.log(res.data)
           console.log(s, p)
         })
     } else if (e === 'Document 1') {
+<<<<<<< HEAD
       setEvaluType(e)
+=======
+>>>>>>> Master
       axios
         .post('http://localhost:5000/markingScheme/check', {
           specalization: s,
@@ -197,12 +239,18 @@ export default function ViewMarkingSchemes() {
         })
         .then((res) => {
           setData(res.data)
+<<<<<<< HEAD
 
+=======
+>>>>>>> Master
           console.log(res.data)
           console.log(s, p)
         })
     } else if (e === 'Document 2') {
+<<<<<<< HEAD
       setEvaluType(e)
+=======
+>>>>>>> Master
       axios
         .post('http://localhost:5000/markingScheme/check', {
           specalization: s,
@@ -211,12 +259,18 @@ export default function ViewMarkingSchemes() {
         })
         .then((res) => {
           setData(res.data)
+<<<<<<< HEAD
 
+=======
+>>>>>>> Master
           console.log(res.data)
           console.log(s, p)
         })
     } else if (e === 'Final Document') {
+<<<<<<< HEAD
       setEvaluType(e)
+=======
+>>>>>>> Master
       axios
         .post('http://localhost:5000/markingScheme/check', {
           specalization: s,
@@ -225,7 +279,10 @@ export default function ViewMarkingSchemes() {
         })
         .then((res) => {
           setData(res.data)
+<<<<<<< HEAD
 
+=======
+>>>>>>> Master
           console.log(res.data)
           console.log(s, p)
         })
@@ -236,9 +293,91 @@ export default function ViewMarkingSchemes() {
     filter()
   }, [])
 
+<<<<<<< HEAD
   // function Marking(){
 
   //               }
+=======
+  function Marking() {
+    return (
+      <>
+        <Table>
+          <tbody>
+            <tr>
+              <th>Criterion</th>
+              <th>Very good</th>
+              <th>Average</th>
+              <th>Poor</th>
+              <th>Mark</th>
+            </tr>
+
+            {data.map((markingScheme) => {
+              return (
+                <>
+                  <tr>
+                    <td>{markingScheme.citerion}</td>
+                    <td>{markingScheme.vgood}</td>
+                    <td>{markingScheme.avg}</td>
+                    <td>{markingScheme.poor}</td>
+                    <td>{markingScheme.totMark}</td>
+                  </tr>
+                </>
+              )
+            })}
+          </tbody>
+        </Table>
+        <form onSubmit={Submit}>
+          {/* striped bordered hover variant="dark" */}
+          <label>Group Number :</label>
+          <input
+            type='text'
+            id='groupNo'
+            value={params.gid}
+            onChange={(e) => setGroupNo(e.target.value)}
+          />
+          <Table>
+            <thead>
+              <tr>
+                <th>Citerion</th>
+                {/* <th>Comment</th> */}
+                <th>Mark</th>
+              </tr>
+            </thead>
+            <tbody>
+              {/* here */}
+              {data.map((markingScheme, index) => {
+                return (
+                  <>
+                    <tr>
+                      <td>{markingScheme.citerion}</td>
+                      {/* <td>
+                      <input type='text'
+                       onChange={(e)=>setComm(e,index)} />
+                    </td> */}
+                      <td>
+                        <input
+                          type='number'
+                          onChange={(e) => setVal(e, index)}
+                        />
+                      </td>
+                    </tr>
+                  </>
+                )
+              })}
+              <tr>
+                <td>Total Mark :</td>
+                <td>
+                  <input type='text' value={total} />
+                </td>
+              </tr>
+            </tbody>
+          </Table>
+          <button type='submit'>Submit marks</button>
+        </form>
+      </>
+    )
+  }
+>>>>>>> Master
 
   return (
     <>
@@ -301,6 +440,7 @@ export default function ViewMarkingSchemes() {
         <br />
         <br />
 
+<<<<<<< HEAD
         <>
           <Table>
             <tbody>
@@ -378,6 +518,9 @@ export default function ViewMarkingSchemes() {
             </button>
           </form>
         </>
+=======
+        <Marking />
+>>>>>>> Master
       </div>
     </>
   )

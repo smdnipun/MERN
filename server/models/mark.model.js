@@ -29,18 +29,10 @@ const mark = new Schema(
             }
             
 
-          
-          
-          
-        
-        // status:{
-        //     type:String
-        // }
-        
-           
-      
-    }
-)
+  // status:{
+  //     type:String
+  // }
+})
 
 const Mark = mongoose.model('marks', mark)
 module.exports = Mark

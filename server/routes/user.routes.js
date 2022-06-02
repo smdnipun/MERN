@@ -77,6 +77,17 @@ router.route('/login').post((req, res) => {
   })
 })
 
+router.route('/:specalization').get(function (req, res) {
+  let myquery = {
+    specialization: Object(req.params.specalization),
+  }
+
+  User.find(myquery, function (err, result) {
+    if (err) throw err
+    res.json(result)
+  })
+})
+
 //   const update = async (ctx) => {
 //     let uin = ctx.request.body;
 //     const index = data.findIndex((e) => e.id === uin.id);
