@@ -16,16 +16,13 @@ router.route('/:email').get(function (req, res) {
   })
 })
 
-router.route('/allocatepanel').post((req, res) => {
-  console.log(req.body.specialization, req.body.position)
-  User.find(
-    { specialization: req.body.specialization, position: req.body.position },
-    function (err, result) {
-      if (err) throw err
-      res.json(result)
-    }
-  )
-})
+router.route("/allocatepanel").post((req, res) => {
+  console.log(req.body.specialization, req.body.position);
+  User.find({ position: req.body.position }, function (err, result) {
+    if (err) throw err;
+    res.json(result);
+  });
+});
 
 router.route('/add').post((req, res) => {
   const name = req.body.name
