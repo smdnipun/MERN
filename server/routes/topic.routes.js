@@ -9,7 +9,8 @@ router.route('/').get((req, res) => {
 })
 
 router.route('/add').post((req, res) => {
-  const gid = req.body.gid  const topic = req.body.topic
+  const gid = req.body.gid  
+  const topic = req.body.topic
   const specialization = req.body.specialization
   const status = req.body.status
 
