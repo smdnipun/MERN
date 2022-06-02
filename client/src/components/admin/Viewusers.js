@@ -12,12 +12,21 @@ export default function Viewgroups() {
     })
   }, [])
 
-  const setData = (data) => {
-    let { name, position, email, phone, address, id, specialization } = data
-    localStorage.setItem('name', name)
-    localStorage.setItem('position', position)
-    localStorage.setItem('email', email)
-    localStorage.setItem('phone', phone)
+// This method fetches the records from the database.
+useEffect(() => {
+  axios.get('/user')
+      .then((response) => {
+          setUsers(response.data);
+      })
+}, [])
+
+
+const setData = (data) => {
+    let { name, position, email, phone, address, id, specialization } = data;
+    localStorage.setItem('name', name);
+    localStorage.setItem('position', position);
+    localStorage.setItem('email', email);
+    localStorage.setItem('phone', phone);
     localStorage.setItem('address', address)
     localStorage.setItem('id', id)
     localStorage.setItem('specialization', specialization)
@@ -42,23 +51,22 @@ export default function Viewgroups() {
             </tr>
           </thead>
           <tbody>
-            {users.map((g) => (
-              <tr>
-                <td>{g.name}</td>
-                <td>{g.position}</td>
-                <td>{g.email}</td>
-                <td>{g.phone}</td>
-                <td>{g.address}</td>
-                <td>{g.id}</td>
-                <td>{g.specialization}</td>
-                <td>
-                  {' '}
-                  <Link to={'/edituser/:id'}>
-                    <button onClick={() => setData(data)}>update</button>
-                  </Link>
-                </td>
-              </tr>
-            ))}
+              {
+                    users.map(g=>(
+                        <tr>
+                            <td>{g.name}</td>
+                            <td>{g.position}</td>
+                            <td>{g.email}</td>
+                            <td>{g.phone}</td>
+                            <td>{g.address}</td>
+                            <td>{g.id}</td>
+                            <td>{g.specialization}</td>
+                             <td> <Link to={'/edituser'}>
+                        <button onClick={()=>setData(data)}>update</button>
+                        </Link></td>
+                        </tr>
+                    ))
+              }
           </tbody>
         </table>
       </center>

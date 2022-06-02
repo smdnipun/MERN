@@ -1,9 +1,9 @@
-
 import React, {useState} from 'react'
 import axios from 'axios';
 import { useNavigate } from "react-router";
 import DisfilesAdmin from './DisfilesAdmin';
 import './styles/Addfiles.css';
+import NavBar from '../common/navBar';
 
 
 export default function Addfiles() {
@@ -23,7 +23,6 @@ export default function Addfiles() {
 
     const onChangeFile = e => {
         setFile(e.target.files[0]);
-        
     }
 
  const navi = new useNavigate();
@@ -77,6 +76,7 @@ export default function Addfiles() {
 
   return (
         <div >
+            <NavBar />
             <div className = 'bod' style={{ maxWidth: 800, margin: "auto" }}>
             <br></br>
                 <h3>ADD New Research Details</h3>
@@ -214,7 +214,7 @@ export default function Addfiles() {
         <div>
             <DisfilesAdmin />
         </div>
-
     </div>
   )
 }
+

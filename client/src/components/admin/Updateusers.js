@@ -10,21 +10,17 @@ export default function Updateusers() {
   const [address, setAddress] = useState('')
   const [id, setId] = useState('')
   const [specialization, setSpecialization] = useState('')
+  
 
-  const Updateuser = () => {
-    axios.put(`/user/update/${Id}`, {
-      name,
-      position,
-      email,
-      phone,
-      address,
-      id,
-      specialization,
-    })
-  }
+  const Update = () => {
+    axios.post(`http://localhost:5000/user/update/${user._id}`, {
+        name,position,email,phone,address,id,specialization
+	})
+}
 
-  const [Id, setID] = useState(null)
+  const [Id, setID] = useState(null);
 
+  
   useEffect(() => {
     setID(localStorage.getItem('Id'))
     setName(localStorage.getItem('name'))
@@ -42,10 +38,6 @@ export default function Updateusers() {
       <form>
         <label>Name</label>
         <input value={name} onChange={(e) => setName(e.target.value)} />
-        <br></br>
-
-        <label>Position</label>
-        <input value={position} onChange={(e) => setPosition(e.target.value)} />
         <br></br>
 
         <label>Email</label>
@@ -71,10 +63,13 @@ export default function Updateusers() {
         />
         <br></br>
 
-        <button onClick={Updateuser} type='submit'>
-          Update
-        </button>
-      </form>
-    </div>
-  )
+                    
+                    <label>Specialization</label>
+                    <input  value={specialization} onChange={(e) => setSpecialization(e.target.value)}/>
+                    <br></br>
+
+                    <button onClick={Update} type='submit'>Update</button>
+            </form>
+        </div>
+    )
 }

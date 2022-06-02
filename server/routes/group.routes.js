@@ -8,6 +8,7 @@ router.route('/').get((req, res) => {
     .catch((err) => res.status(400).json('Error:' + err))
 })
 
+
 router.route('/check').post((req, res) => {
   Group.find(
     { email1: req.body.email } || { email2: req.body.email } || {

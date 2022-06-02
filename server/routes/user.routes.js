@@ -16,6 +16,14 @@ router.route('/:email').get(function (req, res) {
   })
 })
 
+router.route("/allocatepanel").post((req, res) => {
+  console.log(req.body.specialization, req.body.position);
+  User.find({ position: req.body.position }, function (err, result) {
+    if (err) throw err;
+    res.json(result);
+  });
+});
+
 router.route('/add').post((req, res) => {
   const name = req.body.name
   const position = req.body.position
@@ -44,23 +52,25 @@ router.route('/add').post((req, res) => {
     .catch((err) => res.status(400).json('Error:' + err))
 })
 
-router.route('update/:id').post((req, res) => {
+router.route('/update/:id').post((req, res) => {
   User.findById(req.params.id)
-    .then((User) => {
-      User.name = req.body.name
-      User.position = req.body.position
-      User.email = req.body.email
-      User.phone = req.body.phone
-      User.address = req.body.address
-      User.id = req.body.id
-      User.specialization = req.body.specialization
+    .then((users) => {
+      users.name = req.body.name
+      users.position = req.body.position
+      users.email = req.body.email
+      users.phone = req.body.phone
+      users.address = req.body.address
+      users.id = req.body.id
+      users.specialization = req.body.specialization
 
-      User.save()
+      users.save()
         .then(() => res.json('User Updated!'))
         .catch((err) => res.status(400).json('Error: ' + err))
     })
     .catch((err) => res.status(400).json('Error: ' + err))
 })
+
+
 
 router.route('/login').post((req, res) => {
   User.findOne({ email: req.body.email }, function (err, result) {
