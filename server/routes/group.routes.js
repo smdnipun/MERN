@@ -9,6 +9,7 @@ router.route('/').get((req, res) => {
     .catch((err) => res.status(400).json('Error:' + err ))
 })
 
+
 router.route('/check').post((req, res) => {
     console.log(req.body.email)
     Group

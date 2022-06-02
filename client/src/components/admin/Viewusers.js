@@ -15,7 +15,6 @@ useEffect(() => {
 }, [])
 
 
-
 const setData = (data) => {
     let { name, position, email, phone, address, id, specialization } = data;
     localStorage.setItem('name', name);
@@ -62,7 +61,7 @@ const setData = (data) => {
                             <td>{g.address}</td>
                             <td>{g.id}</td>
                             <td>{g.specialization}</td>
-                             <td> <Link to={'/edituser/:id'}>
+                             <td> <Link to={'/edituser'}>
                         <button onClick={()=>setData(data)}>update</button>
                         </Link></td>
                         </tr>

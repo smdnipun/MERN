@@ -43,6 +43,15 @@ return(
                     <tr>{g.second}</tr>
                     <tr>{g.third}</tr>
                     <tr>{g.forth}</tr>
+                    <br></br>
+                    <tr>Panel Member</tr>
+                    <tr>{g.panelMember}</tr>
+                    <br></br>
+                    <tr>Supervisor</tr>
+                    <tr>{g.supervisor}</tr>
+                    <br></br>
+                    <tr>Co-Supervisor</tr>
+                    <tr>{g.co_supervisor}</tr>
                 </tr>
                 )
             })}

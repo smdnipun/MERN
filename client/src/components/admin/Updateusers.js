@@ -15,19 +15,15 @@ export default function Updateusers() {
     const [specialization, setSpecialization] = useState('')
     
 
-    const Updateuser = () => {
-      axios.put(`/user/update/${Id}`, {
-          name,
-          position,
-          email,
-          phone,
-          address,
-          id,
-          specialization
-    })
-  }
-  
-    const [Id, setID] = useState(null);
+
+  const Update = () => {
+    axios.post(`http://localhost:5000/user/update/${user._id}`, {
+        name,position,email,phone,address,id,specialization
+	})
+}
+
+  const [Id, setID] = useState(null);
+
   
   useEffect(() => {
           setID(localStorage.getItem('Id'))
@@ -40,6 +36,30 @@ export default function Updateusers() {
           setSpecialization(localStorage.getItem('specialization'));
 
   }, []);
+
+  
+  // const loadData = () => {
+  //   axios
+  //     .get('http://localhost:5000/user', {
+  //       name: name,
+  //       position: position,
+  //       email:email,
+  //       phone:phone,
+  //       address:address,
+  //       id:id,
+  //       specialization:specialization,
+  //     })
+  //     .then((res) => {
+  //       setData(res.data)
+    
+  //     })
+ 
+  // }
+
+  // useEffect(() => {
+  //   loadData()
+  // }, [])
+
 
     return (
         <div>
@@ -76,7 +96,7 @@ export default function Updateusers() {
                     <input  value={specialization} onChange={(e) => setSpecialization(e.target.value)}/>
                     <br></br>
 
-                    <button onClick={Updateuser} type='submit'>Update</button>
+                    <button onClick={Update} type='submit'>Update</button>
             </form>
         </div>
     )

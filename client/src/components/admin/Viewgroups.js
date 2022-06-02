@@ -5,47 +5,48 @@ import { Link } from 'react-router-dom';
 export default function Viewgroups() {
 
     const [Item, setItem] = useState([]);
-    const [users, setUsers] = useState([]);
-    const [filtered, setFiltered] = useState([]);
+    const [user, setUser] = useState([]);
     // const Id= nextId();
-    const [panelMember, setPanelMember]= useState();
+    const [panelMember, setPanelMember]= useState("");
 
-useEffect(() => {
+
+    console.log(panelMember);
+
+const loadData=() =>{
+
     axios.get('/group')
         .then((response) => {
             setItem(response.data);
         })
-    axios.get('/user').then((responseu)=>{
-        setUsers(responseu.data);
+}
+
+   const filterData=()=>{
+    axios
+    .post('http://localhost:5000/user/allocatepanel', {
+      specialization: Item.specialization,
+      position: "Panel Member",
     })
-    }, [])
+    .then((res) => {
+      setUser(res.data)
+   })
+   }
+
+
+
+   useEffect(() => {
+    loadData();
+    filterData();
+    }, []);
     
 
-    useEffect(() => {
-    
-          async function getUsers() {
-           const responseu = await fetch(`http://localhost:5000/user/`);
-
-    
-            const users = await responseu.json();
-            let filterusers = users.filter(g => g.position=="Panel Member");
-      
-            setUsers(users);
-            setFiltered(filterusers);
-          }
-    
-          getUsers();
-        
-        return;
-      },);
 
       
 
       const Update = (group) => {
         axios.post(`http://localhost:5000/group/update/${group._id}`, {
-          panelMember: panelMember,
-         
+          panelMember: group.panelMember 
         })
+        console.log(group._id)
       }
 
 
@@ -86,15 +87,20 @@ useEffect(() => {
                     <td>{data.forth}</td>
                     <td>{data.email4}</td>
                     <td>
-                    <select value= {panelMember} class="form-select" aria-label="Default select example"  onChange={(e) => setPanelMember(e.target.value)}>
+                    <select value= {data.panelMember} class="form-select" aria-label="Default select example"  onChange={(e) =>{
+                        let index= Item.indexOf(data);
+                        const item= [...Item];
+                        item[index].panelMember=e.target.value;
+                        setItem(item);
+                        }}>
                         {                          
-                            filtered.map(u=>(
+                            user.map(u=>(
                             <option value={u.name}>{u.name}</option>
                         ))}
                     </select>
-                           <button  type='submit'
+                           <button 
                            className='btn btn-primary'
-                           onClick={Update(data)}>Update</button>
+                           onClick={()=>Update(data)}>Update</button>
                     </td>
 
                 </tr>
