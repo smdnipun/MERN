@@ -7,6 +7,7 @@ import Registertopic from './student/Registertopic'
 import ViewMyGroup from './student/ViewMyGroup'
 import RequestCoSupervisor from './student/reqCoSupervisor'
 import Topics from './student/Topic'
+import Panaltopic from './student/Panaltopic'
 
 const StudentApp = () => {
   return (
@@ -20,6 +21,7 @@ const StudentApp = () => {
           <Route exact path={'/reqCo'} element={<RequestCoSupervisor />} />
           <Route exact path={'/sDash'} element={<StudentDash />} />
           <Route exact path={'/topic'} element={<Topics />} />
+          <Route exact path={'/paneltopic'} element={<Panaltopic/>}/>
         </Routes>
       </div>
     </>
