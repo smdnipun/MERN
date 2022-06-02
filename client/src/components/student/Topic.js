@@ -28,10 +28,8 @@ export default function Topics(){
 
                     {data.map((row) => {
                         return(
-                            <div>
-
+                        <div>
                             <tr >
-                            
                                 Specialization : {row.specialization}<br/>
                                 description:{row.description}<br/><br/>
                                 Evaluation 1<br/>
@@ -54,12 +52,14 @@ export default function Topics(){
                                     Precentation Submition Start Date: {row.ev1doc}&emsp;&emsp;
                                     Precentation Submition end Date: {row.ev1doc}<br/><br/>
                                 </div>
-                                
-                                Document: {row.filepdf}<br/>
+
+                                <div>
+                                     Document: {row.filepdf}<br/>
+                                </div>
 
                             </tr>
                             <br/>
-                            </div>
+                        </div>
                         )
                     })}
                     
