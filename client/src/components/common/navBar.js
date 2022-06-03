@@ -79,7 +79,7 @@ export default function NavBar() {
             <Toolbar />
             {localStorage.getItem('userP') == 'Panel Member' ? (
               <>
-                <ListItemButton eventKey=''>Evaluvate topics</ListItemButton>
+                <ListItemButton to='/evaluate'>Evaluvate topics</ListItemButton>
                 <ListItemButton eventKey=''>
                   Evaluvate presentation
                 </ListItemButton>
