@@ -3,7 +3,6 @@ import { Navbar, Nav, Container, NavDropdown } from 'react-bootstrap'
 import '../../../node_modules/bootstrap/dist/css/bootstrap.min.css'
 import { NavLink } from 'react-router-dom'
 
-
 import Box from '@mui/material/Box'
 import Drawer from '@mui/material/Drawer'
 import CssBaseline from '@mui/material/CssBaseline'
@@ -24,7 +23,7 @@ export default function NavBar() {
     <div>
       <Navbar collapseOnSelect expand='lg' bg='light' variant='grey'>
         <Container>
-          <Navbar.Brand href=''>RPMT</Navbar.Brand>
+          <Navbar.Brand href='/dashBoard'>RPMT</Navbar.Brand>
           <Navbar.Toggle aria-controls='responsive-navbar-nav' />
           <Navbar.Collapse id='responsive-navbar-nav'>
             <Nav className='me-auto'>
@@ -109,7 +108,6 @@ export default function NavBar() {
               </>
             ) : localStorage.getItem('userP') == 'Student' ? (
               <>
-                <ListItemButton to='/grp'>Group</ListItemButton>
                 <ListItemButton to=''>Documents</ListItemButton>
                 <ListItemButton to='/reqCo'>Request Supervisor</ListItemButton>
                 <ListItemButton to='/topic'>Research </ListItemButton>

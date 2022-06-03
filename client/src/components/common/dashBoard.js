@@ -204,7 +204,7 @@ export default function DashBoard() {
                         >
                           {group.gid}
                         </Typography>
-                        <Grid container spacing={2}>
+                        <Grid container spacing={3}>
                           <Grid item xs={12} sm={6}>
                             <Typography
                               variant='h5'
@@ -229,6 +229,14 @@ export default function DashBoard() {
                               <br />* {group.third}
                               <br />*{group.forth}
                               <br />
+                            </Typography>
+                          </Grid>
+
+                          <Grid item xs={12} sm={6}>
+                            <Typography sx={{ mb: 1.5 }} color='text.secondary'>
+                              <NavLink to={`/viewMarking/${group.gid}`}>
+                                <button className='btn btn-dark'>View</button>
+                              </NavLink>
                             </Typography>
                           </Grid>
                         </Grid>
