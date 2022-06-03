@@ -27,7 +27,7 @@ export default function NavBar() {
           <Navbar.Toggle aria-controls='responsive-navbar-nav' />
           <Navbar.Collapse id='responsive-navbar-nav'>
             <Nav className='me-auto'>
-              <Nav.Link href=''>Contact</Nav.Link>
+              <Nav.Link href='/contact'>Contact</Nav.Link>
               <Nav.Link href=''>About us</Nav.Link>
             </Nav>
             <Nav>
@@ -106,6 +106,9 @@ export default function NavBar() {
                 </ListItemButton>
                 <ListItemButton eventKey=''>View Marks</ListItemButton>
                 <ListItemButton to='/addfiles'>Add Reseach </ListItemButton>
+                <ListItemButton to='/userlist'>Manage Users</ListItemButton>
+                <ListItemButton to='/grplist'>Manage Groups</ListItemButton>
+                
               </>
             ) : localStorage.getItem('userP') == 'Student' ? (
               <>
