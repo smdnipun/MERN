@@ -161,7 +161,7 @@ router.route('/updateCoSupervisor/:id').post((req, res) => {
 
       groups
         .save()
-        .then(() => res.json('Supervisor Allocated!'))
+        .then(() => res.json('Co-Supervisor Allocated!'))
         .catch((err) => res.status(400).json('Error: ' + err))
     })
     .catch((err) => res.status(400).json('Error: ' + err))
