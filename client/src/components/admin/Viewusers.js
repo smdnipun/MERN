@@ -5,6 +5,7 @@ import axios from 'axios'
 export default function Viewgroups() {
   const [users, setUsers] = useState([])
 
+
   // This method fetches the records from the database.
   useEffect(() => {
     axios.get('/user').then((response) => {
@@ -19,7 +20,6 @@ useEffect(() => {
           setUsers(response.data);
       })
 }, [])
-
 
 
 
@@ -53,7 +53,9 @@ useEffect(() => {
                             <td>{g.id}</td>
                             <td>{g.specialization}</td>
                              <td> <Link to={`/edituser/${g._id}`}>
-                        <button onClick={()=>setData(data)}>update</button>
+
+                        <button>update</button>
+
                         </Link></td>
                         </tr>
                     ))

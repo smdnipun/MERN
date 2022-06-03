@@ -125,8 +125,10 @@ export default function RequestCoSupervisor() {
   return (
     <div>
       <NavBar />
-      <h1>Co-Supervisor List</h1>
-      <div>{loadComponent()}</div>
+      <div className='container'>
+        <h1>Co-Supervisor List</h1>
+        <div>{loadComponent()}</div>
+      </div>
     </div>
   )
 }

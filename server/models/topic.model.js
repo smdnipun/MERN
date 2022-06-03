@@ -19,6 +19,10 @@ const topic = new Schema({
     type: String,
     require: true,
   },
+  link: {
+    type: String,
+    require: true,
+  },
 })
 
 const Topic = mongoose.model('topic', topic)

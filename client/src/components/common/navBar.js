@@ -3,7 +3,6 @@ import { Navbar, Nav, Container, NavDropdown } from 'react-bootstrap'
 import '../../../node_modules/bootstrap/dist/css/bootstrap.min.css'
 import { NavLink } from 'react-router-dom'
 
-
 import Box from '@mui/material/Box'
 import Drawer from '@mui/material/Drawer'
 import CssBaseline from '@mui/material/CssBaseline'
@@ -18,13 +17,13 @@ import ListItemIcon from '@mui/material/ListItemIcon'
 import ListItemText from '@mui/material/ListItemText'
 
 export default function NavBar() {
-  const drawerWidth = 240
+  const drawerWidth = 120
 
   return (
     <div>
       <Navbar collapseOnSelect expand='lg' bg='light' variant='grey'>
         <Container>
-          <Navbar.Brand href=''>RPMT</Navbar.Brand>
+          <Navbar.Brand href='/dashBoard'>RPMT</Navbar.Brand>
           <Navbar.Toggle aria-controls='responsive-navbar-nav' />
           <Navbar.Collapse id='responsive-navbar-nav'>
             <Nav className='me-auto'>
@@ -55,6 +54,7 @@ export default function NavBar() {
         </Container>
       </Navbar>
       <div bg='light' variant='grey'>
+
         <Box sx={{ display: 'flex' }}>
           <CssBaseline />
           <AppBar
@@ -121,6 +121,7 @@ export default function NavBar() {
           </Drawer>
         </Box>
         <Toolbar />
+
       </div>
     </div>
   )

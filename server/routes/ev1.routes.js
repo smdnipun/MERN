@@ -1,7 +1,7 @@
 const express = require('express')
 const router = express.Router()
 const multer = require('multer')
-const SFile = require('../models/studentfile.model')
+const SFile = require('../models/ev1.model')
 
 const storage =multer.diskStorage({
     destination: (req, file, callback) => {
@@ -28,10 +28,6 @@ router.post('/add', supload.single('file'), (req, res) => {
     const newfile = new SFile({
         ev1doc : req.body.originalname,
         ev1pre_start: req.body.originalname,
-        ev2doc : req.body.originalname,
-        ev2pre_start : req.body.originalname,
-        ev3doc : req.body.originalname,
-        ev3pre_start : req.body.originalname,
     });
 
     newfile 
