@@ -5,6 +5,7 @@ import axios from 'axios'
 export default function Viewgroups() {
   const [users, setUsers] = useState([])
 
+
   // This method fetches the records from the database.
   useEffect(() => {
     axios.get('/user').then((response) => {
@@ -21,16 +22,6 @@ useEffect(() => {
 }, [])
 
 
-const setData = (data) => {
-    let { name, position, email, phone, address, id, specialization } = data;
-    localStorage.setItem('name', name);
-    localStorage.setItem('position', position);
-    localStorage.setItem('email', email);
-    localStorage.setItem('phone', phone);
-    localStorage.setItem('address', address)
-    localStorage.setItem('id', id)
-    localStorage.setItem('specialization', specialization)
-  }
 
   // This following section will display the table with the records of individuals.
   return (
@@ -61,8 +52,8 @@ const setData = (data) => {
                             <td>{g.address}</td>
                             <td>{g.id}</td>
                             <td>{g.specialization}</td>
-                             <td> <Link to={'/edituser'}>
-                        <button onClick={()=>setData(data)}>update</button>
+                             <td> <Link to={`/edituser/${g._id}`}>
+                        <button>update</button>
                         </Link></td>
                         </tr>
                     ))

@@ -91,7 +91,6 @@ export default function Registration() {
                   <option value='Student'>Student</option>
                   <option value='Supervisor'>Supervisor</option>
                   <option value='Panel Member'>Panel Member</option>
-                  <option value='Admin'>Admin</option>
                 </select>
               </Grid>
               <Grid item xs={12}>
