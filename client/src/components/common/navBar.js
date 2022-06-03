@@ -17,7 +17,7 @@ import ListItemIcon from '@mui/material/ListItemIcon'
 import ListItemText from '@mui/material/ListItemText'
 
 export default function NavBar() {
-  const drawerWidth = 240
+  const drawerWidth = 120
 
   return (
     <div>
@@ -54,6 +54,7 @@ export default function NavBar() {
         </Container>
       </Navbar>
       <div bg='light' variant='grey'>
+
         <Box sx={{ display: 'flex' }}>
           <CssBaseline />
           <AppBar
@@ -78,7 +79,7 @@ export default function NavBar() {
             <Toolbar />
             {localStorage.getItem('userP') == 'Panel Member' ? (
               <>
-                <ListItemButton eventKey=''>Evaluvate topics</ListItemButton>
+                <ListItemButton to='/evaluate'>Evaluvate topics</ListItemButton>
                 <ListItemButton eventKey=''>
                   Evaluvate presentation
                 </ListItemButton>
@@ -111,6 +112,7 @@ export default function NavBar() {
               </>
             ) : localStorage.getItem('userP') == 'Student' ? (
               <>
+                <ListItemButton to='/grp'>Group</ListItemButton>
                 <ListItemButton to=''>Documents</ListItemButton>
                 <ListItemButton to='/reqCo'>Request Supervisor</ListItemButton>
                 <ListItemButton to='/topic'>Research </ListItemButton>
@@ -122,6 +124,7 @@ export default function NavBar() {
           </Drawer>
         </Box>
         <Toolbar />
+
       </div>
     </div>
   )

@@ -89,7 +89,9 @@ useEffect(() => {
                             <td>{g.id}</td>
                             <td>{g.specialization}</td>
                              <td> <Link to={`/edituser/${g._id}`}>
+
                         <button>update</button>
+
                         </Link></td>
                         </tr>
                     ))
