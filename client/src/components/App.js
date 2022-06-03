@@ -5,6 +5,7 @@ import NavBar from './common/navBar'
 import Registration from '../components/common/Registration'
 import DashBoard from './common/dashBoard'
 import Contact from './common/contact'
+import Test from './common/test'
 
 const App = () => {
   return (
@@ -16,6 +17,7 @@ const App = () => {
           <Route exact path={'/reg'} element={<Registration />} />
           <Route exact path='/dashBoard' element={<DashBoard />} />
           <Route exact path='/contact' element={<Contact />} />
+          <Route exact path='/t' element={<Test/>}/>
 
         </Routes>
       </div>

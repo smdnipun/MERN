@@ -18,7 +18,7 @@ export default function Schedule() {
   }, [])
 
   return (
-    <div>
+    <div className='container'>
       <NavBar />
       <table>
         <tr>
