@@ -13,6 +13,7 @@ import { ListGroup } from 'react-bootstrap'
 import Grid from '@mui/material/Grid'
 import { Link } from '@mui/material'
 
+
 export default function DashBoard() {
   //Panel Member
   const [data, setData] = useState([])
@@ -254,6 +255,19 @@ export default function DashBoard() {
           </>
         ) : localStorage.getItem('userP') == 'Admin' ? (
           <>
+
+            return (
+    <Card sx={{ minWidth: 275 }}>
+        <center>
+          <CardContent>
+          <Typography sx={{ fontSize: 30 }} color="text.secondary" gutterBottom>
+        Welcome to Admin Dash Board
+        </Typography>
+          </CardContent>
+        </center>
+    </Card>
+  );
+
             <h1>Hello! {localStorage.getItem('userN')}</h1>
           </>
         ) : localStorage.getItem('userP') == 'Student' ? (
