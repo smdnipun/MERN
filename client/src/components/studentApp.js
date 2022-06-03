@@ -8,6 +8,7 @@ import ViewMyGroup from './student/ViewMyGroup'
 import RequestCoSupervisor from './student/reqCoSupervisor'
 import Topics from './student/Topic'
 import Panaltopic from './student/Panaltopic'
+import Filesub from './student/Filesub'
 
 const StudentApp = () => {
   return (
@@ -21,6 +22,8 @@ const StudentApp = () => {
           <Route exact path={'/reqCo'} element={<RequestCoSupervisor />} />
           <Route exact path={'/topic'} element={<Topics />} />
           <Route exact path={'/paneltopic'} element={<Panaltopic/>}/>
+          <Route exact path={'/subdoc'} element={<Filesub/>}/>
+          
         </Routes>
       </div>
     </>
