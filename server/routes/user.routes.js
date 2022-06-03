@@ -52,6 +52,13 @@ router.route('/add').post((req, res) => {
     .catch((err) => res.status(400).json('Error:' + err))
 })
 
+
+router.route('/u/:id').get((req, res) => {
+    User.findById(req.params.id)
+      .then((user) => res.json(user))
+      .catch((err) => res.status(400).json('Error: ' + err))
+  })
+
 router.route('/update/:id').post((req, res) => {
   User.findById(req.params.id)
     .then((users) => {
