@@ -82,6 +82,7 @@ export default function Registration() {
                 />
               </Grid>
               <Grid item xs={12}>
+                <center><label>Position</label></center>
                 <select
                   class='form-select'
                   value={position}
@@ -90,7 +91,6 @@ export default function Registration() {
                   <option value='Student'>Student</option>
                   <option value='Supervisor'>Supervisor</option>
                   <option value='Panel Member'>Panel Member</option>
-                  <option value='Admin'>Admin</option>
                 </select>
               </Grid>
               <Grid item xs={12}>
@@ -142,6 +142,7 @@ export default function Registration() {
                 />
               </Grid>
               <Grid item xs={12}>
+             <center> <label>Specialization</label></center>
                 <select
                   class='form-select'
                   value={specialization}
@@ -205,7 +206,7 @@ export default function Registration() {
             </Button>
             <Grid container justifyContent='flex-end'>
               <Grid item>
-                <Link href='#' variant='body2'>
+                <Link href='/' variant='body2'>
                   Already have an account? Sign in
                 </Link>
               </Grid>

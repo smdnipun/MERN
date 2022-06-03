@@ -20,6 +20,7 @@ const user = require('./routes/user.routes')
 const topic = require('./routes/topic.routes')
 const mark = require('./routes/mark.routes')
 const schedule = require('./routes/schedule.routes')
+const message = require('./routes/message.routes')
 
 app.use('/adminfile', adminfile)
 app.use('/studentfile', studentfile)
@@ -32,6 +33,7 @@ app.use('/user', user)
 app.use('/topic', topic)
 app.use('/marks', mark)
 app.use('/schedule', schedule)
+app.use('/message', message)
 
 const uri = process.env.ATLAS_URI
 mongoose.connect(uri, { useNewUrlParser: true, useUnifiedTopology: true })
