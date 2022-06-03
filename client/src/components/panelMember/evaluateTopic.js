@@ -18,27 +18,23 @@ import Stack from '@mui/material/Stack'
 import TextareaAutosize from '@mui/material/TextareaAutosize'
 import NavBar from '../common/navBar'
 
-
 export default function EvaluateTopice() {
-
-  
-
   const [data, setData] = useState([])
   const [gdata, setGdata] = useState('')
   const [topic, setTopic] = useState('')
+  const [feedback, setFeedback] = useState('')
   const panelMember = localStorage.getItem('userN')
+  const email = localStorage.getItem('user')
 
   const theme = createTheme()
-
 
   const check = () => {
     axios
       .post('http://localhost:5000/group/pCheck', {
-        panelMember:panelMember,
+        panelMember: panelMember,
       })
       .then((res) => {
         setGdata(res.data)
-        console.log(res.data[0].gid)
 
         const gid = res.data[0].gid
 
@@ -50,10 +46,49 @@ export default function EvaluateTopice() {
           })
       })
   }
+  console.log(data._id)
 
-  
+  const Accept = () => {
+    axios.post(`http://localhost:5000/topic/update/${data[0]._id}`, {
+      status: 'pAccepted',
+    })
 
+    const messageData = {
+      gid: data[0].gid,
+      author: panelMember + '(Panel Memeber)',
+      email: email,
+      message: feedback,
+      time:
+        new Date(Date.now()).getHours() +
+        ':' +
+        new Date(Date.now()).getMinutes(),
+    }
+    console.log(messageData)
+    axios
+      .post('http://localhost:5000/message/add/', messageData)
+      .then((res) => console.log(res.data))
+  }
 
+  const Reject = () => {
+    axios.post(`http://localhost:5000/topic/update/${data[0]._id}`, {
+      status: 'Rejected',
+    })
+    const messageData = {
+      gid: data[0].gid,
+      author: panelMember + '(Panel Memeber)',
+      email: email,
+      message: feedback,
+      time:
+        new Date(Date.now()).getHours() +
+        ':' +
+        new Date(Date.now()).getMinutes(),
+    }
+    console.log(messageData)
+    axios
+      .post('http://localhost:5000/message/add/', messageData)
+      .then((res) => console.log(res.data))
+  }
+  const CheckAccept = () => {}
   useEffect(() => {
     check()
   }, [])
@@ -73,10 +108,15 @@ export default function EvaluateTopice() {
                 alignItems: 'center',
               }}
             >
-              <Typography component='h1' variant='h5'>
-                Topic Accept or Reject
-              </Typography>
               <Box component='form' noValidate sx={{ mt: 3 }}>
+                <Grid item xs={12}>
+                  <Typography component='h1' variant='h5'>
+                    Topic Accept or Reject
+                  </Typography>
+                </Grid>
+                <br />
+                <br />
+                <br />
                 <Grid container spacing={2}>
                   {data.map((topic) => {
                     return (
@@ -129,28 +169,42 @@ export default function EvaluateTopice() {
                             aria-label='maximum height'
                             placeholder='Feedback'
                             style={{ width: 200 }}
+                            value={feedback}
+                            onChange={(e) => setFeedback(e.target.value)}
                           />
-                        </Grid>
-                        <Grid item xs={12}>
-                          <Stack direction='row' spacing={2}>
-                            <Button variant='contained' color='success'>
-                              Accept
-                            </Button>
-                            <Button variant='contained' color='error'>
-                              Reject
-                            </Button>
-                          </Stack>
                         </Grid>
                       </>
                     )
                   })}
                 </Grid>
-               
+                <Grid item xs={12}>
+                  <Stack direction='row' spacing={2}>
+                    <Button
+                      type='submit'
+                      variant='contained'
+                      onClick={Accept}
+                      color='success'
+                    >
+                      Accept
+                    </Button>
+                    <Button variant='contained' onClick={Reject} color='error'>
+                      Reject
+                    </Button>
+                  </Stack>
+                </Grid>
               </Box>
             </Box>
           </Container>
         </ThemeProvider>
       </div>
     </div>
+  )
+}
+
+const LoadComp = () => {
+  return (
+    <>
+      <p>Fuck</p>
+    </>
   )
 }
