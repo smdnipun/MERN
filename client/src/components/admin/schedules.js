@@ -5,6 +5,7 @@ import NavBar from '../common/navBar'
 
 const GroupSchedule = () => {
   let params = useParams()
+  console.log(params)
   const [data, setData] = useState([])
   const [evaluation1, setEv1] = useState('')
   const [evaluation2, setEv2] = useState('')
@@ -25,12 +26,12 @@ const GroupSchedule = () => {
   //   loadData()
   // }, [])
 
-  let p = params.gid
-  console.log(params.gid)
+  let p = params._id
+  console.log(p)
   async function Submit(e) {
     e.preventDefault()
     const Obj = {
-      groupID: params.gid,
+      groupID: params._id,
       evaluation1,
       evaluation2,
       final_evaluation,
@@ -55,7 +56,7 @@ const GroupSchedule = () => {
           
             <>
               <form className='container' onSubmit={Submit}>
-            <h3>Group Id:{params.gid}</h3>
+            <h3>Group Id:{params._id}</h3>
                 <br />
                 <br />
                 <label>Evaluation 1 :</label>

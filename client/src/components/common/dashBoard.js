@@ -11,10 +11,12 @@ import Typography from '@mui/material/Typography'
 import { List, ListItem } from '@mui/material'
 import { ListGroup } from 'react-bootstrap'
 import Grid from '@mui/material/Grid'
+import { Link } from '@mui/material'
 
 export default function DashBoard() {
   //Panel Member
   const [data, setData] = useState([])
+  const [scheduleP, setScheduleP] = useState([])
 
   const loadData = () => {
     let name = localStorage.getItem('userN')
@@ -22,6 +24,18 @@ export default function DashBoard() {
       .get(`http://localhost:5000/group/panel/${name}`)
       .then(function (response) {
         setData(response.data)
+
+        console.log(response)
+
+        const id = response.data[0].gid
+
+        axios
+          .get(`http://localhost:5000/schedule/get/${id}`)
+          .then(function (response) {
+            setScheduleP(response.data)
+            console.log(response.data)
+          })
+
       })
 
     //  axios
@@ -47,6 +61,7 @@ export default function DashBoard() {
       .get(`http://localhost:5000/group/supervisour/${name}`)
       .then(function (response) {
         setSData(response.data)
+
       })
   }
 
@@ -60,7 +75,9 @@ export default function DashBoard() {
 
   //Student
   const [stData, setStData] = useState([])
-  const [schedule, setSchedule] = useState()
+
+  const [schedule, setSchedule] = useState([])
+
 
   const loadStData = () => {
     let name = localStorage.getItem('userN')
@@ -68,12 +85,14 @@ export default function DashBoard() {
       .get(`http://localhost:5000/group/student/${name}`)
       .then(function (response) {
         setStData(response.data)
+
         const id = response.data[0].gid
 
         axios
           .get(`http://localhost:5000/schedule/get/${id}`)
           .then(function (response) {
             setSchedule(response.data)
+
           })
       })
   }
@@ -82,6 +101,7 @@ export default function DashBoard() {
     loadStData()
   }, [])
   //End
+
   return (
     <>
       <NavBar />
@@ -130,6 +150,55 @@ export default function DashBoard() {
                 )
               })}
             </Card>
+            <>
+              <Card sx={{ minWidth: 275 }}>
+                {scheduleP.map((group) => {
+                  return (
+                    <>
+                      <dvi dvi className='container'>
+                        <CardContent>
+                          <Typography
+                            sx={{ fontSize: 25 }}
+                            color='text.secondary'
+                            gutterBottom
+                          >
+                            Viva Schedule
+                          </Typography>
+                          <Typography variant='h5' component='div'></Typography>
+                          <Typography
+                            sx={{ mb: 1.5 }}
+                            color='text.secondary'
+                          ></Typography>
+                          <Typography variant='body2'>
+                            <ListGroup>
+                              <ListItem>
+                                {group.evaluation1}-
+                                <Link href={group.link1}>
+                                  Evaluation 1 Link
+                                </Link>{' '}
+                              </ListItem>
+                              <ListItem>
+                                {group.evaluation2}-
+                                <Link href={group.link2}>
+                                  Evaluation 2 Link
+                                </Link>
+                              </ListItem>
+                              <ListItem>
+                                {group.final_evaluation}-
+                                <Link href={group.linkF}>
+                                  Final Evaluation Link
+                                </Link>
+                              </ListItem>
+                            </ListGroup>
+                            <br />
+                          </Typography>
+                        </CardContent>
+                      </dvi>
+                    </>
+                  )
+                })}
+              </Card>
+            </>
           </>
         ) : localStorage.getItem('userP') == 'Supervisor' ? (
           <>
@@ -243,6 +312,56 @@ export default function DashBoard() {
                         </Grid>
                       </CardContent>
                     </div>
+                    <Card sx={{ minWidth: 275 }}>
+                      {schedule.map((group) => {
+                        return (
+                          <>
+                            <dvi dvi className='container'>
+                              <CardContent>
+                                <Typography
+                                  sx={{ fontSize: 25 }}
+                                  color='text.secondary'
+                                  gutterBottom
+                                >
+                                  Viva Schedule
+                                </Typography>
+                                <Typography
+                                  variant='h5'
+                                  component='div'
+                                ></Typography>
+                                <Typography
+                                  sx={{ mb: 1.5 }}
+                                  color='text.secondary'
+                                ></Typography>
+                                <Typography variant='body2'>
+                                  <ListGroup>
+                                    <ListItem>
+                                      {group.evaluation1}-
+                                      <Link href={group.link1}>
+                                        Evaluation 1 Link
+                                      </Link>{' '}
+                                    </ListItem>
+                                    <ListItem>
+                                      {group.evaluation2}-
+                                      <Link href={group.link2}>
+                                        Evaluation 2 Link
+                                      </Link>
+                                    </ListItem>
+                                    <ListItem>
+                                      {group.final_evaluation}-
+                                      <Link href={group.linkF}>
+                                        Final Evaluation Link
+                                      </Link>
+                                    </ListItem>
+                                  </ListGroup>
+                                  <br />
+                                </Typography>
+                              </CardContent>
+                            </dvi>
+                          </>
+                        )
+                      })}
+                    </Card>
                   </>
                 )
               })}
