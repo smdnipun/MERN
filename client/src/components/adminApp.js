@@ -23,7 +23,7 @@ const AdminApp =()=>{
          
            <Route exact path={'/smarking'} element={<SupCreateMarkingSchemes/>}/>
            <Route exact path="/userlist" element={<Viewusers/>}/>
-            <Route exact path="/edituser" element={<Updateusers/>}/>
+            <Route exact path="/edituser/_id" element={<Updateusers/>}/>
             <Route exact path="/addfiles" element={<Addfiles/>}/>
             <Route exact path="/disfilesadmin" element={<DisfilesAdmin/>}/>
             <Route exact path="/submittypes" element={<Submittype/>}/>

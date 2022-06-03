@@ -13,12 +13,14 @@ router.route('/add').post((req, res) => {
   const topic = req.body.topic
   const specialization = req.body.specialization
   const status = req.body.status
+  const link= req.body.link
 
   const newTopic = new Topic({
     gid,
     topic,
     specialization,
     status,
+    link
   })
   newTopic
     .save()

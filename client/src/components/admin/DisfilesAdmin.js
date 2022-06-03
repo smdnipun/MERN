@@ -21,17 +21,40 @@ export default function DisfilesAdmin(){
                <h3>ADD New Assignments</h3>
             <div>
                 <tr>
-                    <th>Name</th>
+                    <th>Specialization</th>
                     <th>Description</th>
+                    <th>File</th>
+                    <th>File</th>
+                    <th>File</th>
+                    <th>File</th>
+                    <th>File</th>
+                    <th>File</th>
+                    <th>File</th>
+                    <th>File</th>
+                    <th>File</th>
                     <th>File</th>
                 </tr>
 
-                {data.map((row) => {
+                {data.map((row) => {0
                     return(
                         <tr>
-                            <td>{row.name}</td>
+                            <td>{row.specialization}</td>
                             <td>{row.description}</td>
+                            <td>{row.ev1doc}</td>
+                            <td>{row.ev1pre_start}</td>
+                            <td>{row.ev1pre_end}</td>
+                            <td>{row.ev2doc}</td>
+                            <td>{row.ev2pre_start}</td>
+                            <td>{row.ev2pre_end}</td>
+                            <td>{row.ev3doc}</td>
+                            <td>{row.ev3pre_start}</td>
+                            <td>{row.ev3pre_end}</td>
                             <td>{row.filepdf}</td>
+                            <td>
+                                <button>update</button><br/>
+                                <button>delete</button>
+                            </td>
+                            
                         </tr>
 
                         // <tr >

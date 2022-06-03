@@ -6,6 +6,8 @@ export default function Registertopic() {
   const [specialization, setSpecialization] = useState('')
   const [topic, setTopic] = useState('')
   const [status, setStatus] = useState('pending')
+  const [link, setLink] = useState('')
+
 
   const [groups, setGroups] = useState([])
 
@@ -34,6 +36,7 @@ export default function Registertopic() {
     specialization,
     topic,
     status,
+    link
   }
 
   const pass = async () => {
@@ -91,6 +94,18 @@ export default function Registertopic() {
               </select>
             </div>
             <br></br>
+
+            <div className='form-group'>
+              <label>Submit the link to the document here</label>
+              <input
+                className='form-control'
+                value={link}
+                onChange={(e) => setLink(e.target.value)}
+              />
+            </div>
+            <br></br>
+
+
 
             <button onClick={pass} type='submit'>
               Submit
