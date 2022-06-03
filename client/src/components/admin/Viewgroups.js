@@ -7,39 +7,29 @@ export default function Viewgroups() {
   const [users, setUsers] = useState([])
 
 
-
-    console.log(panelMember);
-
 const loadData=() =>{
 
     axios.get('/group')
         .then((response) => {
             setItem(response.data);
+
+            let specialization= response.data.specialization;
+
+            axios
+            .post('http://localhost:5000/user/allocatepanel', {
+              specialization: specialization,
+              position: "Panel Member",
+            })
+            .then((res) => {
+              setUsers(res.data)
+           })
         })
 }
 
-   const filterData=()=>{
-    axios
-    .post('http://localhost:5000/user/allocatepanel', {
-      specialization: Item.specialization,
-      position: "Panel Member",
-    })
-    .then((res) => {
-      setUser(res.data)
-   })
-   }
-
-
-
    useEffect(() => {
     loadData();
-    filterData();
     }, []);
     
-
-
-      setUsers(users)
-      setFiltered(filterusers)
     
 
       const Update = (group) => {
@@ -93,7 +83,7 @@ const loadData=() =>{
                         setItem(item);
                         }}>
                         {                          
-                            user.map(u=>(
+                            users.map(u=>(
                             <option value={u.name}>{u.name}</option>
                         ))}
                     </select>

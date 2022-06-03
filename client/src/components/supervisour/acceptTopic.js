@@ -72,7 +72,7 @@ export default function AcceptTopic() {
   }
 
   return (
-    <div>
+    <div >
       <NavBar />
       <div className='container'>
         <Table className='talbe'>

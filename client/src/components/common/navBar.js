@@ -3,10 +3,26 @@ import { Navbar, Nav, Container, NavDropdown } from 'react-bootstrap'
 import '../../../node_modules/bootstrap/dist/css/bootstrap.min.css'
 import { NavLink } from 'react-router-dom'
 
+
+import Box from '@mui/material/Box'
+import Drawer from '@mui/material/Drawer'
+import CssBaseline from '@mui/material/CssBaseline'
+import AppBar from '@mui/material/AppBar'
+import Toolbar from '@mui/material/Toolbar'
+import List from '@mui/material/List'
+import Typography from '@mui/material/Typography'
+import Divider from '@mui/material/Divider'
+import ListItem from '@mui/material/ListItem'
+import ListItemButton from '@mui/material/ListItemButton'
+import ListItemIcon from '@mui/material/ListItemIcon'
+import ListItemText from '@mui/material/ListItemText'
+
 export default function NavBar() {
+  const drawerWidth = 240
+
   return (
     <div>
-      <Navbar collapseOnSelect expand='lg' bg='dark' variant='dark'>
+      <Navbar collapseOnSelect expand='lg' bg='light' variant='grey'>
         <Container>
           <Navbar.Brand href=''>RPMT</Navbar.Brand>
           <Navbar.Toggle aria-controls='responsive-navbar-nav' />
@@ -38,42 +54,74 @@ export default function NavBar() {
           </Navbar.Collapse>
         </Container>
       </Navbar>
-      <Nav defaultActiveKey='' className='flex-column'>
-        {localStorage.getItem('userP') == 'Panel Member' ? (
-          <>
-            <Nav.Link eventKey=''>Evaluvate topics</Nav.Link>
-            <Nav.Link eventKey=''>Evaluvate presentation</Nav.Link>
-          </>
-        ) : localStorage.getItem('userP') == 'Supervisor' ? (
-          <>
-            <Nav.Link href=''>Evaluvate Document</Nav.Link>
-            <NavLink to='/acceptTopic'>Accept Topics</NavLink>
-            <Nav.Link eventKey=''>Student Gropus</Nav.Link>
-          </>
-        ) : localStorage.getItem('userP') == 'co-supervisor' ? (
-          <>
-            <Nav.Link href=''>Evaluvate Document</Nav.Link>
-            <NavLink to='/coSupAcceptTopic'>Accept Group</NavLink>
-            <Nav.Link eventKey=''>Student Gropus</Nav.Link>
-          </>
-        ) : localStorage.getItem('userP') == 'Admin' ? (
-          <>
-            <Nav.Link href=''>Create Panel</Nav.Link>
-            <Nav.Link eventKey='/sMarking'>Create MarkingScehme</Nav.Link>
-            <Nav.Link eventKey=''>View Marks</Nav.Link>
-            <NavLink to='/addfiles'>Add Reseach </NavLink>
-          </>
-        ) : localStorage.getItem('userP') == 'Student' ? (
-          <>
-            <Nav.Link href='/grp'>Group</Nav.Link>
-            <Nav.Link eventKey=''>Documents</Nav.Link>
-            <NavLink to='/reqCo'>Request Supervisor</NavLink>
-            <NavLink to='/topic'>Research </NavLink>
-          </>
-        ) : (
-          <p>not found:{localStorage.getItem('userP')}</p>
-        )}
-      </Nav>
+      <div bg='light' variant='grey'>
+        <Box sx={{ display: 'flex' }}>
+          <CssBaseline />
+          <AppBar
+            position='fixed'
+            sx={{
+              width: `calc(100% - ${drawerWidth}px)`,
+              ml: `${drawerWidth}px`,
+            }}
+          ></AppBar>
+          <Drawer
+            sx={{
+              width: drawerWidth,
+              flexShrink: 0,
+              '& .MuiDrawer-paper': {
+                width: drawerWidth,
+                boxSizing: 'border-box',
+              },
+            }}
+            variant='permanent'
+            anchor='left'
+          >
+            <Toolbar />
+            {localStorage.getItem('userP') == 'Panel Member' ? (
+              <>
+                <ListItemButton eventKey=''>Evaluvate topics</ListItemButton>
+                <ListItemButton eventKey=''>
+                  Evaluvate presentation
+                </ListItemButton>
+              </>
+            ) : localStorage.getItem('userP') == 'Supervisor' ? (
+              <>
+                <ListItemButton href=''>Evaluvate Document</ListItemButton>
+                <ListItemButton to='/acceptTopic'>Accept Topics</ListItemButton>
+                <ListItemButton eventKey=''>Student Gropus</ListItemButton>
+              </>
+            ) : localStorage.getItem('userP') == 'co-supervisor' ? (
+              <>
+                <ListItemButton href=''>Evaluvate Document</ListItemButton>
+                <ListItemButton to='/coSupAcceptTopic'>
+                  Accept Group
+                </ListItemButton>
+                <ListItemButton eventKey=''>Student Gropus</ListItemButton>
+              </>
+            ) : localStorage.getItem('userP') == 'Admin' ? (
+              <>
+                <ListItemButton href=''>Create Panel</ListItemButton>
+                <ListItemButton eventKey='/sMarking'>
+                  Create MarkingScehme
+                </ListItemButton>
+                <ListItemButton eventKey=''>View Marks</ListItemButton>
+                <ListItemButton to='/addfiles'>Add Reseach </ListItemButton>
+              </>
+            ) : localStorage.getItem('userP') == 'Student' ? (
+              <>
+                <ListItemButton to='/grp'>Group</ListItemButton>
+                <ListItemButton to=''>Documents</ListItemButton>
+                <ListItemButton to='/reqCo'>Request Supervisor</ListItemButton>
+                <ListItemButton to='/topic'>Research </ListItemButton>
+                <ListItemButton to='/paneltopic'>top </ListItemButton>
+              </>
+            ) : (
+              <p>not found:{localStorage.getItem('userP')}</p>
+            )}
+          </Drawer>
+        </Box>
+        <Toolbar />
+      </div>
     </div>
   )
 }

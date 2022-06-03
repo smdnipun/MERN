@@ -8,7 +8,6 @@ router.route('/').get((req, res) => {
     .catch((err) => res.status(400).json('Error:' + err))
 })
 
-
 router.route('/check').post((req, res) => {
   Group.find(
     { email1: req.body.email } || { email2: req.body.email } || {
@@ -62,6 +61,19 @@ router.route('/panel/:panelMember').get(function (req, res) {
 
 router.route('/supervisour/:supervisor').get(function (req, res) {
   let myquery = { supervisor: Object(req.params.supervisor) }
+
+  Group.find(myquery, function (err, result) {
+    if (err) throw err
+    res.json(result)
+  })
+})
+
+router.route('/student/:student').get(function (req, res) {
+  let myquery = { first: Object(req.params.student) } || {
+      second: Object(req.params.student),
+    } || { third: Object(req.params.student) } || {
+      forth: Object(req.params.student),
+    }
 
   Group.find(myquery, function (err, result) {
     if (err) throw err

@@ -13,18 +13,20 @@ const GroupSchedule = () => {
   const [linkF, setLinkF] = useState('')
   const [final_evaluation, setFinalEv] = useState('')
 
-  const loadData = () => {
-    let p = params.gid
-    axios.get(`http://localhost:5000/group/get/${p}`).then(function (response) {
-      setData(response.data)
-      console.log(response.data)
-    })
-  }
+  // const loadData = () => {
+  //   let p = params.gid
+  //   axios.get(`http://localhost:5000/group/get/${p}`).then(function (response) {
+  //     setData(response.data)
+  //     console.log(response.data)
+  //   })
+  // }
 
-  useEffect(() => {
-    loadData()
-  }, [])
+  // useEffect(() => {
+  //   loadData()
+  // }, [])
 
+  let p = params.gid
+  console.log(params.gid)
   async function Submit(e) {
     e.preventDefault()
     const Obj = {
@@ -49,11 +51,11 @@ const GroupSchedule = () => {
     <>
       <NavBar />
       <div className='container'>
-        {data.map((group) => {
-          return (
+        
+          
             <>
               <form className='container' onSubmit={Submit}>
-                <h3>Group Id:{group.gid}</h3>
+            <h3>Group Id:{params.gid}</h3>
                 <br />
                 <br />
                 <label>Evaluation 1 :</label>
@@ -109,8 +111,7 @@ const GroupSchedule = () => {
                 </button>
               </form>
             </>
-          )
-        })}
+      
       </div>
     </>
   )
