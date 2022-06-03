@@ -54,7 +54,6 @@ export default function NavBar() {
         </Container>
       </Navbar>
       <div bg='light' variant='grey'>
-
         <Box sx={{ display: 'flex' }}>
           <CssBaseline />
           <AppBar
@@ -101,10 +100,11 @@ export default function NavBar() {
             ) : localStorage.getItem('userP') == 'Admin' ? (
               <>
                 <ListItemButton href=''>Create Panel</ListItemButton>
-                <ListItemButton eventKey='/sMarking'>
+                <ListItemButton to='/schedule'>Schedule Viva</ListItemButton>
+                <ListItemButton to='/sMarking'>
                   Create MarkingScehme
                 </ListItemButton>
-                <ListItemButton eventKey=''>View Marks</ListItemButton>
+                <ListItemButton to='/viewMark'>View Marks</ListItemButton>
                 <ListItemButton to='/addfiles'>Add Reseach </ListItemButton>
                 <ListItemButton to='/userlist'>Manage Users</ListItemButton>
                 <ListItemButton to='/grplist'>Manage Groups</ListItemButton>
@@ -124,7 +124,6 @@ export default function NavBar() {
           </Drawer>
         </Box>
         <Toolbar />
-
       </div>
     </div>
   )
