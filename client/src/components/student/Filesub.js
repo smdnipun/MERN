@@ -7,13 +7,21 @@ export default function Filesub() {
     const [data, setData] = useState([]);
     const [ev1doc, setEv1doc] = useState([]);
     const [ev2doc, setEv2doc] = useState([]);
-    const [ev3doc, setEv3doc] = useState('');
+    const [ev3doc, setEv3doc] = useState([]);
 
     const sp = localStorage.getItem('userS')
 
-    const onChangeFile = e => {
+    const onChangeFileev1 = e => {
         setEv1doc(e.target.files[0]);
+        
+    }
+       const onChangeFileev2 = e => {
+        
         setEv2doc(e.target.files[0]);
+       
+    }
+       const onChangeFileev3 = e => {
+
         setEv3doc(e.target.files[0]);
     }
 
@@ -29,7 +37,7 @@ export default function Filesub() {
             .post("/ev1/add", formData)
             .then((res) => {
                 setMessage(res.data);
-                navi("/addfiles");
+                navi("/addfiles")
             })
             .catch((err) => {
                 console.log(err);
@@ -100,7 +108,7 @@ export default function Filesub() {
                                             <input
                                                 type="file" multiple
                                                 filename="ev1doc"
-                                                onChange={onChangeFile}
+                                                onChange={onChangeFileev1}
                                                 className="form-control" />
                                     </div>
                                       <button className="btn" 
@@ -122,7 +130,7 @@ export default function Filesub() {
                                         <input 
                                             type="file"  multiple
                                             filename="ev2doc"
-                                            onChange={onChangeFile}
+                                            onChange={onChangeFileev2}
                                             className="form-control"/>
                                     </div>
                                     <button className="btn" 
@@ -144,7 +152,7 @@ export default function Filesub() {
                                         <input 
                                             type="file"  multiple
                                             filename="ev3doc"
-                                            onChange={onChangeFile}
+                                            onChange={onChangeFileev3}
                                             className="form-control"/>
                                     </div>
                                     <button className="btn" 
