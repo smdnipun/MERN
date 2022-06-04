@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import axios from 'axios'
 import NavBar from '../common/navBar'
+import Swal from 'sweetalert2'
 
 export default function Filesub() {
   const [data, setData] = useState([])
@@ -11,6 +12,14 @@ export default function Filesub() {
 
   const email = localStorage.getItem('user')
   const sp = localStorage.getItem('userS')
+
+  async function SweatAlert(text, item) {
+    // await sleep(1000)
+    Swal.fire({
+      icon: item,
+      text: text,
+    })
+  }
 
   const onChangeFileev1 = (e) => {
     setEv1doc(e.target.files[0])
@@ -40,6 +49,7 @@ export default function Filesub() {
         console.log(err)
       })
     console.log(formData)
+    SweatAlert('Successfully insereted', 'success')
   }
 
   const changeonClickev2 = (e) => {
@@ -59,6 +69,7 @@ export default function Filesub() {
       .catch((err) => {
         console.log(err)
       })
+    SweatAlert('Successfully insereted', 'success')
   }
 
   const changeonClickev3 = (e) => {
@@ -78,6 +89,7 @@ export default function Filesub() {
       .catch((err) => {
         console.log(err)
       })
+    SweatAlert('Successfully insereted', 'success')
   }
 
   const loaddata = () => {
@@ -106,9 +118,9 @@ export default function Filesub() {
   console.log(gid)
 
   return (
-    <div data-testid="top-1">
+    <div>
       <NavBar />
-      <div className='bod' style={{ maxWidth: 800, margin: 'auto' }}>
+      <div className='bod mt-5 m' style={{ maxWidth: 800, margin: 'auto' }}>
         <br></br>
         <h3>Submition</h3>
         {data.map((row) => {
@@ -132,7 +144,7 @@ export default function Filesub() {
                     />
                   </div>
                   <button
-                    className='btn'
+                    className='btn btn-primary'
                     type='submit'
                     variant='primary'
                     size='lg'
@@ -160,7 +172,7 @@ export default function Filesub() {
                     />
                   </div>
                   <button
-                    className='btn'
+                    className='btn btn-primary'
                     type='submit'
                     variant='primary'
                     size='lg'
@@ -188,7 +200,7 @@ export default function Filesub() {
                     />
                   </div>
                   <button
-                    className='btn'
+                    className='btn btn-primary'
                     type='submit'
                     variant='primary'
                     size='lg'

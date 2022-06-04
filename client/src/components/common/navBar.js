@@ -60,6 +60,7 @@ export default function NavBar() {
           <ListItemButton to='/sMarking'>Create MarkingScehme</ListItemButton>
           <ListItemButton to='/viewMark'>View Marks</ListItemButton>
           <ListItemButton to='/addfiles'>Add Reseach </ListItemButton>
+          <ListItemButton to='/disfilesadmin'>Reseach </ListItemButton>
           <ListItemButton to='/userlist'>Manage Users</ListItemButton>
           <ListItemButton to='/grplist'>Manage Groups</ListItemButton>
         </>
@@ -67,6 +68,7 @@ export default function NavBar() {
         <>
           <ListItemButton to='/dashBoard'>Home</ListItemButton>
           <ListItemButton to='/topdet'>Research Topics</ListItemButton>
+          <ListItemButton to='/regtop'>Register Topics</ListItemButton>
           <ListItemButton to='/reqCo'>Request Supervisor</ListItemButton>
           <ListItemButton to='/topic'>Research Details</ListItemButton>
           <ListItemButton to='/subdoc'>Documents</ListItemButton>
