@@ -235,6 +235,7 @@ export default function Registration() {
             </Grid>
             <Button
               type='submit'
+              className='btn btn-primary'
               fullWidth
               variant='contained'
               sx={{ mt: 3, mb: 2 }}

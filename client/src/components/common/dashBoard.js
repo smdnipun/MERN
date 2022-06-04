@@ -323,6 +323,7 @@ export default function DashBoard() {
           <>
 
             return (
+
     <Card sx={{ minWidth: 275 }}>
         <center>
           <CardContent>
@@ -372,9 +373,9 @@ export default function DashBoard() {
                           <Grid item xs={12} sm={6}>
                             <Typography sx={{ mb: 1.5 }} color='text.secondary'>
                               Group Members
-                              <br />* {group.first}
+                              <br />*{group.first}
                               <br />*{group.second}
-                              <br />* {group.third}
+                              <br />*{group.third}
                               <br />*{group.forth}
                               <br />
                             </Typography>

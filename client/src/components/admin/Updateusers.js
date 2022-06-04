@@ -146,7 +146,7 @@ useEffect(() => {
             <br></br>
 
 
-        <button type='submit'>Update</button>
+        <button  className='btn btn-primary'  type='submit'>Update</button>
       </form>
       </div>
       </center>
