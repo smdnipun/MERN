@@ -3,6 +3,8 @@ import NavBar from '../common/navBar'
 import axios from 'axios'
 import { useNavigate, useParams } from 'react-router'
 import Table from 'react-bootstrap/Table'
+import Button from '@mui/material/Button'
+import SimCardDownloadIcon from '@mui/icons-material/SimCardDownload'
 
 export default function ViewMarkingSchemes() {
   let params = useParams()
@@ -18,14 +20,10 @@ export default function ViewMarkingSchemes() {
   let p = localStorage.getItem('userP')
   let s = localStorage.getItem('userS')
 
-
   //page navigate function
   const navigate = useNavigate()
 
-
-
-
-//calculate total marks
+  //calculate total marks
   const setVal = (e, i) => {
     let items = [data]
     let tot = 0
@@ -70,7 +68,7 @@ export default function ViewMarkingSchemes() {
           let groupid = response.data[0]._id
           console.log(groupid)
           axios.post(`http://localhost:5000/marks/update/ev1/${groupid}`, {
-             mark:total,
+            mark: total,
           })
         })
     } else if (e === 'Evaluation 2') {
@@ -160,8 +158,11 @@ export default function ViewMarkingSchemes() {
           console.log(res.data)
           console.log(s, p)
         })
-      axios.get(`http://localhost:5000/ev1/get/${params.gid}`)
-        .then((res) => { setSdata(res.data) })
+      axios
+        .get(`http://localhost:5000/ev1/get/${params.gid}`)
+        .then((res) => {
+          setSdata(res.data)
+        })
         .catch((err) => console.log(err))
     } else if (e === 'Evaluation 2') {
       setEvaluType(e)
@@ -177,11 +178,13 @@ export default function ViewMarkingSchemes() {
 
           console.log(s, p)
         })
-      
-      axios.get(`http://localhost:5000/ev2/get/${params.gid}`)
-        .then((res) => { setSdata(res.data) })
+
+      axios
+        .get(`http://localhost:5000/ev2/get/${params.gid}`)
+        .then((res) => {
+          setSdata(res.data)
+        })
         .catch((err) => console.log(err))
-      
     } else if (e === 'Final Evaluation') {
       setEvaluType(e)
       axios
@@ -195,8 +198,11 @@ export default function ViewMarkingSchemes() {
           console.log(res.data)
           console.log(s, p)
         })
-      axios.get(`http://localhost:5000/ev3/get/${params.gid}`)
-        .then((res) => { setSdata(res.data) })
+      axios
+        .get(`http://localhost:5000/ev3/get/${params.gid}`)
+        .then((res) => {
+          setSdata(res.data)
+        })
         .catch((err) => console.log(err))
     } else if (e === 'Document 1') {
       setEvaluType(e)
@@ -211,8 +217,11 @@ export default function ViewMarkingSchemes() {
           console.log(res.data)
           console.log(s, p)
         })
-      axios.get(`http://localhost:5000/ev1/get/${params.gid}`)
-        .then((res) => { setSdata(res.data) })
+      axios
+        .get(`http://localhost:5000/ev1/get/${params.gid}`)
+        .then((res) => {
+          setSdata(res.data)
+        })
         .catch((err) => console.log(err))
     } else if (e === 'Document 2') {
       setEvaluType(e)
@@ -227,9 +236,12 @@ export default function ViewMarkingSchemes() {
           console.log(res.data)
           console.log(s, p)
         })
-      
-      axios.get(`http://localhost:5000/ev2/get/${params.gid}`)
-        .then((res) => { setSdata(res.data) })
+
+      axios
+        .get(`http://localhost:5000/ev2/get/${params.gid}`)
+        .then((res) => {
+          setSdata(res.data)
+        })
         .catch((err) => console.log(err))
     } else if (e === 'Final Document') {
       setEvaluType(e)
@@ -244,8 +256,11 @@ export default function ViewMarkingSchemes() {
           console.log(res.data)
           console.log(s, p)
         })
-      axios.get(`http://localhost:5000/ev1/get/${params.gid}`)
-        .then((res) => { setSdata(res.data) })
+      axios
+        .get(`http://localhost:5000/ev1/get/${params.gid}`)
+        .then((res) => {
+          setSdata(res.data)
+        })
         .catch((err) => console.log(err))
     }
   }
@@ -321,41 +336,51 @@ export default function ViewMarkingSchemes() {
 
         {/*files display */}
         <div>
-          {sdata.map((file) => { 
+          {sdata.map((file) => {
             return (
               <div>
-                {(selectEvaluType === "Document 1") || (selectEvaluType === "Evaluation 1") ? 
+                {selectEvaluType === 'Document 1' ||
+                selectEvaluType === 'Evaluation 1' ? (
                   <>
-                     <form method="get" action={"http://localhost:5000/supload/" + file.ev1doc}>
-                    <button>dow</button>
-                  </form>
-                    
+                    <form
+                      method='get'
+                      action={'http://localhost:5000/supload/' + file.ev1doc}
+                    >
+                      <button>
+                        Download
+                        <SimCardDownloadIcon />
+                      </button>
+                    </form>
                   </>
-                 : 
-                    
-                  (selectEvaluType === "Document 2") || (selectEvaluType === "Evaluation 2") ? 
+                ) : selectEvaluType === 'Document 2' ||
+                  selectEvaluType === 'Evaluation 2' ? (
                   <>
-                     <form method="get" action={"http://localhost:5000/supload/" + file.ev2doc}>
-                    <button>dow</button>
-                  </form>
-                    
+                    <form
+                      method='get'
+                      action={'http://localhost:5000/supload/' + file.ev2doc}
+                    >
+                      <button>
+                        Download
+                        <SimCardDownloadIcon />
+                      </button>
+                    </form>
                   </>
-                    
-                    : 
-                        (selectEvaluType === "Final Document") || (selectEvaluType === "Final Evaluation") ? (
+                ) : selectEvaluType === 'Final Document' ||
+                  selectEvaluType === 'Final Evaluation' ? (
                   <>
-                     <form method="get" action={"http://localhost:5000/supload/"+ file.ev3doc}>
-                    <button>dow</button>
-                  </form>
-                    
+                    <form
+                      method='get'
+                      action={'http://localhost:5000/supload/' + file.ev3doc}
+                    >
+                      <button>
+                        Download
+                        <SimCardDownloadIcon />
+                      </button>
+                    </form>
                   </>
-                    ) : (
-                        <>
-                        </>
-                )
-                 
-                
-                }
+                ) : (
+                  <></>
+                )}
               </div>
             )
           })}
@@ -433,7 +458,11 @@ export default function ViewMarkingSchemes() {
                 </tr>
               </tbody>
             </Table>
-            <button onClick={() => { Submit(selectEvaluType) }}>
+            <button
+              onClick={() => {
+                Submit(selectEvaluType)
+              }}
+            >
               Submit marks
             </button>
           </form>

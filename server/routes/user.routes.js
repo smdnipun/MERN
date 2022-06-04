@@ -16,13 +16,13 @@ router.route('/:email').get(function (req, res) {
   })
 })
 
-router.route("/allocatepanel").post((req, res) => {
-  console.log(req.body.specialization, req.body.position);
+router.route('/allocatepanel').post((req, res) => {
+  console.log(req.body.specialization, req.body.position)
   User.find({ position: req.body.position }, function (err, result) {
-    if (err) throw err;
-    res.json(result);
-  });
-});
+    if (err) throw err
+    res.json(result)
+  })
+})
 
 router.route('/add').post((req, res) => {
   const name = req.body.name
@@ -50,12 +50,11 @@ router.route('/add').post((req, res) => {
     .catch((err) => res.status(400).json('Error:' + err))
 })
 
-
 router.route('/u/:id').get((req, res) => {
-    User.findById(req.params.id)
-      .then((user) => res.json(user))
-      .catch((err) => res.status(400).json('Error: ' + err))
-  })
+  User.findById(req.params.id)
+    .then((user) => res.json(user))
+    .catch((err) => res.status(400).json('Error: ' + err))
+})
 
 router.route('/update/:id').post((req, res) => {
   User.findById(req.params.id)
@@ -68,14 +67,13 @@ router.route('/update/:id').post((req, res) => {
       users.id = req.body.id
       users.specialization = req.body.specialization
 
-      users.save()
+      users
+        .save()
         .then(() => res.json('User Updated!'))
         .catch((err) => res.status(400).json('Error: ' + err))
     })
     .catch((err) => res.status(400).json('Error: ' + err))
 })
-
-
 
 router.route('/login').post((req, res) => {
   User.findOne({ email: req.body.email }, function (err, result) {
@@ -102,21 +100,5 @@ router.route('/:specalization').get(function (req, res) {
     res.json(result)
   })
 })
-
-//   const update = async (ctx) => {
-//     let uin = ctx.request.body;
-//     const index = data.findIndex((e) => e.id === uin.id);
-//     let msg;
-//     if (index === -1) {
-//       msg = "no user";
-//       data.push(uin);
-//     } else {
-//       data[index] = uin;
-//       msg = "data updated";
-//     }
-//     ctx.body = { data: data, msg: msg };
-//   };
-
-//   router.put("/update/:id", update);
 
 module.exports = router

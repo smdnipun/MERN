@@ -45,18 +45,6 @@ router.route('/get/:gid').get(function (req, res) {
   })
 })
 
-//  router.route("panel/:panelMember").get(function (req, res) {
-
-//   let myquery = {panelMember: Object( req.params.panelMember )};
-
-//     Group
-//       .find(myquery, function (err, result) {
-//         if (err) throw err;
-//         res.json(result);
-
-//       });
-//  });
-
 router.route('/panel/:panelMember').get(function (req, res) {
   let myquery = { panelMember: Object(req.params.panelMember) }
 

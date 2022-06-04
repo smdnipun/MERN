@@ -3,14 +3,11 @@ import { Link } from 'react-router-dom'
 import axios from 'axios'
 import { Navbar, Nav, Container, NavDropdown } from 'react-bootstrap'
 
-
 export default function TopicDetails() {
   let email = localStorage.getItem('user')
 
   const [topic, setTopic] = useState({})
   const [group, setGroup] = useState([])
-
-
 
   const loadData = () => {
     axios
@@ -34,17 +31,16 @@ export default function TopicDetails() {
       .catch(function (error) {
         console.log(error)
       })
-    }
+  }
 
   useEffect(() => {
     loadData()
   }, [])
 
-
   // This following section will display the table with the records of individuals.
   return (
     <div>
-       <Navbar collapseOnSelect expand='lg' bg='light' variant='grey'>
+      <Navbar collapseOnSelect expand='lg' bg='light' variant='grey'>
         <Container>
           <Navbar.Brand href='/dashBoard'>RPMT</Navbar.Brand>
           <Navbar.Toggle aria-controls='responsive-navbar-nav' />
@@ -77,8 +73,9 @@ export default function TopicDetails() {
         </Container>
       </Navbar>
 
-     <button className='btn btn-primary'><Link to ={"/regtop"}>Register New Topic</Link></button>
-
+      <button className='btn btn-primary'>
+        <Link to={'/regtop'}>Register New Topic</Link>
+      </button>
 
       <center>
         <h3 className='navi'>Registered Topics</h3>
@@ -94,17 +91,17 @@ export default function TopicDetails() {
           </thead>
           <tbody>
             <tr>
-              
-
-                            <td>{topic.topic}</td>
-                            <td>{topic.specialization}</td>
-                            <td>{topic.status}</td>
-                            <td>{topic.link}</td>
-                            <td> <Link to={`/panaltopic/${topic._id}`}>
-                            <button className='btn btn-primary'>update</button>
-                            </Link></td>
-             </tr>                          
-              
+              <td>{topic.topic}</td>
+              <td>{topic.specialization}</td>
+              <td>{topic.status}</td>
+              <td>{topic.link}</td>
+              <td>
+                {' '}
+                <Link to={`/panaltopic/${topic._id}`}>
+                  <button className='btn btn-primary'>update</button>
+                </Link>
+              </td>
+            </tr>
           </tbody>
         </table>
       </center>

@@ -3,10 +3,8 @@ import { Link } from 'react-router-dom'
 import axios from 'axios'
 import { Navbar, Nav, Container, NavDropdown } from 'react-bootstrap'
 
-
 export default function Viewgroups() {
   const [users, setUsers] = useState([])
-
 
   // This method fetches the records from the database.
   useEffect(() => {
@@ -15,20 +13,17 @@ export default function Viewgroups() {
     })
   }, [])
 
-// This method fetches the records from the database.
-useEffect(() => {
-  axios.get('/user')
-      .then((response) => {
-          setUsers(response.data);
-      })
-}, [])
-
-
+  // This method fetches the records from the database.
+  useEffect(() => {
+    axios.get('/user').then((response) => {
+      setUsers(response.data)
+    })
+  }, [])
 
   // This following section will display the table with the records of individuals.
   return (
     <div>
-       <Navbar collapseOnSelect expand='lg' bg='light' variant='grey'>
+      <Navbar collapseOnSelect expand='lg' bg='light' variant='grey'>
         <Container>
           <Navbar.Brand href='/dashBoard'>RPMT</Navbar.Brand>
           <Navbar.Toggle aria-controls='responsive-navbar-nav' />
@@ -61,7 +56,6 @@ useEffect(() => {
         </Container>
       </Navbar>
 
-
       <center>
         <h3 className='navi'>Registered Users</h3>
         <br></br>
@@ -78,22 +72,23 @@ useEffect(() => {
             </tr>
           </thead>
           <tbody>
-              {
-                    users.map(g=>(
-                        <tr>
-                            <td>{g.name}</td>
-                            <td>{g.position}</td>
-                            <td>{g.email}</td>
-                            <td>{g.phone}</td>
-                            <td>{g.address}</td>
-                            <td>{g.id}</td>
-                            <td>{g.specialization}</td>
-                             <td> <Link to={`/edituser/${g._id}`}>
-                        <button className='btn btn-primary'>update</button>
-                        </Link></td>
-                        </tr>
-                    ))
-              }
+            {users.map((g) => (
+              <tr>
+                <td>{g.name}</td>
+                <td>{g.position}</td>
+                <td>{g.email}</td>
+                <td>{g.phone}</td>
+                <td>{g.address}</td>
+                <td>{g.id}</td>
+                <td>{g.specialization}</td>
+                <td>
+                  {' '}
+                  <Link to={`/edituser/${g._id}`}>
+                    <button className='btn btn-primary'>update</button>
+                  </Link>
+                </td>
+              </tr>
+            ))}
           </tbody>
         </table>
       </center>

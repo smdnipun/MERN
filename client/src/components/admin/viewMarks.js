@@ -1,24 +1,21 @@
-import React,{useState,useEffect} from 'react'
+import React, { useState, useEffect } from 'react'
 import axios from 'axios'
 import { Table } from 'react-bootstrap'
 import NavBar from '../common/navBar'
 
 export default function ViewMark() {
-    const [mark, setMark] = useState([])
-    
-    const loadData = () => {
-        
-        axios
-            .get('http://localhost:5000/marks/')
-            .then(function (response) {
-                setMark(response.data)
-                console.log(response)
-            })
-    }
+  const [mark, setMark] = useState([])
 
-useEffect(() => {
-  loadData()
-}, [])
+  const loadData = () => {
+    axios.get('http://localhost:5000/marks/').then(function (response) {
+      setMark(response.data)
+      console.log(response)
+    })
+  }
+
+  useEffect(() => {
+    loadData()
+  }, [])
 
   return (
     <>

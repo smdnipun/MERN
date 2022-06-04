@@ -88,10 +88,10 @@ const GroupSchedule = () => {
                   noValidate
                   sx={{ mt: 3 }}
                 >
-                    <Typography component='h1' variant='h5'>
-                      Group Id:{params._id}
-                    </Typography>
-               
+                  <Typography component='h1' variant='h5'>
+                    Group Id:{params._id}
+                  </Typography>
+
                   <br />
                   <br />
                   <br />
@@ -158,15 +158,13 @@ const GroupSchedule = () => {
                         }}
                       ></Box>
                     </Grid>
-                    
                   </Grid>
-                  
-                    <Stack direction='' spacing={2}>
-                      <Button type='submit' variant='contained'>
-                        Schedule
-                      </Button>
-                    </Stack>
-                 
+
+                  <Stack direction='' spacing={2}>
+                    <Button type='submit' variant='contained'>
+                      Schedule
+                    </Button>
+                  </Stack>
                 </Box>
               </Box>
             </Container>

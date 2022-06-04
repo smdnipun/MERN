@@ -17,7 +17,6 @@ router.route('/getMark/:gid').get(function (req, res) {
   })
 })
 
-
 router.route('/add').post((req, res) => {
   const gid = req.body.gid
   // const eval=req.body.evaluation1
@@ -46,102 +45,74 @@ router.route('/add').post((req, res) => {
 })
 
 router.route('/update/ev1/:id').post((req, res) => {
-  console.log(req.body)
-  
-    Mark.findById(req.params.id)
-      .then((mark) => {
-        console.log(mark)
-        mark.ev1Mark = req.body.mark
-        mark.save()
-          .then(() => res.json('User Updated!'))
-          .catch((err) => res.status(400).json('Error: ' + err))
-      })
-      .catch((err) => res.status(400).json('Error: ' + err))
-  })
+  Mark.findById(req.params.id)
+    .then((mark) => {
+      mark.ev1Mark = req.body.mark
+      mark
+        .save()
+        .then(() => res.json('User Updated!'))
+        .catch((err) => res.status(400).json('Error: ' + err))
+    })
+    .catch((err) => res.status(400).json('Error: ' + err))
+})
 
-  router.route('/update/ev2/:id').post((req, res) => {
-    Mark.findById(req.params.id)
-      .then((mark) => {
-        mark.ev2Mark = req.body.mark
-        mark.save()
-          .then(() => res.json('User Updated!'))
-          .catch((err) => res.status(400).json('Error: ' + err))
-      })
-      .catch((err) => res.status(400).json('Error: ' + err))
-  })
+router.route('/update/ev2/:id').post((req, res) => {
+  Mark.findById(req.params.id)
+    .then((mark) => {
+      mark.ev2Mark = req.body.mark
+      mark
+        .save()
+        .then(() => res.json('User Updated!'))
+        .catch((err) => res.status(400).json('Error: ' + err))
+    })
+    .catch((err) => res.status(400).json('Error: ' + err))
+})
 
-  router.route('/update/fev/:id').post((req, res) => {
-    Mark.findById(req.params.id)
-      .then((mark) => {
-        mark.finalevMark = req.body.mark
-        mark.save()
-          .then(() => res.json('User Updated!'))
-          .catch((err) => res.status(400).json('Error: ' + err))
-      })
-      .catch((err) => res.status(400).json('Error: ' + err))
-  })
+router.route('/update/fev/:id').post((req, res) => {
+  Mark.findById(req.params.id)
+    .then((mark) => {
+      mark.finalevMark = req.body.mark
+      mark
+        .save()
+        .then(() => res.json('User Updated!'))
+        .catch((err) => res.status(400).json('Error: ' + err))
+    })
+    .catch((err) => res.status(400).json('Error: ' + err))
+})
 
-  router.route('/update/doc1/:id').post((req, res) => {
-    Mark.findById(req.params.id)
-      .then((mark) => {
-        mark.doc1 = req.body.mark
-        mark.save()
-          .then(() => res.json('User Updated!'))
-          .catch((err) => res.status(400).json('Error: ' + err))
-      })
-      .catch((err) => res.status(400).json('Error: ' + err))
-  })
+router.route('/update/doc1/:id').post((req, res) => {
+  Mark.findById(req.params.id)
+    .then((mark) => {
+      mark.doc1 = req.body.mark
+      mark
+        .save()
+        .then(() => res.json('User Updated!'))
+        .catch((err) => res.status(400).json('Error: ' + err))
+    })
+    .catch((err) => res.status(400).json('Error: ' + err))
+})
 
-  router.route('/update/doc2/:id').post((req, res) => {
-    Mark.findById(req.params.id)
-      .then((mark) => {
-        mark.doc2 = req.body.mark
-        mark.save()
-          .then(() => res.json('User Updated!'))
-          .catch((err) => res.status(400).json('Error: ' + err))
-      })
-      .catch((err) => res.status(400).json('Error: ' + err))
-  })
+router.route('/update/doc2/:id').post((req, res) => {
+  Mark.findById(req.params.id)
+    .then((mark) => {
+      mark.doc2 = req.body.mark
+      mark
+        .save()
+        .then(() => res.json('User Updated!'))
+        .catch((err) => res.status(400).json('Error: ' + err))
+    })
+    .catch((err) => res.status(400).json('Error: ' + err))
+})
 
-  router.route('/update/docf/:id').post((req, res) => {
-    Mark.findById(req.params.id)
-      .then((mark) => {
-        mark.docfinal = req.body.mark
-        mark.save()
-          .then(() => res.json('User Updated!'))
-          .catch((err) => res.status(400).json('Error: ' + err))
-      })
-      .catch((err) => res.status(400).json('Error: ' + err))
-  })
-
-  
-
-// router.route('/:id').get((req, res) => {
-//     Exercise.findById(req.params.id)
-//       .then((exercise) => res.json(exercise))
-//       .catch((err) => res.status(400).json('Error: ' + err))
-//   })
-
-//   router.route('/:id').delete((req, res) => {
-//     Exercise.findByIdAndDelete(req.params.id)
-//       .then(() => res.json('Exercise deleted.'))
-//       .catch((err) => res.status(400).json('Error: ' + err))
-//   })
-
-//   router.route('/update/:id').post((req, res) => {
-//     Exercise.findById(req.params.id)
-//       .then((exercise) => {
-//         exercise.username = req.body.username
-//         exercise.description = req.body.description
-//         exercise.duration = Number(req.body.duration)
-//         exercise.date = Date.parse(req.body.date)
-
-//         exercise
-//           .save()
-//           .then(() => res.json('Exercise Updated!'))
-//           .catch((err) => res.status(400).json('Error: ' + err))
-//       })
-//       .catch((err) => res.status(400).json('Error: ' + err))
-//   })
-
+router.route('/update/docf/:id').post((req, res) => {
+  Mark.findById(req.params.id)
+    .then((mark) => {
+      mark.docfinal = req.body.mark
+      mark
+        .save()
+        .then(() => res.json('User Updated!'))
+        .catch((err) => res.status(400).json('Error: ' + err))
+    })
+    .catch((err) => res.status(400).json('Error: ' + err))
+})
 module.exports = router

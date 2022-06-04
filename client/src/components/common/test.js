@@ -12,12 +12,10 @@ import ListItemButton from '@mui/material/ListItemButton'
 import ListItemIcon from '@mui/material/ListItemIcon'
 import ListItemText from '@mui/material/ListItemText'
 
-
 const drawerWidth = 240
 
 export default function Test() {
   return (
-      
     <>
       <Box sx={{ display: 'flex' }}>
         <CssBaseline />
@@ -52,9 +50,7 @@ export default function Test() {
             {['Inbox', 'Starred', 'Send email', 'Drafts'].map((text, index) => (
               <ListItem key={text} disablePadding>
                 <ListItemButton>
-                  <ListItemIcon>
-                 
-                  </ListItemIcon>
+                  <ListItemIcon></ListItemIcon>
                   <ListItemText primary={text} />
                 </ListItemButton>
               </ListItem>
@@ -65,9 +61,7 @@ export default function Test() {
             {['All mail', 'Trash', 'Spam'].map((text, index) => (
               <ListItem key={text} disablePadding>
                 <ListItemButton>
-                  <ListItemIcon>
-        
-                  </ListItemIcon>
+                  <ListItemIcon></ListItemIcon>
                   <ListItemText primary={text} />
                 </ListItemButton>
               </ListItem>

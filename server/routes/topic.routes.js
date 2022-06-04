@@ -1,7 +1,6 @@
 const router = require('express').Router()
 let Topic = require('../models/topic.model')
 
-
 router.route('/').get((req, res) => {
   Topic.find()
     .then((topics) => res.json(topics))
@@ -9,18 +8,18 @@ router.route('/').get((req, res) => {
 })
 
 router.route('/add').post((req, res) => {
-  const gid = req.body.gid  
+  const gid = req.body.gid
   const topic = req.body.topic
   const specialization = req.body.specialization
   const status = req.body.status
-  const link= req.body.link
+  const link = req.body.link
 
   const newTopic = new Topic({
     gid,
     topic,
     specialization,
     status,
-    link:"none"
+    link: 'none',
   })
   newTopic
     .save()
@@ -44,7 +43,6 @@ router.route('/u/:id').get((req, res) => {
     .then((topic) => res.json(topic))
     .catch((err) => res.status(400).json('Error: ' + err))
 })
-
 
 //search topic by email address
 router.route('/searchBygid/:gid').get((req, res) => {
