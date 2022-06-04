@@ -55,6 +55,23 @@ export default function DashBoard() {
   }, [])
   //End
 
+  //co-supervisor
+  const [csdata, setCSData] = useState([])
+
+  const loadCSData = () => {
+    let name = localStorage.getItem('userN')
+    axios
+      .get(`http://localhost:5000/group/cosupervisour/${name}`)
+      .then(function (response) {
+        setCSData(response.data)
+      })
+  }
+
+  useEffect(() => {
+    loadCSData()
+  }, [])
+  //End
+
   //Admin
   //End
 
@@ -169,7 +186,56 @@ export default function DashBoard() {
                                 <button className='btn btn-dark'>View</button>
                               </NavLink>
                               <NavLink to={`/message/${group.gid}`}>
-                                <button className='btn btn-secondary'>
+                                <button className='btn btn-primary'>
+                                  Chat
+                                </button>
+                              </NavLink>
+                            </CardActions>
+                          </Grid>
+                        </Grid>
+                      </CardContent>
+                    </div>
+                  </>
+                )
+              })}
+            </Card>
+          </>
+        ) : localStorage.getItem('userP') == 'co-supervisor' ? (
+          <>
+            <h1>Hello! {localStorage.getItem('userN')}</h1>
+            <Card sx={{ minWidth: 275 }}>
+              {csdata.map((group) => {
+                return (
+                  <>
+                    <div className='container'>
+                      <CardContent>
+                        <Typography
+                          sx={{ fontSize: 14 }}
+                          color='text.secondary'
+                          gutterBottom
+                        >
+                          {group.gid}
+                        </Typography>
+                        <Typography variant='h5' component='div'></Typography>
+                        <Typography sx={{ mb: 1.5 }} color='text.secondary'>
+                          Supervisor-{group.supervisor}
+                        </Typography>
+                        <Grid container spacing={2}>
+                          <Grid item xs={12} sm={6}>
+                            <Typography variant='body2'>
+                              <ListGroup>
+                                <ListItem>{group.first}</ListItem>
+                                <ListItem>{group.second}</ListItem>
+                                <ListItem>{group.third}</ListItem>
+                                <ListItem>{group.forth}</ListItem>
+                              </ListGroup>
+                              <br />
+                            </Typography>
+                          </Grid>
+                          <Grid item xs={12} sm={6}>
+                            <CardActions>
+                              <NavLink to={`/message/${group.gid}`}>
+                                <button className='btn btn-primary'>
                                   Chat
                                 </button>
                               </NavLink>
