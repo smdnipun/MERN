@@ -6,6 +6,8 @@ import Table from 'react-bootstrap/Table'
 
 export default function ViewMarkingSchemes() {
   let params = useParams()
+
+  const [sdata, setSdata] = useState([])
   const [data, setData] = useState([])
   const [scheudle, setSchedule] = useState([])
   const [test, setTest] = useState([])
@@ -158,6 +160,9 @@ export default function ViewMarkingSchemes() {
           console.log(res.data)
           console.log(s, p)
         })
+      axios.get(`http://localhost:5000/ev1/get/${params.gid}`)
+        .then((res) => { setSdata(res.data) })
+        .catch((err) => console.log(err))
     } else if (e === 'Evaluation 2') {
       setEvaluType(e)
       axios
@@ -172,6 +177,11 @@ export default function ViewMarkingSchemes() {
 
           console.log(s, p)
         })
+      
+      axios.get(`http://localhost:5000/ev2/get/${params.gid}`)
+        .then((res) => { setSdata(res.data) })
+        .catch((err) => console.log(err))
+      
     } else if (e === 'Final Evaluation') {
       setEvaluType(e)
       axios
@@ -185,6 +195,9 @@ export default function ViewMarkingSchemes() {
           console.log(res.data)
           console.log(s, p)
         })
+      axios.get(`http://localhost:5000/ev3/get/${params.gid}`)
+        .then((res) => { setSdata(res.data) })
+        .catch((err) => console.log(err))
     } else if (e === 'Document 1') {
       setEvaluType(e)
       axios
@@ -198,6 +211,9 @@ export default function ViewMarkingSchemes() {
           console.log(res.data)
           console.log(s, p)
         })
+      axios.get(`http://localhost:5000/ev1/get/${params.gid}`)
+        .then((res) => { setSdata(res.data) })
+        .catch((err) => console.log(err))
     } else if (e === 'Document 2') {
       setEvaluType(e)
       axios
@@ -211,6 +227,10 @@ export default function ViewMarkingSchemes() {
           console.log(res.data)
           console.log(s, p)
         })
+      
+      axios.get(`http://localhost:5000/ev2/get/${params.gid}`)
+        .then((res) => { setSdata(res.data) })
+        .catch((err) => console.log(err))
     } else if (e === 'Final Document') {
       setEvaluType(e)
       axios
@@ -224,6 +244,9 @@ export default function ViewMarkingSchemes() {
           console.log(res.data)
           console.log(s, p)
         })
+      axios.get(`http://localhost:5000/ev1/get/${params.gid}`)
+        .then((res) => { setSdata(res.data) })
+        .catch((err) => console.log(err))
     }
   }
   useEffect(() => {
@@ -295,6 +318,48 @@ export default function ViewMarkingSchemes() {
         )}
         <br />
         <br />
+
+        {/*files display */}
+        <div>
+          {sdata.map((file) => { 
+            return (
+              <div>
+                {(selectEvaluType === "Document 1") || (selectEvaluType === "Evaluation 1") ? 
+                  <>
+                     <form method="get" action={"http://localhost:5000/supload/" + file.ev1doc}>
+                    <button>dow</button>
+                  </form>
+                    
+                  </>
+                 : 
+                    
+                  (selectEvaluType === "Document 2") || (selectEvaluType === "Evaluation 2") ? 
+                  <>
+                     <form method="get" action={"http://localhost:5000/supload/" + file.ev2doc}>
+                    <button>dow</button>
+                  </form>
+                    
+                  </>
+                    
+                    : 
+                        (selectEvaluType === "Final Document") || (selectEvaluType === "Final Evaluation") ? (
+                  <>
+                     <form method="get" action={"http://localhost:5000/supload/"+ file.ev3doc}>
+                    <button>dow</button>
+                  </form>
+                    
+                  </>
+                    ) : (
+                        <>
+                        </>
+                )
+                 
+                
+                }
+              </div>
+            )
+          })}
+        </div>
 
         <>
           <Table>
