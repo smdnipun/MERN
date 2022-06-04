@@ -3,7 +3,6 @@ const router = express.Router()
 const multer = require('multer')
 const File = require('../models/adminfile.model')
 
-// import https from 'https';
 
 const storage = multer.diskStorage({
   destination: (req, file, callback) => {
@@ -67,37 +66,14 @@ router.get('/:id', (req, res) => {
     .catch((err) => res.status(400).json(`Error: ${err}`))
 })
 
-// const Storage = multer.diskStorage({
-//   destination: "uploads",
-//   filename: (req, file, cb) => {
-//     cb(null, Math.random() + file.originalname);
-//   },
-// });
+//UPDATE DATA
 
-// const upload = multer({ storage: Storage });
-
-// router.route('/').get((req, res) => {
-//     Adminfile.find()
-//     .then((adminfiles) => res.json(adminfiles))
-//     .catch((err) => res.status(400).json('Error:' + err ))
+// router.post('/update/:id', (req, res) => { 
+//   File.findById(req.params.id)
+//     .then((newfile) => { 
+//       specialization: null,
+//       description: null,  
+//     })
 // })
 
-// router.route('/add', upload.single("uplaoded_image")).post((req,res) => {
-//     const name = req.body.name
-//     const description = req.body.description
-//     const file = req.body.originalname
-// const file = req.body.file.path.replace(/\\/g, "/");
-
-// const newadminfile = new Adminfile({
-//     name,
-//     description,
-//     file,
-// })
-// console.log(req.body.data)
-// res.json(req.body.data.name)
-// newadminfile
-//     .save()
-//     .then(()=> res.json('Adminfile added'))
-//     .catch((err) => res.status(400).json('Error:' + err))
-// })
 module.exports = router

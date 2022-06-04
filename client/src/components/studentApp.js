@@ -1,8 +1,6 @@
 import React from 'react'
 import { Route, Routes } from 'react-router-dom'
-
 import Creategroups from './student/Creategroups'
-
 import Registertopic from './student/Registertopic'
 import ViewMyGroup from './student/ViewMyGroup'
 import RequestCoSupervisor from './student/reqCoSupervisor'
@@ -16,7 +14,6 @@ const StudentApp = () => {
     <>
       <div>
         <Routes>
-    
           <Route exact path={'/addgrp'} element={<Creategroups />} />
           <Route exact path={'/regtop'} element={<Registertopic />} />
           <Route exact path={'/grp'} element={<ViewMyGroup />} />
@@ -34,4 +31,3 @@ const StudentApp = () => {
   )
 }
 export default StudentApp
-

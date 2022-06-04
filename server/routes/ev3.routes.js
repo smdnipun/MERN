@@ -1,14 +1,14 @@
 const express = require('express')
 const router = express.Router()
 const multer = require('multer')
-const SFile = require('../models/ev3.model')
+const EV3File = require('../models/ev3.model')
 
 const storage =multer.diskStorage({
     destination: (req, file, callback) => {
         callback(null, 'supload')
     },
     filename : (req, file, callback) => {
-        callback(null, file.origanalname)
+        callback(null, file.originalname)
     },
 })
 
@@ -16,7 +16,7 @@ const supload = multer({ storage: storage})
 
 //GET ALL DATA
 router.get('/get', (req, res) => {
-    SFile.find()
+    EV3File.find()
         .then((file) => {
             res.json(file)
         })
@@ -24,11 +24,10 @@ router.get('/get', (req, res) => {
 });
 
 //ADD NEW DATA
-router.post('/add', supload.single('file'), (req, res) => {
-    const newfile = new SFile({
-     
-        ev3doc : req.body.originalname,
-        ev3pre_start : req.body.originalname,
+router.post('/add', supload.single('ev3doc'), (req, res) => {
+    const newfile = new EV3File({
+        ev3doc: req.body.originalname,
+        gid: req.body.gid,
     });
 
     newfile 
@@ -36,5 +35,17 @@ router.post('/add', supload.single('file'), (req, res) => {
         .then(() => res.json('new student file posted'))
         .catch((err) => res.status(400).json(`Error : ${err}`))
 });
+
+//GET DATA USING GID
+
+router.get('/get/:gid', (req, res) => { 
+    let myquery = {
+    gid: Object(req.params.gid),
+  }
+  SFile.find(myquery, function (err, result) {
+    if (err) throw err
+    res.json(result)
+  })
+})
 
 module.exports = router  

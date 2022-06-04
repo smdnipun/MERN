@@ -23,16 +23,23 @@ export default function Topics(){
              <div>
                  <NavBar />
                 <div className = 'bod' style={{ maxWidth: 800, margin: "auto" }}>
-                    <tr>
-                        
-                    </tr>
+                    <h2 style={{margin : "auto"}}>Research Topic</h2>
 
                     {data.map((row) => {
                         return(
                         <div>
                             <tr >
-                                Specialization : {row.specialization}<br/>
-                                description:{row.description}<br/><br/>
+                                 {row.specialization}<br/>
+                                description:{row.description}<br /><br />
+                                    
+                                <div>
+                                    Document: {row.filepdf}
+                                    <form method="get" action={"http://localhost:5000/upload/"+row.filepdf}>
+                                        <button type = "submit">Download</button>
+                                    </form>
+                                    <br/>
+                                </div>
+                                    
                                 Evaluation 1<br/>
                                 Document Submition Date: {row.ev1doc}<br/>
                                 <div>
@@ -52,10 +59,6 @@ export default function Topics(){
                                 <div>
                                     Precentation Submition Start Date: {row.ev1doc}&emsp;&emsp;
                                     Precentation Submition end Date: {row.ev1doc}<br/><br/>
-                                </div>
-
-                                <div>
-                                     Document: {row.filepdf}<br/>
                                 </div>
 
                             </tr>

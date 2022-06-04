@@ -20,6 +20,13 @@ router.route('/check').post((req, res) => {
   )
 })
 
+router.route('/pCheck').post((req, res) => {
+  Group.find({ panelMember: req.body.panelMember }, function (err, result) {
+    if (err) throw err
+    res.json(result)
+  })
+})
+
 router.route('/:id').get(function (req, res) {
   let myquery = { _id: Object(req.params.id) }
 
@@ -61,6 +68,15 @@ router.route('/panel/:panelMember').get(function (req, res) {
 
 router.route('/supervisour/:supervisor').get(function (req, res) {
   let myquery = { supervisor: Object(req.params.supervisor) }
+
+  Group.find(myquery, function (err, result) {
+    if (err) throw err
+    res.json(result)
+  })
+})
+
+router.route('/cosupervisour/:cosupervisor').get(function (req, res) {
+  let myquery = { co_supervisor: Object(req.params.cosupervisor) }
 
   Group.find(myquery, function (err, result) {
     if (err) throw err

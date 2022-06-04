@@ -7,13 +7,23 @@ export default function Filesub() {
     const [data, setData] = useState([]);
     const [ev1doc, setEv1doc] = useState([]);
     const [ev2doc, setEv2doc] = useState([]);
-    const [ev3doc, setEv3doc] = useState('');
+    const [ev3doc, setEv3doc] = useState([]);
+    const [gid, setGid] = useState([]);
 
+    const email = localStorage.getItem('user');
     const sp = localStorage.getItem('userS')
 
-    const onChangeFile = e => {
+    const onChangeFileev1 = e => {
         setEv1doc(e.target.files[0]);
+        
+    }
+       const onChangeFileev2 = e => {
+        
         setEv2doc(e.target.files[0]);
+       
+    }
+       const onChangeFileev3 = e => {
+
         setEv3doc(e.target.files[0]);
     }
 
@@ -24,16 +34,19 @@ export default function Filesub() {
         const formData = new FormData();
 
         formData.append("ev1doc", ev1doc);
+        formData.append("gid", gid[0].gid);
+
 
         axios
             .post("/ev1/add", formData)
             .then((res) => {
                 setMessage(res.data);
-                navi("/addfiles");
+                navi("/addfiles")
             })
             .catch((err) => {
                 console.log(err);
             });
+        console.log(formData);
     };
 
     const changeonClickev2 = (e) => {
@@ -43,6 +56,7 @@ export default function Filesub() {
         const formData = new FormData();
 
         formData.append("ev2doc", ev2doc);
+        formData.append("gid", gid[0].gid);
 
         axios
             .post("/ev2/add", formData)
@@ -62,6 +76,7 @@ export default function Filesub() {
         const formData = new FormData();
 
         formData.append("ev3doc", ev3doc);
+        formData.append("gid", gid[0].gid);
 
         axios
             .post("/ev3/add", formData)
@@ -74,11 +89,31 @@ export default function Filesub() {
             });
     };
 
-    useEffect(() => {
-        axios.get(`http://localhost:5000/adminfile/get/${sp}`)
+    const loaddata = () => { 
+         axios.get(`http://localhost:5000/adminfile/get/${sp}`)
             .then((res) => setData(res.data))
             .catch((err) => console.log(err))
+    }
+
+    const getgid = () => { 
+        axios
+            .post('http://localhost:5000/group/check', {
+                email: email,
+            })
+            .then((res) => {
+                setGid(res.data)
+                console.log(res.data[0].gid)
+            })
+    }
+
+    useEffect(() => {
+        loaddata();
+        getgid();
     }, [])
+
+
+    console.log(gid);
+
 
     return (
         <div >
@@ -100,7 +135,7 @@ export default function Filesub() {
                                             <input
                                                 type="file" multiple
                                                 filename="ev1doc"
-                                                onChange={onChangeFile}
+                                                onChange={onChangeFileev1}
                                                 className="form-control" />
                                     </div>
                                       <button className="btn" 
@@ -122,7 +157,7 @@ export default function Filesub() {
                                         <input 
                                             type="file"  multiple
                                             filename="ev2doc"
-                                            onChange={onChangeFile}
+                                            onChange={onChangeFileev2}
                                             className="form-control"/>
                                     </div>
                                     <button className="btn" 
@@ -144,7 +179,7 @@ export default function Filesub() {
                                         <input 
                                             type="file"  multiple
                                             filename="ev3doc"
-                                            onChange={onChangeFile}
+                                            onChange={onChangeFileev3}
                                             className="form-control"/>
                                     </div>
                                     <button className="btn" 

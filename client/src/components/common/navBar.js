@@ -17,7 +17,7 @@ import ListItemIcon from '@mui/material/ListItemIcon'
 import ListItemText from '@mui/material/ListItemText'
 
 export default function NavBar() {
-  const drawerWidth = 240
+  const drawerWidth = 120
 
   return (
     <div>
@@ -78,7 +78,7 @@ export default function NavBar() {
             <Toolbar />
             {localStorage.getItem('userP') == 'Panel Member' ? (
               <>
-                <ListItemButton eventKey=''>Evaluvate topics</ListItemButton>
+                <ListItemButton to='/evaluate'>Evaluvate topics</ListItemButton>
                 <ListItemButton eventKey=''>
                   Evaluvate presentation
                 </ListItemButton>
@@ -100,23 +100,23 @@ export default function NavBar() {
             ) : localStorage.getItem('userP') == 'Admin' ? (
               <>
                 <ListItemButton href=''>Create Panel</ListItemButton>
-                <ListItemButton eventKey='/sMarking'>
+                <ListItemButton to='/schedule'>Schedule Viva</ListItemButton>
+                <ListItemButton to='/sMarking'>
                   Create MarkingScehme
                 </ListItemButton>
-                <ListItemButton eventKey=''>View Marks</ListItemButton>
+                <ListItemButton to='/viewMark'>View Marks</ListItemButton>
                 <ListItemButton to='/addfiles'>Add Reseach </ListItemButton>
                 <ListItemButton to='/userlist'>Manage Users</ListItemButton>
                 <ListItemButton to='/grplist'>Manage Groups</ListItemButton>
-                
               </>
             ) : localStorage.getItem('userP') == 'Student' ? (
               <>
-                <ListItemButton to=''>Documents</ListItemButton>
                 <ListItemButton to='/reqCo'>Request Supervisor</ListItemButton>
                 <ListItemButton to='/topic'>Research </ListItemButton>
-                <ListItemButton to='/topdet'>top </ListItemButton>
+                <ListItemButton to='/topdet'>Topics</ListItemButton>
                 <ListItemButton to='/addgrp'>Create Group</ListItemButton>
-
+                <ListItemButton to='/subdoc'>Documents</ListItemButton>
+                <ListItemButton to='/reqCo'>Request Supervisor</ListItemButton>
               </>
             ) : (
               <p>not found:{localStorage.getItem('userP')}</p>
