@@ -40,8 +40,6 @@ export default function Login(props) {
     window.location = '/'
   }
 
-
-
   async function SweatAlert(text) {
     // await sleep(1000)
     Swal.fire({
