@@ -116,6 +116,36 @@ export default function Registertopic() {
                 </div>
               </Card>
             </div>
+            <br></br>
+
+            <div className='form-group'>
+              <label>Research Topic</label>
+              <input
+                className='form-control'
+                value={topic}
+                onChange={(e) => setTopic(e.target.value)}
+              />
+            </div>
+            <br></br>
+
+            <div className='form-group'>
+              <label>Specialization</label>
+              <select
+                class='form-select'
+                value={specialization}
+                onChange={(e) => setSpecialization(e.target.value)}
+              >
+                <option>Software Engineering</option>
+                <option>Data Science</option>
+                <option>Cyber Security</option>
+                <option>Information Technology</option>
+              </select>
+            </div>
+            <br></br>
+
+            <button onClick={pass} type='submit'>
+              Submit
+            </button>
           </div>
         </center>
       </div>

@@ -28,7 +28,7 @@ router.post('/add', supload.single('ev2doc'), (req, res) => {
     const newfile = new SFile({
      
         ev2doc : req.file.originalname,
-    
+        gid: req.body.gid,
 
     });
 
@@ -37,5 +37,17 @@ router.post('/add', supload.single('ev2doc'), (req, res) => {
         .then(() => res.json('new student file posted'))
         .catch((err) => res.status(400).json(`Error : ${err}`))
 });
+
+//GET DATA USING GID
+
+router.get('/get/:gid', (req, res) => { 
+    let myquery = {
+    gid: Object(req.params.gid),
+  }
+  SFile.find(myquery, function (err, result) {
+    if (err) throw err
+    res.json(result)
+  })
+})
 
 module.exports = router  

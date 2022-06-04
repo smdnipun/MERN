@@ -1,7 +1,6 @@
 import * as React from 'react'
 import { Navbar, Nav, Container, NavDropdown } from 'react-bootstrap'
 import '../../../node_modules/bootstrap/dist/css/bootstrap.min.css'
-import { NavLink } from 'react-router-dom'
 
 import Box from '@mui/material/Box'
 import Drawer from '@mui/material/Drawer'
@@ -67,9 +66,9 @@ export default function NavBar() {
       ) : localStorage.getItem('userP') == 'Student' ? (
         <>
           <ListItemButton to='/dashBoard'>Home</ListItemButton>
-          <ListItemButton to='/regtop'>Topic Registration</ListItemButton>
+          <ListItemButton to='/topdet'>Research Topics</ListItemButton>
           <ListItemButton to='/reqCo'>Request Supervisor</ListItemButton>
-          <ListItemButton to='/topic'>Research </ListItemButton>
+          <ListItemButton to='/topic'>Research Details</ListItemButton>
           <ListItemButton to='/subdoc'>Documents</ListItemButton>
           <ListItemButton to='/addgrp'>Create Group</ListItemButton>
         </>

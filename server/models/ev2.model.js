@@ -6,6 +6,9 @@ const ev2 = new Schema (
     {
         ev2doc: {
              type:String,
+        },
+        gid: {
+            type:String,
         }
     }
 )
