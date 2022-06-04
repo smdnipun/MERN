@@ -74,8 +74,8 @@ export default function CoSupAcceptTopic() {
   return (
     <div>
       <NavBar />
-      <h1>Accept Topics</h1>
       <div className='container'>
+        <h3>Accept Topics</h3>
         <Table className='talbe'>
           <thead className='thead-light'>
             <tr>

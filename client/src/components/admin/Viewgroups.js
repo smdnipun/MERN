@@ -112,7 +112,3 @@ const loadData=() =>{
         </div>
     )
 }
-
-                            
-
-                            

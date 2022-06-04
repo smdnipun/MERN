@@ -72,9 +72,10 @@ export default function AcceptTopic() {
   }
 
   return (
-    <div >
+    <div>
       <NavBar />
-      <div className='container'>
+      <div className='container mt-3'>
+        <h3>Accept Topics</h3>
         <Table className='talbe'>
           <thead className='thead-light'>
             <tr>

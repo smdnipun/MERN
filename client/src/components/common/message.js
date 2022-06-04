@@ -69,7 +69,7 @@ export default function Message() {
       <NavBar />
       <div className='container chat-window pt-4'>
         <div className='chat-header'>
-          <p>Group ID :-  {gid}</p>
+          <p>Group ID :- {gid}</p>
         </div>
         <div className='chat-body'>
           <ScrollToBottom className='message-container'>

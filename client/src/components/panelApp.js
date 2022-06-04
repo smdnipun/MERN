@@ -3,13 +3,11 @@ import { Route, Routes } from 'react-router-dom'
 import EvaluateTopice from './panelMember/evaluateTopic'
 import ViewMarkingSchemes from './panelMember/markingScheme'
 
-
 const PanelApp = () => {
   return (
     <>
       <div>
         <Routes>
-    
           <Route
             exact
             path='/viewMarking/:gid'

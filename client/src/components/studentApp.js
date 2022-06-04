@@ -19,12 +19,9 @@ const StudentApp = () => {
           <Route exact path={'/grp'} element={<ViewMyGroup />} />
           <Route exact path={'/reqCo'} element={<RequestCoSupervisor />} />
           <Route exact path={'/topic'} element={<Topics />} />
-          <Route exact path={'/subdoc'} element={<Filesub/>}/>
-          <Route exact path={'/topdet'} element={<TopicDetails/>}/>
-          <Route exact path={'/Panaltopic/:_id'} element={<Panaltopic/>}/>
-
-
-          
+          <Route exact path={'/subdoc'} element={<Filesub />} />
+          <Route exact path={'/topdet'} element={<TopicDetails />} />
+          <Route exact path={'/Panaltopic/:_id'} element={<Panaltopic />} />
         </Routes>
       </div>
     </>

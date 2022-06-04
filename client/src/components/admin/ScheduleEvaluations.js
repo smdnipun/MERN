@@ -47,15 +47,14 @@ export default function Schedule() {
                   Group ID {group.gid}
                 </Typography>
                 <Typography variant='h5' component='div'>
-                 Leader {group.first}
+                  Leader {group.first}
                 </Typography>
-                <Typography sx={{ mb: 1.5 }} color='text.secondary'>
-                 
-                </Typography>
+                <Typography
+                  sx={{ mb: 1.5 }}
+                  color='text.secondary'
+                ></Typography>
                 <Typography variant='body2'>
-          
                   <br />
-                 
                 </Typography>
               </CardContent>
               <CardActions>
@@ -85,12 +84,12 @@ export default function Schedule() {
 //         <td>{group.gid}</td>
 //         <td>{group.first}</td>
 
-        // <NavLink
-        //   to={`/groupSchedule/${group.gid}`}
-        //   className='btn btn-outline-dark me-2'
-        // >
-        //   Schedule
-        // </NavLink>
+// <NavLink
+//   to={`/groupSchedule/${group.gid}`}
+//   className='btn btn-outline-dark me-2'
+// >
+//   Schedule
+// </NavLink>
 //       </tr>
 //     )
 //   })}

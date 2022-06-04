@@ -4,10 +4,8 @@ import axios from 'axios'
 import { Navbar, Nav, Container, NavDropdown } from 'react-bootstrap'
 import NavBar from '../common/navBar';
 
-
 export default function Viewgroups() {
   const [users, setUsers] = useState([])
-
 
   // This method fetches the records from the database.
   useEffect(() => {
@@ -39,7 +37,7 @@ useEffect(() => {
             <tr>
               <th>Name</th>
               <th>Position</th>
-              <th>Email</th>
+              <th>Email</th> 
               <th>Phone</th>
               <th>Address</th>
               <th>User ID</th>
