@@ -3,13 +3,14 @@ const router = express.Router()
 const multer = require('multer')
 const SFile = require('../models/ev1.model')
 
-const storage =multer.diskStorage({
-    destination: (req, file, callback) => {
-        callback(null, 'supload')
-    },
-    filename : (req, file, callback) => {
-        callback(null, file.origanalname)
-    },
+const storage = multer.diskStorage({
+  destination: (req, ev1doc, callback) => {
+    callback(null, 'supload')
+    // destination: "upload",
+  },
+  filename: (req, file, callback) => {
+    callback(null, file.originalname)
+  },
 })
 
 const supload = multer({ storage: storage})
@@ -24,10 +25,9 @@ router.get('/get', (req, res) => {
 });
 
 //ADD NEW DATA
-router.post('/add', supload.single('file'), (req, res) => {
+router.post('/add', supload.single('ev1doc'), (req, res) => {
     const newfile = new SFile({
-        ev1doc : req.body.originalname,
-        ev1pre_start: req.body.originalname,
+        ev1doc : req.file.originalname,
     });
 
     newfile 

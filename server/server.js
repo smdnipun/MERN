@@ -34,6 +34,7 @@ app.use('/topic', topic)
 app.use('/marks', mark)
 app.use('/schedule', schedule)
 app.use('/message', message)
+app.use("/upload", express.static("upload"));
 
 const uri = process.env.ATLAS_URI
 mongoose.connect(uri, { useNewUrlParser: true, useUnifiedTopology: true })

@@ -8,7 +8,7 @@ const storage =multer.diskStorage({
         callback(null, 'supload')
     },
     filename : (req, file, callback) => {
-        callback(null, file.origanalname)
+        callback(null, file.originalname)
     },
 })
 
@@ -24,11 +24,11 @@ router.get('/get', (req, res) => {
 });
 
 //ADD NEW DATA
-router.post('/add', supload.single('file'), (req, res) => {
+router.post('/add', supload.single('ev2doc'), (req, res) => {
     const newfile = new SFile({
      
-        ev2doc : req.body.originalname,
-        ev2pre_start : req.body.originalname,
+        ev2doc : req.file.originalname,
+    
 
     });
 
