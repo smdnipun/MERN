@@ -27,7 +27,8 @@ router.get('/get', (req, res) => {
 //ADD NEW DATA
 router.post('/add', supload.single('ev1doc'), (req, res) => {
     const newfile = new SFile({
-        ev1doc : req.file.originalname,
+      ev1doc: req.file.originalname,
+      gid: req.body.gid,
     });
 
     newfile 
@@ -35,5 +36,17 @@ router.post('/add', supload.single('ev1doc'), (req, res) => {
         .then(() => res.json('new student file posted'))
         .catch((err) => res.status(400).json(`Error : ${err}`))
 });
+
+//GET DATA USING GID
+
+router.get('/get/:gid', (req, res) => { 
+    let myquery = {
+    gid: Object(req.params.gid),
+  }
+  SFile.find(myquery, function (err, result) {
+    if (err) throw err
+    res.json(result)
+  })
+})
 
 module.exports = router  

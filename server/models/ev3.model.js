@@ -7,6 +7,9 @@ const ev3 = new Schema (
        
         ev3doc:{
             type:String,
+        },
+        gid: {
+            type:String,
         }
     }
 )

@@ -108,7 +108,6 @@ export default function NavBar() {
                 <ListItemButton to='/addfiles'>Add Reseach </ListItemButton>
                 <ListItemButton to='/userlist'>Manage Users</ListItemButton>
                 <ListItemButton to='/grplist'>Manage Groups</ListItemButton>
-                
               </>
             ) : localStorage.getItem('userP') == 'Student' ? (
               <>
@@ -117,7 +116,6 @@ export default function NavBar() {
                 <ListItemButton to='/subdoc'>Documents</ListItemButton>
                 <ListItemButton to='/reqCo'>Request Supervisor</ListItemButton>
                 <ListItemButton to='/paneltopic'>Send Topic </ListItemButton>
-                
               </>
             ) : (
               <p>not found:{localStorage.getItem('userP')}</p>

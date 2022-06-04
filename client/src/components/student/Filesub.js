@@ -8,7 +8,9 @@ export default function Filesub() {
     const [ev1doc, setEv1doc] = useState([]);
     const [ev2doc, setEv2doc] = useState([]);
     const [ev3doc, setEv3doc] = useState([]);
+    const [gid, setGid] = useState([]);
 
+    const email = localStorage.getItem('user');
     const sp = localStorage.getItem('userS')
 
     const onChangeFileev1 = e => {
@@ -32,6 +34,8 @@ export default function Filesub() {
         const formData = new FormData();
 
         formData.append("ev1doc", ev1doc);
+        formData.append("gid", gid[0].gid);
+
 
         axios
             .post("/ev1/add", formData)
@@ -42,6 +46,7 @@ export default function Filesub() {
             .catch((err) => {
                 console.log(err);
             });
+        console.log(formData);
     };
 
     const changeonClickev2 = (e) => {
@@ -51,6 +56,7 @@ export default function Filesub() {
         const formData = new FormData();
 
         formData.append("ev2doc", ev2doc);
+        formData.append("gid", gid[0].gid);
 
         axios
             .post("/ev2/add", formData)
@@ -70,6 +76,7 @@ export default function Filesub() {
         const formData = new FormData();
 
         formData.append("ev3doc", ev3doc);
+        formData.append("gid", gid[0].gid);
 
         axios
             .post("/ev3/add", formData)
@@ -82,11 +89,31 @@ export default function Filesub() {
             });
     };
 
-    useEffect(() => {
-        axios.get(`http://localhost:5000/adminfile/get/${sp}`)
+    const loaddata = () => { 
+         axios.get(`http://localhost:5000/adminfile/get/${sp}`)
             .then((res) => setData(res.data))
             .catch((err) => console.log(err))
+    }
+
+    const getgid = () => { 
+        axios
+            .post('http://localhost:5000/group/check', {
+                email: email,
+            })
+            .then((res) => {
+                setGid(res.data)
+                console.log(res.data[0].gid)
+            })
+    }
+
+    useEffect(() => {
+        loaddata();
+        getgid();
     }, [])
+
+
+    console.log(gid);
+
 
     return (
         <div >
