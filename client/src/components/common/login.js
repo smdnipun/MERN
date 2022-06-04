@@ -40,9 +40,7 @@ export default function Login(props) {
     window.location = '/'
   }
 
-  function sleep(ms) {
-    return new Promise((resolve) => setTimeout(resolve, ms))
-  }
+
 
   async function SweatAlert(text) {
     // await sleep(1000)

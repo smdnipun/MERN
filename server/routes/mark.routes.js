@@ -8,6 +8,16 @@ router.route('/').get((req, res) => {
     .catch((err) => res.status(400).json('Error:' + err))
 })
 
+router.route('/getMark/:gid').get(function (req, res) {
+  let myquery = { gid: Object(req.params.gid) }
+
+  Mark.find(myquery, function (err, result) {
+    if (err) throw err
+    res.json(result)
+  })
+})
+
+
 router.route('/add').post((req, res) => {
   const gid = req.body.gid
   // const eval=req.body.evaluation1
@@ -36,8 +46,11 @@ router.route('/add').post((req, res) => {
 })
 
 router.route('/update/ev1/:id').post((req, res) => {
+  console.log(req.body)
+  
     Mark.findById(req.params.id)
       .then((mark) => {
+        console.log(mark)
         mark.ev1Mark = req.body.mark
         mark.save()
           .then(() => res.json('User Updated!'))

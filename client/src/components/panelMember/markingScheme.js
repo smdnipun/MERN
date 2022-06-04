@@ -62,31 +62,31 @@ export default function ViewMarkingSchemes() {
     if (e === 'Evaluation 1') {
       console.log('gid', params.gid)
       axios
-        .get(`http://localhost:5000/group/get/${params.gid}`)
+        .get(`http://localhost:5000/marks/getMark/${params.gid}`)
         .then(function (response) {
           console.log(response)
           let groupid = response.data[0]._id
           console.log(groupid)
           axios.post(`http://localhost:5000/marks/update/ev1/${groupid}`, {
-             mark:10,
+             mark:total,
           })
         })
     } else if (e === 'Evaluation 2') {
       console.log(total)
       axios
-        .get(`http://localhost:5000/group/get/${params.gid}`)
+        .get(`http://localhost:5000/marks/getMark/${params.gid}`)
         .then(function (response) {
           console.log(response)
-        
+
           let groupid = response.data[0]._id
 
           axios.post(`http://localhost:5000/marks/update/ev2/${groupid}`, {
-            mark:total,
+            mark: total,
           })
         })
     } else if (e === 'Final Evaluation') {
       axios
-        .get(`http://localhost:5000/group/get/${params.gid}`)
+        .get(`http://localhost:5000/marks/getMark/${params.gid}`)
         .then(function (response) {
           console.log(response)
           let groupid = response.data[0]._id
@@ -96,7 +96,7 @@ export default function ViewMarkingSchemes() {
         })
     } else if (e === 'Document 1') {
       axios
-        .get(`http://localhost:5000/group/get/${params.gid}`)
+        .get(`http://localhost:5000/marks/getMark/${params.gid}`)
         .then(function (response) {
           console.log(response)
           let groupid = response.data[0]._id
@@ -107,7 +107,7 @@ export default function ViewMarkingSchemes() {
         })
     } else if (e === 'Document 2') {
       axios
-        .get(`http://localhost:5000/group/get/${params.gid}`)
+        .get(`http://localhost:5000/marks/getMark/${params.gid}`)
         .then(function (response) {
           console.log(response)
           let groupid = response.data[0]._id
@@ -117,7 +117,7 @@ export default function ViewMarkingSchemes() {
         })
     } else if (e === 'Final Document') {
       axios
-        .get(`http://localhost:5000/group/get/${params.gid}`)
+        .get(`http://localhost:5000/marks/getMark/${params.gid}`)
         .then(function (response) {
           console.log(response)
           let groupid = response.data[0]._id
@@ -368,7 +368,7 @@ export default function ViewMarkingSchemes() {
                 </tr>
               </tbody>
             </Table>
-            <button type='submit' onSubmit={Submit(selectEvaluType)}>
+            <button onClick={() => { Submit(selectEvaluType) }}>
               Submit marks
             </button>
           </form>

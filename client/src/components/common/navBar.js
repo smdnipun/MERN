@@ -17,7 +17,7 @@ import ListItemIcon from '@mui/material/ListItemIcon'
 import ListItemText from '@mui/material/ListItemText'
 
 export default function NavBar() {
-  const drawerWidth = 240
+  const drawerWidth = 120
 
   return (
     <div>
@@ -27,7 +27,7 @@ export default function NavBar() {
           <Navbar.Toggle aria-controls='responsive-navbar-nav' />
           <Navbar.Collapse id='responsive-navbar-nav'>
             <Nav className='me-auto'>
-              <Nav.Link href=''>Contact</Nav.Link>
+              <Nav.Link href='/contact'>Contact</Nav.Link>
               <Nav.Link href=''>About us</Nav.Link>
             </Nav>
             <Nav>
@@ -78,7 +78,7 @@ export default function NavBar() {
             <Toolbar />
             {localStorage.getItem('userP') == 'Panel Member' ? (
               <>
-                <ListItemButton eventKey=''>Evaluvate topics</ListItemButton>
+                <ListItemButton to='/evaluate'>Evaluvate topics</ListItemButton>
                 <ListItemButton eventKey=''>
                   Evaluvate presentation
                 </ListItemButton>
@@ -100,14 +100,22 @@ export default function NavBar() {
             ) : localStorage.getItem('userP') == 'Admin' ? (
               <>
                 <ListItemButton href=''>Create Panel</ListItemButton>
-                <ListItemButton eventKey='/sMarking'>
+                <ListItemButton to='/schedule'>Schedule Viva</ListItemButton>
+                <ListItemButton to='/sMarking'>
                   Create MarkingScehme
                 </ListItemButton>
-                <ListItemButton eventKey=''>View Marks</ListItemButton>
+                <ListItemButton to='/viewMark'>View Marks</ListItemButton>
                 <ListItemButton to='/addfiles'>Add Reseach </ListItemButton>
+                <ListItemButton to='/userlist'>Manage Users</ListItemButton>
+                <ListItemButton to='/grplist'>Manage Groups</ListItemButton>
+                
               </>
             ) : localStorage.getItem('userP') == 'Student' ? (
               <>
+                <ListItemButton to='/grp'>Group</ListItemButton>
+                <ListItemButton to=''>Documents</ListItemButton>
+                <ListItemButton to='/reqCo'>Request Supervisor</ListItemButton>
+
                 <ListItemButton to='/topic'>Research </ListItemButton>
                 <ListItemButton to='/subdoc'>Documents</ListItemButton>
                 <ListItemButton to='/reqCo'>Request Supervisor</ListItemButton>
