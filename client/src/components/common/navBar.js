@@ -95,7 +95,7 @@ export default function NavBar() {
                 <ListItemButton to='/coSupAcceptTopic'>
                   Accept Group
                 </ListItemButton>
-                <ListItemButton eventKey=''>Student Gropus</ListItemButton>
+                <ListItemButton eventKey=''>Student Groups</ListItemButton>
               </>
             ) : localStorage.getItem('userP') == 'Admin' ? (
               <>
@@ -114,7 +114,9 @@ export default function NavBar() {
                 <ListItemButton to=''>Documents</ListItemButton>
                 <ListItemButton to='/reqCo'>Request Supervisor</ListItemButton>
                 <ListItemButton to='/topic'>Research </ListItemButton>
-                <ListItemButton to='/paneltopic'>top </ListItemButton>
+                <ListItemButton to='/topdet'>top </ListItemButton>
+                <ListItemButton to='/addgrp'>Create Group</ListItemButton>
+
               </>
             ) : (
               <p>not found:{localStorage.getItem('userP')}</p>

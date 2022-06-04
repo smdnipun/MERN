@@ -1,145 +1,94 @@
-import React, {useState, useEffect} from 'react';
-import axios from 'axios';
-import Avatar from '@mui/material/Avatar';
-import Button from '@mui/material/Button';
-import CssBaseline from '@mui/material/CssBaseline';
-import TextField from '@mui/material/TextField';
-import FormControlLabel from '@mui/material/FormControlLabel';
-import Checkbox from '@mui/material/Checkbox';
-import Link from '@mui/material/Link';
-import Grid from '@mui/material/Grid';
-import Box from '@mui/material/Box';
-import Typography from '@mui/material/Typography';
-import Container from '@mui/material/Container';
-import { createTheme, ThemeProvider } from '@mui/material/styles';
+import React, { useEffect, useState } from 'react'
+import axios from 'axios'
+import { Navigate, useParams } from 'react-router'
+import { Link } from 'react-router-dom'
+import { Navbar, Nav, Container, NavDropdown } from 'react-bootstrap'
 
 
-export default function Panaltopic(){
-    const [data, setData] = useState("");
-    const [gdata, setGdata] = useState("");
-    const [topic, setTopic] =useState("");
-    const [topicfiles, setTopicfile] = ([]);
-    const email = localStorage.getItem('user');
-     
-    
+export default function Panaltopic() {
+  const [status, setStatus] = useState('')
+  const [link, setLink] = useState('')
 
-    const theme = createTheme();
 
-    const onChangeFile = (e) => {
-        setTopicfile(e.target.topicfiles[0]);
-    }
+  let params= useParams();
 
-    const Changeonclick = (e) => {
-        e.preventDefault();
 
-        const formData= new FormData();
+  const Update = (e) => {
+    e.preventDefault();
+  axios.post(`http://localhost:5000/topic/updatel/${params._id}`, {
+   link
+})
+}
+console.log(params)
 
-        formData.append("topic", topic);
-        formData.append("topicfiles",topicfiles);
 
-        setTopic("");
+const loadData = () => {
+  axios.get(`http://localhost:5000/topic/u/${params._id}`).then(function (response) {
+    console.log(response.data)
+    const data= response.data;
+    setStatus(data.status);
+    setLink(data.link);
+  })
+}
 
-            axios.post("topicfiles/add", formData)
-                .then((res) => {
-                    setMessaage(res.data);
-                })
-                .catch((err) => {
-                    console.log(err);
-                });
-
-    }
-
-    const check  = () => {
-        axios
-        .post('http://localhost:5000/group/check', {
-          email : email,
-        })
-        .then((res) => {
-          setGdata(res.data)
-          console.log(res.data[0].gid)
-
-          const gid = res.data[0].gid;
-
-          axios.get(`http://localhost:5000/topic/searchBygid/${gid}`)
-                .then((res) => {
-                    setData(res.data)
-                    console.log(res.data[0])
-                })
-        })
-        
-    };
-
-    useEffect(() => {
-        check();
-    },[]);
+useEffect(() => {
+  loadData()
+}, [])
 
   return (
-    <ThemeProvider theme={theme}>
-      <Container component="main" maxWidth="xs">
-        <CssBaseline />
-        <Box
-          sx={{
-            marginTop: 8,
-            display: 'flex',
-            flexDirection: 'column',
-            alignItems: 'center',
-          }}
-        >
+    <div>
+      <Navbar collapseOnSelect expand='lg' bg='light' variant='grey'>
+        <Container>
+          <Navbar.Brand href='/dashBoard'>RPMT</Navbar.Brand>
+          <Navbar.Toggle aria-controls='responsive-navbar-nav' />
+          <Navbar.Collapse id='responsive-navbar-nav'>
+            <Nav className='me-auto'>
+              <Nav.Link href='/contact'>Contact</Nav.Link>
+              <Nav.Link href=''>About us</Nav.Link>
+            </Nav>
+            <Nav>
+              <div>
+                <p>{localStorage.getItem('userI')}</p>
+                <p>{localStorage.getItem('userN')}</p>
+              </div>
+            </Nav>
 
-          <Typography component="h1" variant="h5">
-            Send Document to Panel Member
-          </Typography>
-          <Box component="form" noValidate onSubmit={Changeonclick} sx={{ mt: 3 }}>
-            <Grid container spacing={2}>
-            {data.map((topic) =>{
-                return(
-                   <> 
-            <Grid item xs={12} >
-             
-                <TextField
-                  autoComplete="given-name"
-                  name="topic"
-                  required
-                  fullWidth
-                  disabled
-                  autoFocus
-                  placeholder={topic.gid}
-                />
-              </Grid>
-              <Grid item xs={12} >
-                <TextField
-                  autoComplete="given-name"
-                  name="topic"
-                  required
-                  fullWidth
-                  disabled
-                  autoFocus
-                  placeholder={topic.topic}
-                />
-              </Grid>
-              </>)})}
-              <Grid item xs={12} >
-                <TextField
-                  type = "file"
-                  required
-                  fullWidth
-                  name="file"
-                  autoComplete="family-name"
-                />
-              </Grid>
-             
-            </Grid>
-            <Button
-              type="submit"
-              fullWidth
-              variant="contained"
-              sx={{ mt: 3, mb: 2 }}
-            >
-              Add
-            </Button>
-          </Box>
-        </Box>
-      </Container>
-    </ThemeProvider>
-  );
+            <Nav>
+              {localStorage.getItem('user') != null ? (
+                <>
+                  <a href='/logout' className='btn btn-outline-dark'>
+                    <i className='fa fa-sign-in me-1'></i> Logout
+                  </a>
+                </>
+              ) : (
+                <>
+                  <p>no user</p>
+                </>
+              )}
+            </Nav>
+          </Navbar.Collapse>
+        </Container>
+      </Navbar>
+    <center> <h3 className='navi'>Update Topic</h3></center>  
+
+      <div className = 'bod' style={{ maxWidth: 800, margin: "auto" }}>
+      <center>
+      <div className=' form'>
+      <form onSubmit={Update}>
+
+              <div className='form-group'>
+              <label>Link</label>
+              <input className='form-control' value={link} onChange={(e) => setLink(e.target.value)} />
+              <br></br>
+              </div>
+
+        <button  className='btn btn-primary'  type='submit'>Update</button>
+      </form>
+      </div>
+      </center>
+      </div>
+
+    </div>
+        
+    )
 }

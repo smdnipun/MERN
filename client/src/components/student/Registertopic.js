@@ -95,17 +95,6 @@ export default function Registertopic() {
             </div>
             <br></br>
 
-            <div className='form-group'>
-              <label>Submit the link to the document here</label>
-              <input
-                className='form-control'
-                value={link}
-                onChange={(e) => setLink(e.target.value)}
-              />
-            </div>
-            <br></br>
-
-
 
             <button onClick={pass} type='submit'>
               Submit
