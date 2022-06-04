@@ -2,6 +2,43 @@ const router = require('express').Router()
 let Group = require('../models/group.model')
 // var uuid = require('uuid');
 
+router.route('/add').post((req, res) => {
+  // const gid = uuidv4()
+  const gid = req.body.gid
+  const specialization = req.body.specialization
+  const first = req.body.first
+  const email1 = req.body.email1
+  const second = req.body.second
+  const email2 = req.body.email2
+  const third = req.body.third
+  const email3 = req.body.email3
+  const forth = req.body.forth
+  const email4 = req.body.email4
+  const supervisor = req.body.supervisor
+  const co_supervisor = req.body.co_supervisor
+  const panelMember = req.body.panelMember
+
+  const newGroup = new Group({
+    gid,
+    specialization,
+    first,
+    email1,
+    second,
+    email2,
+    third,
+    email3,
+    forth,
+    email4,
+    supervisor,
+    co_supervisor,
+    panelMember,
+  })
+  newGroup
+    .save()
+    .then(() => res.json('Group added'))
+    .catch((err) => res.status(400).json('Error:' + err))
+})
+
 router.route('/').get((req, res) => {
   Group.find()
     .then((groups) => res.json(groups))
@@ -83,43 +120,6 @@ router.route('/student/:student').get(function (req, res) {
     if (err) throw err
     res.json(result)
   })
-})
-
-router.route('/add').post((req, res) => {
-  // const gid = uuidv4()
-  const gid = req.body.gid
-  const specialization = req.body.specialization
-  const first = req.body.first
-  const email1 = req.body.email1
-  const second = req.body.second
-  const email2 = req.body.email2
-  const third = req.body.third
-  const email3 = req.body.email3
-  const forth = req.body.forth
-  const email4 = req.body.email4
-  const supervisor = req.body.supervisor
-  const co_supervisor = req.body.co_supervisor
-  const panelMember = req.body.panelMember
-
-  const newGroup = new Group({
-    gid,
-    specialization,
-    first,
-    email1,
-    second,
-    email2,
-    third,
-    email3,
-    forth,
-    email4,
-    supervisor,
-    co_supervisor,
-    panelMember,
-  })
-  newGroup
-    .save()
-    .then(() => res.json('Group added'))
-    .catch((err) => res.status(400).json('Error:' + err))
 })
 
 router.route('/update/:id').post((req, res) => {
