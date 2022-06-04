@@ -4,6 +4,7 @@ import { useNavigate } from "react-router";
 import DisfilesAdmin from './DisfilesAdmin';
 import './styles/Addfiles.css';
 import NavBar from '../common/navBar';
+import Swal from 'sweetalert2';
 
 
 export default function Addfiles() {
@@ -25,7 +26,15 @@ export default function Addfiles() {
         setFile(e.target.files[0]);
     }
 
- const navi = new useNavigate();
+    const navi = new useNavigate();
+    
+      async function SweatAlert(text, item) {
+    // await sleep(1000)
+            Swal.fire({
+                 icon: item,
+                text: text,
+    })
+  }
 
     const changeonClick = (e) => {
 
@@ -72,19 +81,20 @@ export default function Addfiles() {
             .catch((err) => {
                 console.log(err);
             });
+        SweatAlert('Successfully insereted', 'success');
     };
 
   return (
         <div >
             <NavBar />
-            <div className = 'bod' style={{ maxWidth: 800, margin: "auto" }}>
+            <div className = 'bod mt-5' style={{ maxWidth: 800, margin: "auto" }}>
             <br></br>
                 <h3>ADD New Research Details</h3>
                 <form onSubmit={changeonClick} encType="multipart/form-data" >
 
                     {/* specialization */}
                     <div className="form-group">  
-                        <label>Specialization :</label>
+                        <label className='m'>Specialization :</label>
                         <select class="form-select"  value={specialization} onChange={(e) => setSpecialization(e.target.value)} >
                             <option>Software Engineering</option>
                             <option>Data Science</option>
@@ -95,7 +105,7 @@ export default function Addfiles() {
 
                     {/* Description */}
                     <div className="form-group">  
-                    <label>Description :</label>
+                    <label className='m'>Description :</label>
                         <input
                             type="text"  
                             placeholder="Description" 
@@ -105,8 +115,8 @@ export default function Addfiles() {
                     </div><br></br>
 
                     {/* Evalution 1 */}
-                    <div className="form-group"> 
-                        <label>Evaluation 1 :</label><br/>
+                    <div className="form-group m"> 
+                        <label className='m'>Evaluation 1 :</label><br/>
                         <div style={{ maxWidth: 700, margin: "auto" }}>
                             <label>Document Submition Date :</label>
                             <input 
@@ -114,7 +124,7 @@ export default function Addfiles() {
                                 value={ev1doc} 
                                 onChange={(e)=> setEv1doc(e.target.value)}
                                 className="form-control"/>
-                             <div style={{ display: 'flex', margin: "auto" }}>
+                             <div className='m'style={{ display: 'flex', margin: "auto" }}>
                                 <label>Precentation starting Date :</label>
                                 <label>Precentation Ending Date :</label>
                             </div>   
@@ -134,7 +144,7 @@ export default function Addfiles() {
                     </div><br></br>
 
                     {/* Evalution 2 */}
-                    <div className="form-group"> 
+                    <div className="form-group m"> 
                         <label>Evaluation 2 :</label><br/>
                         <div style={{ maxWidth: 700, margin: "auto" }}>
                             <label>Document Submition Date :</label>
@@ -163,7 +173,7 @@ export default function Addfiles() {
                     </div><br></br>
 
                     {/* Evalution 3 */}
-                    <div className="form-group"> 
+                    <div className="form-group m"> 
                         <label>Evaluation 3 :</label><br/>
                         <div style={{ maxWidth: 700, margin: "auto" }}>
                             <label>Document Submition Date :</label>
@@ -191,16 +201,16 @@ export default function Addfiles() {
                         </div>
                     </div><br></br>
 
-                    <div className="form-group">
+                    <div className="form-group m">
                         <label>File :</label><br/>
                         <input 
                             type="file" multiple  
                             filename="file"
-                            className="form-control-file" 
+                            className="form-control" 
                             onChange={onChangeFile}/>
                     </div><br></br>
 
-                <button className="btn" 
+                <button className="btn btn-primary" 
                     type="submit" 
                     variant="primary"
                     size="lg"
@@ -210,10 +220,6 @@ export default function Addfiles() {
             </form>
         </div>
         <br /><br />
-
-        <div>
-            <DisfilesAdmin />
-        </div>
     </div>
   )
 }

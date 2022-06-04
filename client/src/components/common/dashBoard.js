@@ -320,20 +320,22 @@ export default function DashBoard() {
             </Card>
           </>
         ) : localStorage.getItem('userP') == 'Admin' ? (
-          <>
-
-            return (
-
-    <Card sx={{ minWidth: 275 }}>
-        <center>
+                <>
+                    <center>
           <CardContent>
           <Typography sx={{ fontSize: 30 }} color="text.secondary" gutterBottom>
         Welcome to Admin Dash Board
         </Typography>
           </CardContent>
         </center>
-    </Card>
+{/* <Card sx={{ minWidth: 275 }}>
+            return (
+
+    
+      
+   
   );
+   </Card> */}
 
             <h1>Hello! {localStorage.getItem('userN')}</h1>
           </>

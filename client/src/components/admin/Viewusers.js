@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 import axios from 'axios'
 import { Navbar, Nav, Container, NavDropdown } from 'react-bootstrap'
+import NavBar from '../common/navBar';
 
 
 export default function Viewgroups() {
@@ -28,43 +29,11 @@ useEffect(() => {
   // This following section will display the table with the records of individuals.
   return (
     <div>
-       <Navbar collapseOnSelect expand='lg' bg='light' variant='grey'>
-        <Container>
-          <Navbar.Brand href='/dashBoard'>RPMT</Navbar.Brand>
-          <Navbar.Toggle aria-controls='responsive-navbar-nav' />
-          <Navbar.Collapse id='responsive-navbar-nav'>
-            <Nav className='me-auto'>
-              <Nav.Link href='/contact'>Contact</Nav.Link>
-              <Nav.Link href=''>About us</Nav.Link>
-            </Nav>
-            <Nav>
-              <div>
-                <p>{localStorage.getItem('userI')}</p>
-                <p>{localStorage.getItem('userN')}</p>
-              </div>
-            </Nav>
-
-            <Nav>
-              {localStorage.getItem('user') != null ? (
-                <>
-                  <a href='/logout' className='btn btn-outline-dark'>
-                    <i className='fa fa-sign-in me-1'></i> Logout
-                  </a>
-                </>
-              ) : (
-                <>
-                  <p>no user</p>
-                </>
-              )}
-            </Nav>
-          </Navbar.Collapse>
-        </Container>
-      </Navbar>
-
-
-      <center>
-        <h3 className='navi'>Registered Users</h3>
-        <br></br>
+      <NavBar />
+      <div>
+         <center>
+        <h3 className='navi mt-5'>Registered Users</h3>
+        
         <table class='table' style={{ marginTop: 50, width: 700 }}>
           <thead>
             <tr>
@@ -97,6 +66,8 @@ useEffect(() => {
           </tbody>
         </table>
       </center>
+      </div>
+     
     </div>
   )
 }
