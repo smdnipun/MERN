@@ -94,13 +94,13 @@ export default function NavBar() {
                 {anchor}
                 <MenuIcon />
               </Button>
-              <Drawer
+              {/* <Drawer
                 anchor={anchor}
                 open={state[anchor]}
                 onClose={toggleDrawer(anchor, false)}
               >
                 {list(anchor)}
-              </Drawer>
+              </Drawer> */}
             </React.Fragment>
           ))}
           <Navbar.Brand href='/dashBoard'>
@@ -110,7 +110,7 @@ export default function NavBar() {
           <Navbar.Collapse id='responsive-navbar-nav'>
             <Nav className='me-auto'>
               <Nav.Link href='/contact'>
-                <hs>Contact</hs>
+                <h5>Contact</h5>
               </Nav.Link>
             </Nav>
             <Nav>

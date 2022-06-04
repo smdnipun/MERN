@@ -5,8 +5,7 @@ export default function DisfilesAdmin() {
   const [data, setData] = useState([])
 
   useEffect(() => {
-    axios
-      .get(`http://localhost:5000/adminfile/get`)
+    axios.get(`http://localhost:5000/adminfile/get`)
       .then((res) => {
         setData(res.data)
       })

@@ -106,7 +106,7 @@ export default function Filesub() {
   console.log(gid)
 
   return (
-    <div>
+    <div data-testid="top-1">
       <NavBar />
       <div className='bod' style={{ maxWidth: 800, margin: 'auto' }}>
         <br></br>
