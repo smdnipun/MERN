@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import axios from 'axios'
 import nextId from 'react-id-generator'
 import { Navbar, Nav, Container, NavDropdown } from 'react-bootstrap'
-
+import NavBar from '../common/navBar'
 
 export default function Creategroups() {
   const gid = nextId()
@@ -56,162 +56,128 @@ export default function Creategroups() {
 
   return (
     <div>
+      <NavBar />
+      <div className='bod' style={{ maxWidth: 800, margin: 'auto' }}>
+        <center>
+          <div className=' form'>
+            <div className='forminit'>
+              <h3 className='navi'>Create Groups</h3>
 
-<Navbar collapseOnSelect expand='lg' bg='light' variant='grey'>
-        <Container>
-          <Navbar.Brand href='/dashBoard'>RPMT</Navbar.Brand>
-          <Navbar.Toggle aria-controls='responsive-navbar-nav' />
-          <Navbar.Collapse id='responsive-navbar-nav'>
-            <Nav className='me-auto'>
-              <Nav.Link href='/contact'>Contact</Nav.Link>
-              <Nav.Link href=''>About us</Nav.Link>
-            </Nav>
-            <Nav>
-              <div>
-                <p>{localStorage.getItem('userI')}</p>
-                <p>{localStorage.getItem('userN')}</p>
+              <div className='form-group'>
+                <label>Group Name</label>
+                <input
+                  className='form-control'
+                  value={gid}
+                  onChange={(e) => setGid(e.target.value)}
+                />
               </div>
-            </Nav>
+              <br></br>
 
-            <Nav>
-              {localStorage.getItem('user') != null ? (
-                <>
-                  <a href='/logout' className='btn btn-outline-dark'>
-                    <i className='fa fa-sign-in me-1'></i> Logout
-                  </a>
-                </>
-              ) : (
-                <>
-                  <p>no user</p>
-                </>
-              )}
-            </Nav>
-          </Navbar.Collapse>
-        </Container>
-      </Navbar>
+              <div className='form-group'>
+                <label>Specialization</label>
+                <select
+                  class='form-select'
+                  value={specialization}
+                  onChange={(e) => setSpecialization(e.target.value)}
+                >
+                  <option>Software Engineering</option>
+                  <option>Data Science</option>
+                  <option>Cyber Security</option>
+                  <option>Information Technology</option>
+                </select>
+              </div>
+              <br></br>
 
-      
-     <div className = 'bod' style={{ maxWidth: 800, margin: "auto" }}>
-      <center>
-        <div className=' form'>
-          <div className='forminit'>
-            <h3 className='navi'>Create Groups</h3>
+              <div className='form-group'>
+                <label>First Member</label>
+                <input
+                  className='form-control'
+                  value={first}
+                  onChange={(e) => setFirst(e.target.value)}
+                />
+                <br></br>
+              </div>
 
-            <div className='form-group'>
-              <label>Group Name</label>
-              <input
-                className='form-control'
-                value={gid}
-                onChange={(e) => setGid(e.target.value)}
-              />
-            </div>
-            <br></br>
+              <div className='form-group'>
+                <label>First Member Email</label>
+                <input
+                  className='form-control'
+                  value={email1}
+                  onChange={(e) => setEmail1(e.target.value)}
+                />
+                <br></br>
+              </div>
 
-            <div className='form-group'>
-              <label>Specialization</label>
-              <select
-                class='form-select'
-                value={specialization}
-                onChange={(e) => setSpecialization(e.target.value)}
+              <div className='form-group'>
+                <label>Second Member</label>
+                <input
+                  className='form-control'
+                  value={second}
+                  onChange={(e) => setSecond(e.target.value)}
+                />
+                <br></br>
+              </div>
+
+              <div className='form-group'>
+                <label>Second Member Email</label>
+                <input
+                  className='form-control'
+                  value={email2}
+                  onChange={(e) => setEmail2(e.target.value)}
+                />
+                <br></br>
+              </div>
+
+              <div className='form-group'>
+                <label>Third Member</label>
+                <input
+                  className='form-control'
+                  value={third}
+                  onChange={(e) => setThird(e.target.value)}
+                />
+                <br></br>
+              </div>
+
+              <div className='form-group'>
+                <label>Third Member Email</label>
+                <input
+                  className='form-control'
+                  value={email3}
+                  onChange={(e) => setEmail3(e.target.value)}
+                />
+                <br></br>
+              </div>
+
+              <div className='form-group'>
+                <label>Forth Member</label>
+                <input
+                  className='form-control'
+                  value={forth}
+                  onChange={(e) => setForth(e.target.value)}
+                />
+                <br></br>
+              </div>
+
+              <div className='form-group'>
+                <label>Forth Member Email</label>
+                <input
+                  className='form-control'
+                  value={email4}
+                  onChange={(e) => setEmail4(e.target.value)}
+                />
+                <br></br>
+              </div>
+
+              <button
+                className='btn btn-primary'
+                onClick={passtogroup}
+                type='submit'
               >
-                <option>Software Engineering</option>
-                <option>Data Science</option>
-                <option>Cyber Security</option>
-                <option>Information Technology</option>
-              </select>
+                Create
+              </button>
             </div>
-            <br></br>
-
-            <div className='form-group'>
-              <label>First Member</label>
-              <input
-                className='form-control'
-                value={first}
-                onChange={(e) => setFirst(e.target.value)}
-              />
-              <br></br>
-            </div>
-
-            <div className='form-group'>
-              <label>First Member Email</label>
-              <input
-                className='form-control'
-                value={email1}
-                onChange={(e) => setEmail1(e.target.value)}
-              />
-              <br></br>
-            </div>
-
-            <div className='form-group'>
-              <label>Second Member</label>
-              <input
-                className='form-control'
-                value={second}
-                onChange={(e) => setSecond(e.target.value)}
-              />
-              <br></br>
-            </div>
-
-            <div className='form-group'>
-              <label>Second Member Email</label>
-              <input
-                className='form-control'
-                value={email2}
-                onChange={(e) => setEmail2(e.target.value)}
-              />
-              <br></br>
-            </div>
-
-            <div className='form-group'>
-              <label>Third Member</label>
-              <input
-                className='form-control'
-                value={third}
-                onChange={(e) => setThird(e.target.value)}
-              />
-              <br></br>
-            </div>
-
-            <div className='form-group'>
-              <label>Third Member Email</label>
-              <input
-                className='form-control'
-                value={email3}
-                onChange={(e) => setEmail3(e.target.value)}
-              />
-              <br></br>
-            </div>
-
-            <div className='form-group'>
-              <label>Forth Member</label>
-              <input
-                className='form-control'
-                value={forth}
-                onChange={(e) => setForth(e.target.value)}
-              />
-              <br></br>
-            </div>
-
-            <div className='form-group'>
-              <label>Forth Member Email</label>
-              <input
-                className='form-control'
-                value={email4}
-                onChange={(e) => setEmail4(e.target.value)}
-              />
-              <br></br>
-            </div>
-
-            <button
-              className='btn btn-primary'
-              onClick={passtogroup}
-              type='submit'
-            >
-              Create
-            </button>
           </div>
-        </div>
-      </center>
+        </center>
       </div>
     </div>
   )

@@ -67,7 +67,7 @@ export default function Message() {
   return (
     <div>
       <NavBar />
-      <div className='container chat-window '>
+      <div className='container chat-window pt-4'>
         <div className='chat-header'>
           <p>Group ID :-  {gid}</p>
         </div>

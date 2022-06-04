@@ -13,7 +13,6 @@ import { createTheme, ThemeProvider } from '@mui/material/styles'
 import { Select } from '@mui/material'
 import Swal from 'sweetalert2'
 
-
 import React, { useEffect, useState } from 'react'
 import axios from 'axios'
 
@@ -37,7 +36,7 @@ export default function Registration() {
     id,
     specialization,
     password,
-    rpassword
+    rpassword,
   }
 
   async function SweatAlert(text, item) {
@@ -50,41 +49,51 @@ export default function Registration() {
 
   const passtouser = async () => {
     try {
-      if ((name == "") && (position== "") && (email=="") &&  (address=="")
-      && (phone=="") && (id=="") && (specialization=="") && (password=="") && (rpassword=="") ) {
-        SweatAlert("Please fill all the fields.","warning");
-        window.location = "/reg";
-      } 
-      else if ((name == "") || (position== "") || (email=="")||(address=="")
-      ||(phone=="")|| (id=="")|| (specialization=="") || (password=="")||(rpassword=="") ) {
-        SweatAlert("Please fill all the fields.","warning");
-        window.location = "/reg";
-      } 
-      else if (password != rpassword)  {
-        SweatAlert("Please enter the correct password","warning");
-        window.location = "/reg";
-      } 
-            
-      else{
-      
+      if (
+        name == '' &&
+        position == '' &&
+        email == '' &&
+        address == '' &&
+        phone == '' &&
+        id == '' &&
+        specialization == '' &&
+        password == '' &&
+        rpassword == ''
+      ) {
+        SweatAlert('Please fill all the fields.', 'warning')
+        window.location = '/reg'
+      } else if (
+        name == '' ||
+        position == '' ||
+        email == '' ||
+        address == '' ||
+        phone == '' ||
+        id == '' ||
+        specialization == '' ||
+        password == '' ||
+        rpassword == ''
+      ) {
+        SweatAlert('Please fill all the fields.', 'warning')
+        window.location = '/reg'
+      } else if (password != rpassword) {
+        SweatAlert('Please enter the correct password', 'warning')
+        window.location = '/reg'
+      } else {
         const resp = await axios.post('/user/add', Group)
         console.log(resp.data)
-        SweatAlert("Successfully insereted","success");
+        SweatAlert('Successfully insereted', 'success')
 
-        navigate("/");
+        navigate('/')
       }
-    }
-    catch (err) {
+    } catch (err) {
       // Handle Error Here
       console.error(err)
     }
-
   }
 
   const theme = createTheme()
   return (
-
-<ThemeProvider theme={theme}>
+    <ThemeProvider theme={theme}>
       <Container component='main' maxWidth='xs'>
         <CssBaseline />
         <Box
@@ -116,7 +125,9 @@ export default function Registration() {
                 />
               </Grid>
               <Grid item xs={12}>
-                <center><label>Position</label></center>
+                <center>
+                  <label>Position</label>
+                </center>
                 <select
                   class='form-select'
                   value={position}
@@ -125,8 +136,8 @@ export default function Registration() {
                 >
                   <option value='Student'>Student</option>
                   <option value='Supervisor'>Supervisor</option>
+                  <option value='co-supervisor'>Co-Supervisor</option>
                   <option value='Panel Member'>Panel Member</option>
-                  
                 </select>
               </Grid>
               <Grid item xs={12}>
@@ -139,7 +150,7 @@ export default function Registration() {
                   autoComplete='email'
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
-                  pattern="[a-z 0-9 .+-_%]+@+[a-z 0-9 +-_%]+\.[a-z]{2,3}"
+                  pattern='[a-z 0-9 .+-_%]+@+[a-z 0-9 +-_%]+\.[a-z]{2,3}'
                 />
               </Grid>
               <Grid item xs={12}>
@@ -152,7 +163,7 @@ export default function Registration() {
                   autoComplete='phone'
                   value={phone}
                   onChange={(e) => setPhone(e.target.value)}
-                  pattern="[0-9].{11}"
+                  pattern='[0-9].{11}'
                 />
               </Grid>
               <Grid item xs={12}>
@@ -180,7 +191,10 @@ export default function Registration() {
                 />
               </Grid>
               <Grid item xs={12}>
-             <center> <label>Specialization</label></center>
+                <center>
+                  {' '}
+                  <label>Specialization</label>
+                </center>
                 <select
                   class='form-select'
                   value={specialization}
@@ -253,8 +267,5 @@ export default function Registration() {
         </Box>
       </Container>
     </ThemeProvider>
-
-
-   
   )
 }

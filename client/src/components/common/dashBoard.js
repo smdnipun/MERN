@@ -340,11 +340,11 @@ export default function DashBoard() {
         ) : localStorage.getItem('userP') == 'Student' ? (
           <>
             <h1>Hello! {localStorage.getItem('userN')}</h1>
-            <Card sx={{ minWidth: 275 }}>
+            <Card className='p-2' sx={{ minWidth: 275 }}>
               {stData.map((group) => {
                 return (
                   <>
-                    <div className='container'>
+                    <div className='container bod'>
                       <CardContent>
                         <Typography
                           sx={{ fontSize: 30 }}
@@ -393,7 +393,7 @@ export default function DashBoard() {
                         </Grid>
                       </CardContent>
                     </div>
-                    <Card sx={{ minWidth: 275 }}>
+                    <Card className='bod mt-3' sx={{ minWidth: 275 }}>
                       {schedule.map((group) => {
                         return (
                           <>
