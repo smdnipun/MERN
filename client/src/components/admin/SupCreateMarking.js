@@ -2,9 +2,9 @@ import { useState } from 'react'
 import axios from 'axios'
 import NavBar from '../common/navBar'
 export default function SupCreateMarkingSchemes() {
-  const [selectSub,setSelectSub]=useState();
-  const [selectPosition,setPosition]=useState();
-  const [selectEvaluType,setEvaluType]=useState();
+  const [selectSub,setSelectSub]=useState("dd");
+  const [selectPosition,setPosition]=useState("dd");
+  const [selectEvaluType,setEvaluType]=useState("dd");
   const [formFields, setFormFields] = useState([ ])
 console.log(selectPosition,selectSub,selectEvaluType)
  
@@ -114,14 +114,14 @@ console.log(selectPosition,selectSub,selectEvaluType)
                   onChange={(event) => handleFormChange(event, index)}
                   value={form.poor}
                 />
-                <input
+                <textarea
                   name='totMark'
                   placeholder='Total mark'
                   onChange={(event) => handleFormChange(event, index)}
                   value={form.totMark}
                 />
 
-                <button onClick={() => removeFields(index)}>Remove</button>
+                {/* <button onClick={() => removeFields(index)}>Remove</button> */}
               </div>
             )
           })}

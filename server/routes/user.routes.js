@@ -33,7 +33,6 @@ router.route('/add').post((req, res) => {
   const id = req.body.id
   const specialization = req.body.specialization
   const password = req.body.password
-  const rpassword = req.body.rpassword
 
   const newUser = new User({
     name,
@@ -44,7 +43,6 @@ router.route('/add').post((req, res) => {
     id,
     specialization,
     password,
-    rpassword,
   })
   newUser
     .save()

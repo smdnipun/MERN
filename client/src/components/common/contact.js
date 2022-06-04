@@ -1,5 +1,7 @@
 import emailjs from "emailjs-com";
 import React from 'react';
+import { Navbar, Nav, Container, NavDropdown } from 'react-bootstrap'
+
 
 export default function contact() {
 
@@ -17,6 +19,40 @@ export default function contact() {
 
     return(
         <div>
+            <Navbar collapseOnSelect expand='lg' bg='light' variant='grey'>
+        <Container>
+          <Navbar.Brand href='/dashBoard'>RPMT</Navbar.Brand>
+          <Navbar.Toggle aria-controls='responsive-navbar-nav' />
+          <Navbar.Collapse id='responsive-navbar-nav'>
+            <Nav className='me-auto'>
+              <Nav.Link href='/contact'>Contact</Nav.Link>
+              <Nav.Link href=''>About us</Nav.Link>
+            </Nav>
+            <Nav>
+              <div>
+                <p>{localStorage.getItem('userI')}</p>
+                <p>{localStorage.getItem('userN')}</p>
+              </div>
+            </Nav>
+
+            <Nav>
+              {localStorage.getItem('user') != null ? (
+                <>
+                  <a href='/logout' className='btn btn-outline-dark'>
+                    <i className='fa fa-sign-in me-1'></i> Logout
+                  </a>
+                </>
+              ) : (
+                <>
+                  <p>no user</p>
+                </>
+              )}
+            </Nav>
+          </Navbar.Collapse>
+        </Container>
+      </Navbar>
+
+
             <center><h2>Contact Us</h2></center>
             <div className="container">
             <form onSubmit={sendEmail}>

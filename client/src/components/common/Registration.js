@@ -11,6 +11,8 @@ import Typography from '@mui/material/Typography'
 import Container from '@mui/material/Container'
 import { createTheme, ThemeProvider } from '@mui/material/styles'
 import { Select } from '@mui/material'
+import Swal from 'sweetalert2'
+
 
 import React, { useEffect, useState } from 'react'
 import axios from 'axios'
@@ -35,23 +37,54 @@ export default function Registration() {
     id,
     specialization,
     password,
-    rpassword,
+    rpassword
+  }
+
+  async function SweatAlert(text, item) {
+    // await sleep(1000)
+    Swal.fire({
+      icon: item,
+      text: text,
+    })
   }
 
   const passtouser = async () => {
     try {
-      const resp = await axios.post('/user/add', Group)
-      console.log(resp.data)
-    } catch (err) {
+      if ((name == "") && (position== "") && (email=="") &&  (address=="")
+      && (phone=="") && (id=="") && (specialization=="") && (password=="") && (rpassword=="") ) {
+        SweatAlert("Please fill all the fields.","warning");
+        window.location = "/reg";
+      } 
+      else if ((name == "") || (position== "") || (email=="")||(address=="")
+      ||(phone=="")|| (id=="")|| (specialization=="") || (password=="")||(rpassword=="") ) {
+        SweatAlert("Please fill all the fields.","warning");
+        window.location = "/reg";
+      } 
+      else if (password != rpassword)  {
+        SweatAlert("Please enter the correct password","warning");
+        window.location = "/reg";
+      } 
+            
+      else{
+      
+        const resp = await axios.post('/user/add', Group)
+        console.log(resp.data)
+        SweatAlert("Successfully insereted","success");
+
+        navigate("/");
+      }
+    }
+    catch (err) {
       // Handle Error Here
       console.error(err)
     }
+
   }
-  console.log(Group.position)
 
   const theme = createTheme()
   return (
-    <ThemeProvider theme={theme}>
+
+<ThemeProvider theme={theme}>
       <Container component='main' maxWidth='xs'>
         <CssBaseline />
         <Box
@@ -66,7 +99,7 @@ export default function Registration() {
           <Typography component='h1' variant='h5'>
             Sign up
           </Typography>
-          <Box component='form' noValidate sx={{ mt: 3 }}>
+          <Box component='form' onSubmit={passtouser} noValidate sx={{ mt: 3 }}>
             <Grid container spacing={2}>
               <Grid item xs={12}>
                 <TextField
@@ -79,6 +112,7 @@ export default function Registration() {
                   value={name}
                   onChange={(e) => setName(e.target.value)}
                   autoFocus
+                  Required
                 />
               </Grid>
               <Grid item xs={12}>
@@ -87,10 +121,12 @@ export default function Registration() {
                   class='form-select'
                   value={position}
                   onChange={(e) => setPosition(e.target.value)}
+                  Required
                 >
                   <option value='Student'>Student</option>
                   <option value='Supervisor'>Supervisor</option>
                   <option value='Panel Member'>Panel Member</option>
+                  
                 </select>
               </Grid>
               <Grid item xs={12}>
@@ -103,6 +139,7 @@ export default function Registration() {
                   autoComplete='email'
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
+                  pattern="[a-z 0-9 .+-_%]+@+[a-z 0-9 +-_%]+\.[a-z]{2,3}"
                 />
               </Grid>
               <Grid item xs={12}>
@@ -115,6 +152,7 @@ export default function Registration() {
                   autoComplete='phone'
                   value={phone}
                   onChange={(e) => setPhone(e.target.value)}
+                  pattern="[0-9].{11}"
                 />
               </Grid>
               <Grid item xs={12}>
@@ -197,7 +235,6 @@ export default function Registration() {
             </Grid>
             <Button
               type='submit'
-              onClick={passtouser}
               fullWidth
               variant='contained'
               sx={{ mt: 3, mb: 2 }}
@@ -215,5 +252,8 @@ export default function Registration() {
         </Box>
       </Container>
     </ThemeProvider>
+
+
+   
   )
 }
