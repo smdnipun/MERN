@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react'
 import axios from 'axios'
 import { Link } from 'react-router-dom'
 import { Navbar, Nav, Container, NavDropdown } from 'react-bootstrap'
+import NavBar from '../common/navBar';
 
 
 export default function Viewgroups() {
@@ -43,44 +44,11 @@ const loadData=() =>{
 
     
     return (
-        <div>
-          <Navbar collapseOnSelect expand='lg' bg='light' variant='grey'>
-        <Container>
-          <Navbar.Brand href='/dashBoard'>RPMT</Navbar.Brand>
-          <Navbar.Toggle aria-controls='responsive-navbar-nav' />
-          <Navbar.Collapse id='responsive-navbar-nav'>
-            <Nav className='me-auto'>
-              <Nav.Link href='/contact'>Contact</Nav.Link>
-              <Nav.Link href=''>About us</Nav.Link>
-            </Nav>
-            <Nav>
-              <div>
-                <p>{localStorage.getItem('userI')}</p>
-                <p>{localStorage.getItem('userN')}</p>
-              </div>
-            </Nav>
-
-            <Nav>
-              {localStorage.getItem('user') != null ? (
-                <>
-                  <a href='/logout' className='btn btn-outline-dark'>
-                    <i className='fa fa-sign-in me-1'></i> Logout
-                  </a>
-                </>
-              ) : (
-                <>
-                  <p>no user</p>
-                </>
-              )}
-            </Nav>
-          </Navbar.Collapse>
-        </Container>
-      </Navbar>
-
-
-
+      <div>
+        <NavBar/>
+        <div >
             <center>
-
+            <div style={{ maxWidth: 1600 }}>
             <h3 className="navi">Registered Groups</h3>
             <br></br>
             <table class= "table">
@@ -123,17 +91,23 @@ const loadData=() =>{
                             <option value={u.name}>{u.name}</option>
                         ))}
                     </select>
-                           <button 
+                          
+                         </td>
+                         <td>
+                            <button 
                            className='btn btn-primary'
                            onClick={()=>Update(data)}>Update</button>
-                    </td>
+                         </td>
 
                 </tr>
                 )})}
                
             </table>
-
+</div>
             </center>
+        </div>
+
+          
            
         </div>
     )

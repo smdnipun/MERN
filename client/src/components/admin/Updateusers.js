@@ -3,6 +3,8 @@ import axios from 'axios'
 import { Navigate, useParams } from 'react-router'
 import { Link } from 'react-router-dom'
 import { Navbar, Nav, Container, NavDropdown } from 'react-bootstrap'
+import NavBar from "../common/navBar";
+import './styles/Addfiles.css';
 
 
 export default function Updateusers() {
@@ -47,42 +49,12 @@ useEffect(() => {
 
   return (
     <div>
-      <Navbar collapseOnSelect expand='lg' bg='light' variant='grey'>
-        <Container>
-          <Navbar.Brand href='/dashBoard'>RPMT</Navbar.Brand>
-          <Navbar.Toggle aria-controls='responsive-navbar-nav' />
-          <Navbar.Collapse id='responsive-navbar-nav'>
-            <Nav className='me-auto'>
-              <Nav.Link href='/contact'>Contact</Nav.Link>
-              <Nav.Link href=''>About us</Nav.Link>
-            </Nav>
-            <Nav>
-              <div>
-                <p>{localStorage.getItem('userI')}</p>
-                <p>{localStorage.getItem('userN')}</p>
-              </div>
-            </Nav>
+      <NavBar />
+      <div className = 'bod mt-5 mb-5 m' style={{ maxWidth: 700, margin: "auto" }}>
+   <h3 className='navi'>Update User</h3> 
 
-            <Nav>
-              {localStorage.getItem('user') != null ? (
-                <>
-                  <a href='/logout' className='btn btn-outline-dark'>
-                    <i className='fa fa-sign-in me-1'></i> Logout
-                  </a>
-                </>
-              ) : (
-                <>
-                  <p>no user</p>
-                </>
-              )}
-            </Nav>
-          </Navbar.Collapse>
-        </Container>
-      </Navbar>
-    <center> <h3 className='navi'>Update User</h3></center>  
-
-      <div className = 'bod' style={{ maxWidth: 800, margin: "auto" }}>
-      <center>
+      <div >
+     
       <div className=' form'>
       <form onSubmit={Update}>
 
@@ -149,8 +121,8 @@ useEffect(() => {
         <button  className='btn btn-primary'  type='submit'>Update</button>
       </form>
       </div>
-      </center>
-      </div>
+        </div>
+        </div>
 
     </div>
         

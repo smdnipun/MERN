@@ -63,13 +63,13 @@ export default function contact() {
                     name='message'
                   ></textarea>
                 </div>
-                <div className='col-8 pt-3 '>
-                  <input
+                
+                <button style={{width:"200px"}}
                     type='submit'
                     className='btn btn-primary'
                     value='Send Message'
-                  ></input>
-                </div>
+                  >Send Message</button>
+                
               </div>
             </form>
           </Card>
