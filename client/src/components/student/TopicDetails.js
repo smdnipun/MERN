@@ -2,12 +2,16 @@ import React, { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 import axios from 'axios'
 import { Navbar, Nav, Container, NavDropdown } from 'react-bootstrap'
+import NavBar from '../common/navBar';
+
 
 export default function TopicDetails() {
   let email = localStorage.getItem('user')
 
   const [topic, setTopic] = useState({})
   const [group, setGroup] = useState([])
+
+
 
   const loadData = () => {
     axios
@@ -31,55 +35,21 @@ export default function TopicDetails() {
       .catch(function (error) {
         console.log(error)
       })
-  }
+    }
 
   useEffect(() => {
     loadData()
   }, [])
 
+
   // This following section will display the table with the records of individuals.
   return (
     <div>
-      <Navbar collapseOnSelect expand='lg' bg='light' variant='grey'>
-        <Container>
-          <Navbar.Brand href='/dashBoard'>RPMT</Navbar.Brand>
-          <Navbar.Toggle aria-controls='responsive-navbar-nav' />
-          <Navbar.Collapse id='responsive-navbar-nav'>
-            <Nav className='me-auto'>
-              <Nav.Link href='/contact'>Contact</Nav.Link>
-              <Nav.Link href=''>About us</Nav.Link>
-            </Nav>
-            <Nav>
-              <div>
-                <p>{localStorage.getItem('userI')}</p>
-                <p>{localStorage.getItem('userN')}</p>
-              </div>
-            </Nav>
-
-            <Nav>
-              {localStorage.getItem('user') != null ? (
-                <>
-                  <a href='/logout' className='btn btn-outline-dark'>
-                    <i className='fa fa-sign-in me-1'></i> Logout
-                  </a>
-                </>
-              ) : (
-                <>
-                  <p>no user</p>
-                </>
-              )}
-            </Nav>
-          </Navbar.Collapse>
-        </Container>
-      </Navbar>
-
-      <button className='btn btn-primary'>
-        <Link to={'/regtop'}>Register New Topic</Link>
-      </button>
-
+      <NavBar/>
+      <div>
+ 
       <center>
-        <h3 className='navi'>Registered Topics</h3>
-        <br></br>
+        <h3 className='navi mt-5'>Registered Topics</h3>
         <table class='table' style={{ marginTop: 50, width: 700 }}>
           <thead>
             <tr>
@@ -91,20 +61,23 @@ export default function TopicDetails() {
           </thead>
           <tbody>
             <tr>
-              <td>{topic.topic}</td>
-              <td>{topic.specialization}</td>
-              <td>{topic.status}</td>
-              <td>{topic.link}</td>
-              <td>
-                {' '}
-                <Link to={`/panaltopic/${topic._id}`}>
-                  <button className='btn btn-primary'>update</button>
-                </Link>
-              </td>
-            </tr>
+              
+
+                            <td>{topic.topic}</td>
+                            <td>{topic.specialization}</td>
+                            <td>{topic.status}</td>
+                            <td>{topic.link}</td>
+                            <td> <Link to={`/panaltopic/${topic._id}`}>
+                            <button className='btn btn-primary'>update</button>
+                            </Link></td>
+             </tr>                          
+              
           </tbody>
         </table>
       </center>
+      </div>
+
+   
     </div>
   )
 }

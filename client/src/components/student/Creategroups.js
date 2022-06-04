@@ -3,6 +3,7 @@ import axios from 'axios'
 import nextId from 'react-id-generator'
 import { Navbar, Nav, Container, NavDropdown } from 'react-bootstrap'
 import NavBar from '../common/navBar'
+import './style/c.css';
 
 export default function Creategroups() {
   const gid = nextId()
@@ -57,8 +58,8 @@ export default function Creategroups() {
   return (
     <div>
       <NavBar />
-      <div className='bod' style={{ maxWidth: 800, margin: 'auto' }}>
-        <center>
+      <div className='bod mt-5 mb-5 m' style={{ maxWidth: 600, margin: 'auto' }}>
+      
           <div className=' form'>
             <div className='forminit'>
               <h3 className='navi'>Create Groups</h3>
@@ -177,7 +178,7 @@ export default function Creategroups() {
               </button>
             </div>
           </div>
-        </center>
+       
       </div>
     </div>
   )

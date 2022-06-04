@@ -4,6 +4,7 @@ import NavBar from '../common/navBar'
 import SimCardDownloadIcon from '@mui/icons-material/SimCardDownload'
 import { Button } from '@mui/material'
 import { Card } from '@mui/material'
+import './style/c.css'
 
 export default function Topics() {
   const [data, setData] = useState([])
@@ -23,7 +24,7 @@ export default function Topics() {
   return (
     <div>
       <NavBar />
-      <Card className='bod' style={{ maxWidth: 800, margin: 'auto' }}>
+      <Card className='bod mt-5' style={{ maxWidth: 800, margin: 'auto' }}>
         <h2 style={{ margin: 'auto' }} className='text-center'>
           Research Details
         </h2>
@@ -32,47 +33,53 @@ export default function Topics() {
           return (
             <div>
               <tr>
-                {row.specialization}
+                <div className='m'>{row.specialization}</div>
+                 <br />
+                <div className='f'>
+                  <div className='m'>Description : </div>
+                  <div> {row.description}</div>
+                </div>
                 <br />
-                description:{row.description}
-                <br />
-                <br />
-                <div>
-                  Document: {row.filepdf}
+                <div className='f'>
+                  <div className='m'>Document :</div>
+                  <div> {row.filepdf}</div>
+                  <div>
                   <form
                     method='get'
                     action={'http://localhost:5000/upload/' + row.filepdf}
                   >
-                    <Button type='submit'>
+                    <Button type='submit' style={{width:"50px"}}>
                       <SimCardDownloadIcon />
                     </Button>
-                  </form>
+                    
+                    </form>
+                    </div>
                   <br />
                 </div>
-                Evaluation 1<br />
+                <div className='m'>Evaluation 1</div>
                 Document Submition Date: {row.ev1doc}
                 <br />
                 <div>
-                  Precentation Submition Start Date: {row.ev1pre_start}
-                  &emsp;&emsp; Precentation Submition end Date: {row.ev1pre_end}
+                  Precentation Start Date: {row.ev1pre_start}
+                  &emsp;&emsp; Precentation end Date: {row.ev1pre_end}
                   <br />
                   <br />
                 </div>
-                Evaluation 2<br />
+                <div className='m'>Evaluation 2</div>
                 Document Submition Date: {row.ev2doc}
                 <br />
                 <div>
-                  Precentation Submition Start Date: {row.ev1doc}
-                  &emsp;&emsp; Precentation Submition end Date: {row.ev1doc}
+                  Precentation Start Date: {row.ev1doc}
+                  &emsp;&emsp; Precentation end Date: {row.ev1doc}
                   <br />
                   <br />
                 </div>
-                Evaluation 3<br />
+                <div className='m'>Evaluation 3</div>
                 Document Submition Date: {row.ev3doc}
                 <br />
                 <div>
-                  Precentation Submition Start Date: {row.ev1doc}
-                  &emsp;&emsp; Precentation Submition end Date: {row.ev1doc}
+                  Precentation Start Date: {row.ev1doc}
+                  &emsp;&emsp; Precentation end Date: {row.ev1doc}
                   <br />
                   <br />
                 </div>
