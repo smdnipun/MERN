@@ -15,11 +15,10 @@ export default function Message() {
   const gid = params.gid
 
   const loadData = () => {
-    axios
-      .get(`http://localhost:5000/message/${gid}`)
+    axios.get(`http://localhost:5000/message/${gid}`)
       .then((response) => {
         setMessageList(response.data)
-        console.log(response.data)
+    
       })
       .catch(function (error) {
         console.log(error)
@@ -65,7 +64,7 @@ export default function Message() {
   }
 
   return (
-    <div>
+    <div data-testid="msg-1">
       <NavBar />
       <div className='container chat-window pt-4'>
         <div className='chat-header'>

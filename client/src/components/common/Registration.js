@@ -93,7 +93,8 @@ export default function Registration() {
 
   const theme = createTheme()
   return (
-    <ThemeProvider theme={theme}>
+    <div  data-testid="reg-1">
+      <ThemeProvider theme={theme}>
       <Container component='main' maxWidth='xs'>
         <CssBaseline />
         <Box
@@ -267,5 +268,6 @@ export default function Registration() {
         </Box>
       </Container>
     </ThemeProvider>
+      </div>
   )
 }

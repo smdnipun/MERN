@@ -4,6 +4,7 @@ import axios from 'axios'
 import { useNavigate, useParams } from 'react-router'
 import Table from 'react-bootstrap/Table'
 import Button from '@mui/material/Button'
+import Link from '@mui/material/Link'
 import SimCardDownloadIcon from '@mui/icons-material/SimCardDownload'
 
 export default function ViewMarkingSchemes() {
@@ -277,21 +278,30 @@ export default function ViewMarkingSchemes() {
     <>
       <NavBar />
 
-      <div className='container'>
+      <div className='container mt-5'>
+
         <card>
           {scheudle.map((sch) => {
             return (
               <>
                 <ul>
                   <li>
-                    Evaluation 1 :{sch.evaluation1} :<a href={sch.link1} />
+                    Evaluation 1 :{sch.evaluation1} :
+                    <Link href={sch.link1} label='Document' underline='none'>
+                      link
+                    </Link>
                   </li>
                   <li>
-                    Evaluation 2 :{sch.evaluation2} : <a href={sch.link2} />
+                    Evaluation 2 :{sch.evaluation2} :{' '}
+                    <Link href={sch.link2} label='Document' underline='none'>
+                      link
+                    </Link>
                   </li>
                   <li>
-                    Final evaluation :{sch.final_evaluation} :{' '}
-                    <a href={sch.linkF} />
+                    Final evaluation :{' '}
+                    <Link href={sch.linkF} label='Document' underline='none'>
+                      link
+                    </Link>
                   </li>
                 </ul>
               </>

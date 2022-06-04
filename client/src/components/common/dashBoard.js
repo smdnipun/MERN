@@ -223,7 +223,7 @@ export default function DashBoard() {
                     <div className='container'>
                       <CardContent>
                         <Typography
-                          sx={{ fontSize: 25 }}
+                          sx={{ fontSize: 14 }}
                           color='text.secondary'
                           gutterBottom
                         >
@@ -275,7 +275,7 @@ export default function DashBoard() {
                     <div className='container'>
                       <CardContent>
                         <Typography
-                          sx={{ fontSize: 25 }}
+                          sx={{ fontSize: 14 }}
                           color='text.secondary'
                           gutterBottom
                         >
@@ -316,21 +316,26 @@ export default function DashBoard() {
           </>
         ) : localStorage.getItem('userP') == 'Admin' ? (
           <>
+            <center>
+              <CardContent>
+                <Typography
+                  sx={{ fontSize: 30 }}
+                  color='text.secondary'
+                  gutterBottom
+                >
+                  Welcome to Admin Dash Board
+                </Typography>
+              </CardContent>
+            </center>
+            {/* <Card sx={{ minWidth: 275 }}>
             return (
-            <Card sx={{ minWidth: 275 }}>
-              <center>
-                <CardContent>
-                  <Typography
-                    sx={{ fontSize: 30 }}
-                    color='text.secondary'
-                    gutterBottom
-                  >
-                    Welcome to Admin Dash Board
-                  </Typography>
-                </CardContent>
-              </center>
-            </Card>
-            );
+
+    
+      
+   
+  );
+   </Card> */}
+
             <h1>Hello! {localStorage.getItem('userN')}</h1>
           </>
         ) : localStorage.getItem('userP') == 'Student' ? (
