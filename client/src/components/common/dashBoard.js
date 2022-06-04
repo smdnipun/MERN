@@ -22,7 +22,7 @@ export default function DashBoard() {
   const loadData = () => {
     let name = localStorage.getItem('userN')
     axios
-      .get(`http://localhost:5000/group/panel/${name}`)
+      .get(`https://mernsliit.herokuapp.com/group/panel/${name}`)
       .then(function (response) {
         setData(response.data)
 
@@ -31,7 +31,7 @@ export default function DashBoard() {
         const id = response.data[0].gid
 
         axios
-          .get(`http://localhost:5000/schedule/get/${id}`)
+          .get(`https://mernsliit.herokuapp.com/schedule/get/${id}`)
           .then(function (response) {
             setScheduleP(response.data)
             console.log(response.data)
@@ -40,7 +40,7 @@ export default function DashBoard() {
       })
 
     //  axios
-    //    .get(`http://localhost:5000/schedule/get/${id}`)
+    //    .get(`https://mernsliit.herokuapp.com/schedule/get/${id}`)
     //    .then(function (response) {
     //      setSchedule(response.data)
     //      console.log(response)
@@ -59,7 +59,7 @@ export default function DashBoard() {
   const loadSData = () => {
     let name = localStorage.getItem('userN')
     axios
-      .get(`http://localhost:5000/group/supervisour/${name}`)
+      .get(`https://mernsliit.herokuapp.com/group/supervisour/${name}`)
       .then(function (response) {
         setSData(response.data)
 
@@ -77,7 +77,7 @@ export default function DashBoard() {
   const loadCSData = () => {
     let name = localStorage.getItem('userN')
     axios
-      .get(`http://localhost:5000/group/cosupervisour/${name}`)
+      .get(`https://mernsliit.herokuapp.com/group/cosupervisour/${name}`)
       .then(function (response) {
         setCSData(response.data)
       })
@@ -100,14 +100,14 @@ export default function DashBoard() {
   const loadStData = () => {
     let name = localStorage.getItem('userN')
     axios
-      .get(`http://localhost:5000/group/student/${name}`)
+      .get(`https://mernsliit.herokuapp.com/group/student/${name}`)
       .then(function (response) {
         setStData(response.data)
 
         const id = response.data[0].gid
 
         axios
-          .get(`http://localhost:5000/schedule/get/${id}`)
+          .get(`https://mernsliit.herokuapp.com/schedule/get/${id}`)
           .then(function (response) {
             setSchedule(response.data)
 

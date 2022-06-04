@@ -102,14 +102,14 @@ export default function Filesub() {
     };
 
     const loaddata = () => { 
-         axios.get(`http://localhost:5000/adminfile/get/${sp}`)
+         axios.get(`https://mernsliit.herokuapp.com/adminfile/get/${sp}`)
             .then((res) => setData(res.data))
             .catch((err) => console.log(err))
     }
 
     const getgid = () => { 
         axios
-            .post('http://localhost:5000/group/check', {
+            .post('https://mernsliit.herokuapp.com/group/check', {
                 email: email,
             })
             .then((res) => {

@@ -53,7 +53,7 @@ export default function Login(props) {
     e.preventDefault()
 
     axios
-      .post('http://localhost:5000/user/login', {
+      .post('https://mernsliit.herokuapp.com/user/login', {
         email: email,
         password: password,
       })
@@ -62,7 +62,7 @@ export default function Login(props) {
           console.log('success')
           localStorage.setItem('user', email)
           axios
-            .get(`http://localhost:5000/user/${email}`, {
+            .get(`https://mernsliit.herokuapp.com/user/${email}`, {
               params: {
                 email: email,
               },

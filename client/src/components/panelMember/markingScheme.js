@@ -64,66 +64,66 @@ export default function ViewMarkingSchemes() {
     if (e === 'Evaluation 1') {
       console.log('gid', params.gid)
       axios
-        .get(`http://localhost:5000/marks/getMark/${params.gid}`)
+        .get(`https://mernsliit.herokuapp.com/marks/getMark/${params.gid}`)
         .then(function (response) {
           console.log(response)
           let groupid = response.data[0]._id
           console.log(groupid)
-          axios.post(`http://localhost:5000/marks/update/ev1/${groupid}`, {
+          axios.post(`https://mernsliit.herokuapp.com/marks/update/ev1/${groupid}`, {
              mark:total,
           })
         })
     } else if (e === 'Evaluation 2') {
       console.log(total)
       axios
-        .get(`http://localhost:5000/marks/getMark/${params.gid}`)
+        .get(`https://mernsliit.herokuapp.com/marks/getMark/${params.gid}`)
         .then(function (response) {
           console.log(response)
 
           let groupid = response.data[0]._id
 
-          axios.post(`http://localhost:5000/marks/update/ev2/${groupid}`, {
+          axios.post(`https://mernsliit.herokuapp.com/marks/update/ev2/${groupid}`, {
             mark: total,
           })
         })
     } else if (e === 'Final Evaluation') {
       axios
-        .get(`http://localhost:5000/marks/getMark/${params.gid}`)
+        .get(`https://mernsliit.herokuapp.com/marks/getMark/${params.gid}`)
         .then(function (response) {
           console.log(response)
           let groupid = response.data[0]._id
-          axios.post(`http://localhost:5000/marks/update/fev/${groupid}`, {
+          axios.post(`https://mernsliit.herokuapp.com/marks/update/fev/${groupid}`, {
             total,
           })
         })
     } else if (e === 'Document 1') {
       axios
-        .get(`http://localhost:5000/marks/getMark/${params.gid}`)
+        .get(`https://mernsliit.herokuapp.com/marks/getMark/${params.gid}`)
         .then(function (response) {
           console.log(response)
           let groupid = response.data[0]._id
           console.log('total', total)
-          axios.post(`http://localhost:5000/marks/update/doc1/${groupid}`, {
+          axios.post(`https://mernsliit.herokuapp.com/marks/update/doc1/${groupid}`, {
             total,
           })
         })
     } else if (e === 'Document 2') {
       axios
-        .get(`http://localhost:5000/marks/getMark/${params.gid}`)
+        .get(`https://mernsliit.herokuapp.com/marks/getMark/${params.gid}`)
         .then(function (response) {
           console.log(response)
           let groupid = response.data[0]._id
-          axios.post(`http://localhost:5000/marks/update/doc2/${groupid}`, {
+          axios.post(`https://mernsliit.herokuapp.com/marks/update/doc2/${groupid}`, {
             total,
           })
         })
     } else if (e === 'Final Document') {
       axios
-        .get(`http://localhost:5000/marks/getMark/${params.gid}`)
+        .get(`https://mernsliit.herokuapp.com/marks/getMark/${params.gid}`)
         .then(function (response) {
           console.log(response)
           let groupid = response.data[0]._id
-          axios.post(`http://localhost:5000/marks/update/docf/${groupid}`, {
+          axios.post(`https://mernsliit.herokuapp.com/marks/update/docf/${groupid}`, {
             total,
           })
         })
@@ -138,7 +138,7 @@ export default function ViewMarkingSchemes() {
   const loadData = () => {
     let id = params.gid
     axios
-      .get(`http://localhost:5000/schedule/get/${id}`)
+      .get(`https://mernsliit.herokuapp.com/schedule/get/${id}`)
       .then(function (response) {
         setSchedule(response.data)
         console.log(response)
@@ -149,7 +149,7 @@ export default function ViewMarkingSchemes() {
     if (e === 'Evaluation 1') {
       setEvaluType(e)
       axios
-        .post('http://localhost:5000/markingScheme/check', {
+        .post('https://mernsliit.herokuapp.com/markingScheme/check', {
           specalization: s,
           position: p,
           evaluation: 'Evaluation 1',
@@ -160,13 +160,13 @@ export default function ViewMarkingSchemes() {
           console.log(res.data)
           console.log(s, p)
         })
-      axios.get(`http://localhost:5000/ev1/get/${params.gid}`)
+      axios.get(`https://mernsliit.herokuapp.com/ev1/get/${params.gid}`)
         .then((res) => { setSdata(res.data) })
         .catch((err) => console.log(err))
     } else if (e === 'Evaluation 2') {
       setEvaluType(e)
       axios
-        .post('http://localhost:5000/markingScheme/check', {
+        .post('https://mernsliit.herokuapp.com/markingScheme/check', {
           specalization: s,
           position: p,
           evaluation: 'Evaluation 2',
@@ -178,14 +178,14 @@ export default function ViewMarkingSchemes() {
           console.log(s, p)
         })
       
-      axios.get(`http://localhost:5000/ev2/get/${params.gid}`)
+      axios.get(`https://mernsliit.herokuapp.com/ev2/get/${params.gid}`)
         .then((res) => { setSdata(res.data) })
         .catch((err) => console.log(err))
       
     } else if (e === 'Final Evaluation') {
       setEvaluType(e)
       axios
-        .post('http://localhost:5000/markingScheme/check', {
+        .post('https://mernsliit.herokuapp.com/markingScheme/check', {
           specalization: s,
           position: p,
           evaluation: 'Final Evaluation',
@@ -195,13 +195,13 @@ export default function ViewMarkingSchemes() {
           console.log(res.data)
           console.log(s, p)
         })
-      axios.get(`http://localhost:5000/ev3/get/${params.gid}`)
+      axios.get(`https://mernsliit.herokuapp.com/ev3/get/${params.gid}`)
         .then((res) => { setSdata(res.data) })
         .catch((err) => console.log(err))
     } else if (e === 'Document 1') {
       setEvaluType(e)
       axios
-        .post('http://localhost:5000/markingScheme/check', {
+        .post('https://mernsliit.herokuapp.com/markingScheme/check', {
           specalization: s,
           position: p,
           evaluation: 'Document 1',
@@ -211,13 +211,13 @@ export default function ViewMarkingSchemes() {
           console.log(res.data)
           console.log(s, p)
         })
-      axios.get(`http://localhost:5000/ev1/get/${params.gid}`)
+      axios.get(`https://mernsliit.herokuapp.com/ev1/get/${params.gid}`)
         .then((res) => { setSdata(res.data) })
         .catch((err) => console.log(err))
     } else if (e === 'Document 2') {
       setEvaluType(e)
       axios
-        .post('http://localhost:5000/markingScheme/check', {
+        .post('https://mernsliit.herokuapp.com/markingScheme/check', {
           specalization: s,
           position: p,
           evaluation: 'Document 2',
@@ -228,13 +228,13 @@ export default function ViewMarkingSchemes() {
           console.log(s, p)
         })
       
-      axios.get(`http://localhost:5000/ev2/get/${params.gid}`)
+      axios.get(`https://mernsliit.herokuapp.com/ev2/get/${params.gid}`)
         .then((res) => { setSdata(res.data) })
         .catch((err) => console.log(err))
     } else if (e === 'Final Document') {
       setEvaluType(e)
       axios
-        .post('http://localhost:5000/markingScheme/check', {
+        .post('https://mernsliit.herokuapp.com/markingScheme/check', {
           specalization: s,
           position: p,
           evaluation: 'Final Document',
@@ -244,7 +244,7 @@ export default function ViewMarkingSchemes() {
           console.log(res.data)
           console.log(s, p)
         })
-      axios.get(`http://localhost:5000/ev1/get/${params.gid}`)
+      axios.get(`https://mernsliit.herokuapp.com/ev1/get/${params.gid}`)
         .then((res) => { setSdata(res.data) })
         .catch((err) => console.log(err))
     }
@@ -326,7 +326,7 @@ export default function ViewMarkingSchemes() {
               <div>
                 {(selectEvaluType === "Document 1") || (selectEvaluType === "Evaluation 1") ? 
                   <>
-                     <form method="get" action={"http://localhost:5000/supload/" + file.ev1doc}>
+                     <form method="get" action={"https://mernsliit.herokuapp.com/supload/" + file.ev1doc}>
                     <button>dow</button>
                   </form>
                     
@@ -335,7 +335,7 @@ export default function ViewMarkingSchemes() {
                     
                   (selectEvaluType === "Document 2") || (selectEvaluType === "Evaluation 2") ? 
                   <>
-                     <form method="get" action={"http://localhost:5000/supload/" + file.ev2doc}>
+                     <form method="get" action={"https://mernsliit.herokuapp.com/supload/" + file.ev2doc}>
                     <button>dow</button>
                   </form>
                     
@@ -344,7 +344,7 @@ export default function ViewMarkingSchemes() {
                     : 
                         (selectEvaluType === "Final Document") || (selectEvaluType === "Final Evaluation") ? (
                   <>
-                     <form method="get" action={"http://localhost:5000/supload/"+ file.ev3doc}>
+                     <form method="get" action={"https://mernsliit.herokuapp.com/supload/"+ file.ev3doc}>
                     <button>dow</button>
                   </form>
                     

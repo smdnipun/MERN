@@ -21,7 +21,7 @@ export default function Schedule() {
   const [data, setData] = useState([])
 
   const loadData = () => {
-    axios.get('http://localhost:5000/group/').then((res) => {
+    axios.get('https://mernsliit.herokuapp.com/group/').then((res) => {
       setData(res.data)
       console.log(res.data)
     })

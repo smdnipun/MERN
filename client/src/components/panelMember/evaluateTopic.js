@@ -30,7 +30,7 @@ export default function EvaluateTopice() {
 
   const check = () => {
     axios
-      .post('http://localhost:5000/group/pCheck', {
+      .post('https://mernsliit.herokuapp.com/group/pCheck', {
         panelMember: panelMember,
       })
       .then((res) => {
@@ -39,7 +39,7 @@ export default function EvaluateTopice() {
         const gid = res.data[0].gid
 
         axios
-          .get(`http://localhost:5000/topic/searchBygid/${gid}`)
+          .get(`https://mernsliit.herokuapp.com/topic/searchBygid/${gid}`)
           .then((res) => {
             setData(res.data)
             console.log(res.data[0])
@@ -49,7 +49,7 @@ export default function EvaluateTopice() {
   console.log(data._id)
 
   const Accept = () => {
-    axios.post(`http://localhost:5000/topic/update/${data[0]._id}`, {
+    axios.post(`https://mernsliit.herokuapp.com/topic/update/${data[0]._id}`, {
       status: 'pAccepted',
     })
 
@@ -65,12 +65,12 @@ export default function EvaluateTopice() {
     }
     console.log(messageData)
     axios
-      .post('http://localhost:5000/message/add/', messageData)
+      .post('https://mernsliit.herokuapp.com/message/add/', messageData)
       .then((res) => console.log(res.data))
   }
 
   const Reject = () => {
-    axios.post(`http://localhost:5000/topic/update/${data[0]._id}`, {
+    axios.post(`https://mernsliit.herokuapp.com/topic/update/${data[0]._id}`, {
       status: 'Rejected',
     })
     const messageData = {
@@ -85,7 +85,7 @@ export default function EvaluateTopice() {
     }
     console.log(messageData)
     axios
-      .post('http://localhost:5000/message/add/', messageData)
+      .post('https://mernsliit.herokuapp.com/message/add/', messageData)
       .then((res) => console.log(res.data))
   }
   const CheckAccept = () => {}

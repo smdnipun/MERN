@@ -39,7 +39,7 @@ useEffect(() => {
             <tr>
               <th>Name</th>
               <th>Position</th>
-              <th>Email</th>
+              <th>Email</th> 
               <th>Phone</th>
               <th>Address</th>
               <th>User ID</th>

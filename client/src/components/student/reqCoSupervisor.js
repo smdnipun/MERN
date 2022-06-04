@@ -37,7 +37,7 @@ export default function RequestCoSupervisor() {
 
   const Info = () => {
     axios
-      .post('http://localhost:5000/group/check', {
+      .post('https://mernsliit.herokuapp.com/group/check', {
         email: uemail,
       })
       .then((response) => {
@@ -46,7 +46,7 @@ export default function RequestCoSupervisor() {
         // const gid = response.data[0]
         // console.log(gid)
         axios
-          .get(`http://localhost:5000/topic/searchBygid/${gid}`)
+          .get(`https://mernsliit.herokuapp.com/topic/searchBygid/${gid}`)
           .then((response) => {
             setTopic(response.data)
             setTopic(response.data[0])
@@ -60,7 +60,7 @@ export default function RequestCoSupervisor() {
       })
 
     axios
-      .get(`http://localhost:5000/user/`)
+      .get(`https://mernsliit.herokuapp.com/user/`)
       .then((response) => {
         setUser(response.data)
       })
@@ -86,7 +86,7 @@ export default function RequestCoSupervisor() {
   }
 
   const Update = () => {
-    axios.post(`http://localhost:5000/topic/update/${topic._id}`, {
+    axios.post(`https://mernsliit.herokuapp.com/topic/update/${topic._id}`, {
       status: 'cRequested',
     })
     setUser(user.filter((el) => el._id != top._id))

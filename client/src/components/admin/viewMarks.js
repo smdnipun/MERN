@@ -9,7 +9,7 @@ export default function ViewMark() {
     const loadData = () => {
         
         axios
-            .get('http://localhost:5000/marks/')
+            .get('https://mernsliit.herokuapp.com/marks/')
             .then(function (response) {
                 setMark(response.data)
                 console.log(response)

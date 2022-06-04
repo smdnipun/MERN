@@ -50,7 +50,7 @@ export default function Creategroups() {
     }
     axios
 
-      .post('http://localhost:5000/marks/add', newItem)
+      .post('https://mernsliit.herokuapp.com/marks/add', newItem)
 
       .then((res) => console.log(res.data))
   }

@@ -34,7 +34,7 @@ const GroupSchedule = () => {
 
   // const loadData = () => {
   //   let p = params.gid
-  //   axios.get(`http://localhost:5000/group/get/${p}`).then(function (response) {
+  //   axios.get(`https://mernsliit.herokuapp.com/group/get/${p}`).then(function (response) {
   //     setData(response.data)
   //     console.log(response.data)
   //   })
@@ -59,7 +59,7 @@ const GroupSchedule = () => {
     }
 
     axios
-      .post('http://localhost:5000/schedule/add', Obj)
+      .post('https://mernsliit.herokuapp.com/schedule/add', Obj)
 
       .then((res) => console.log(res.data))
 

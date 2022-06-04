@@ -12,7 +12,7 @@ export default function Topics() {
 
   useEffect(() => {
     axios
-      .get(`http://localhost:5000/adminfile/get/${sp}`)
+      .get(`https://mernsliit.herokuapp.com/adminfile/get/${sp}`)
       .then((res) => {
         setData(res.data)
       })
@@ -46,7 +46,7 @@ export default function Topics() {
                   <div>
                   <form
                     method='get'
-                    action={'http://localhost:5000/upload/' + row.filepdf}
+                    action={'https://mernsliit.herokuapp.com/upload/' + row.filepdf}
                   >
                     <Button type='submit' style={{width:"50px"}}>
                       <SimCardDownloadIcon />

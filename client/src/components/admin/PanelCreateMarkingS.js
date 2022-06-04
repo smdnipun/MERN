@@ -24,7 +24,7 @@ export default function PanelCreateMarkingSchemes() {
 
     const newItem = { ...row }
 
-    await fetch('http://localhost:5000/markingScheme/add', {
+    await fetch('https://mernsliit.herokuapp.com/markingScheme/add', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',

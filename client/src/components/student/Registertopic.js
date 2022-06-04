@@ -22,7 +22,7 @@ export default function Registertopic() {
 
   useEffect(() => {
     async function getGroups() {
-      const responseu = await fetch(`http://localhost:5000/group/`)
+      const responseu = await fetch(`https://mernsliit.herokuapp.com/group/`)
 
       const groups = await responseu.json()
 

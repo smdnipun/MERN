@@ -16,7 +16,7 @@ export default function Message() {
 
   const loadData = () => {
     axios
-      .get(`http://localhost:5000/message/${gid}`)
+      .get(`https://mernsliit.herokuapp.com/message/${gid}`)
       .then((response) => {
         setMessageList(response.data)
         console.log(response.data)
@@ -44,13 +44,13 @@ export default function Message() {
       }
 
       axios
-        .post('http://localhost:5000/message/add/', messageData)
+        .post('https://mernsliit.herokuapp.com/message/add/', messageData)
         .then((res) => console.log(res.data))
 
       // setMessageList(...messageList, messageData)
       // setData(data.filter((el) => el._id != top._id))
       axios
-        .get(`http://localhost:5000/message/${gid}`)
+        .get(`https://mernsliit.herokuapp.com/message/${gid}`)
         .then((response) => {
           setMessageList(response.data)
           console.log(response.data)

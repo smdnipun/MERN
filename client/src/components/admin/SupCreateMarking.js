@@ -40,7 +40,7 @@ console.log(selectPosition,selectSub,selectEvaluType)
 
     axios
 
-      .post('http://localhost:5000/markingScheme/add/', formFields)
+      .post('https://mernsliit.herokuapp.com/markingScheme/add/', formFields)
 
       .then((res) => console.log(res.data))
   }

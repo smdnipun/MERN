@@ -17,7 +17,7 @@ export default function Panaltopic() {
 
   const Update = (e) => {
     e.preventDefault();
-  axios.post(`http://localhost:5000/topic/updatel/${params._id}`, {
+  axios.post(`https://mernsliit.herokuapp.com/topic/updatel/${params._id}`, {
    link
 })
 }
@@ -25,7 +25,7 @@ console.log(params)
 
 
 const loadData = () => {
-  axios.get(`http://localhost:5000/topic/u/${params._id}`).then(function (response) {
+  axios.get(`https://mernsliit.herokuapp.com/topic/u/${params._id}`).then(function (response) {
     console.log(response.data)
     const data= response.data;
     setStatus(data.status);

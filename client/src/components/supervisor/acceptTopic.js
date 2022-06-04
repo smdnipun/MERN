@@ -34,7 +34,7 @@ export default function AcceptTopic() {
 
   useEffect(() => {
     axios
-      .get(`http://localhost:5000/topic/${sp}`)
+      .get(`https://mernsliit.herokuapp.com/topic/${sp}`)
       .then((response) => {
         setData(response.data)
         console.log(response.data)
@@ -45,15 +45,15 @@ export default function AcceptTopic() {
   }, [])
 
   const Update = async (top) => {
-    axios.post(`http://localhost:5000/topic/update/${top._id}`, {
+    axios.post(`https://mernsliit.herokuapp.com/topic/update/${top._id}`, {
       status: 'Accepted',
     })
     let topicId = top.gid
     axios
-      .get(`http://localhost:5000/group/searchByGid/${topicId}`)
+      .get(`https://mernsliit.herokuapp.com/group/searchByGid/${topicId}`)
       .then((response) => {
         const id = response.data[0]._id
-        axios.post(`http://localhost:5000/group/updateSupervisor/${id}`, {
+        axios.post(`https://mernsliit.herokuapp.com/group/updateSupervisor/${id}`, {
           supervisor: sname,
         })
       })

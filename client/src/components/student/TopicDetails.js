@@ -15,7 +15,7 @@ export default function TopicDetails() {
 
   const loadData = () => {
     axios
-      .post('http://localhost:5000/group/check', {
+      .post('https://mernsliit.herokuapp.com/group/check', {
         email: email,
       })
       .then((response) => {
@@ -24,7 +24,7 @@ export default function TopicDetails() {
         // const gid = response.data[0]
         console.log(gid)
         axios
-          .get(`http://localhost:5000/topic/searchBygid/${gid}`)
+          .get(`https://mernsliit.herokuapp.com/topic/searchBygid/${gid}`)
           .then((response) => {
             setTopic(response.data[0])
           })

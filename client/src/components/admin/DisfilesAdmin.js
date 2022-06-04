@@ -8,7 +8,7 @@ export default function DisfilesAdmin(){
 
     useEffect(() => {
         axios
-            .get(`http://localhost:5000/adminfile/get`)
+            .get(`https://mernsliit.herokuapp.com/adminfile/get`)
             .then((res) => {
                 setData(res.data)
             })

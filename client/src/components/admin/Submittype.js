@@ -15,7 +15,7 @@ export default function Submittype(){
    async function Submit (e){
        e.preventDefault();
 
-       axios.post('http://localhost:5000/submittype/add', obj)
+       axios.post('https://mernsliit.herokuapp.com/submittype/add', obj)
             .then((res) => {
                 console.log(res.data)
             })

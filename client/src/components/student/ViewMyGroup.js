@@ -10,7 +10,7 @@ export default function ViewMyGroup() {
 
   const loadData = () => {
     axios
-      .post('http://localhost:5000/group/check', {
+      .post('https://mernsliit.herokuapp.com/group/check', {
         email: email,
       })
       .then((res) => {

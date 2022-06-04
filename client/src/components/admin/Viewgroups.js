@@ -19,7 +19,7 @@ const loadData=() =>{
             let specialization= response.data.specialization;
 
             axios
-            .post('http://localhost:5000/user/allocatepanel', {
+            .post('https://mernsliit.herokuapp.com/user/allocatepanel', {
               specialization: specialization,
               position: "Panel Member",
             })
@@ -36,7 +36,7 @@ const loadData=() =>{
     
 
       const Update = (group) => {
-        axios.post(`http://localhost:5000/group/update/${group._id}`, {
+        axios.post(`https://mernsliit.herokuapp.com/group/update/${group._id}`, {
           panelMember: group.panelMember 
         })
         console.log(group._id)

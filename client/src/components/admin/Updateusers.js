@@ -20,7 +20,7 @@ export default function Updateusers() {
 
   const Update = (e) => {
     e.preventDefault();
-  axios.post(`http://localhost:5000/user/update/${params._id}`, {
+  axios.post(`https://mernsliit.herokuapp.com/user/update/${params._id}`, {
     name,position,email,phone,address,id,specialization
 })
 navigate("/userlist");
@@ -29,7 +29,7 @@ navigate("/userlist");
 
 
 const loadData = () => {
-  axios.get(`http://localhost:5000/user/u/${params._id}`).then(function (response) {
+  axios.get(`https://mernsliit.herokuapp.com/user/u/${params._id}`).then(function (response) {
     console.log(response.data)
     const data= response.data;
     setName(data.name);
