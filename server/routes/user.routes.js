@@ -50,7 +50,6 @@ router.route('/add').post((req, res) => {
     .catch((err) => res.status(400).json('Error:' + err))
 })
 
-
 router.route('/u/:id').get((req, res) => {
     User.findById(req.params.id)
       .then((user) => res.json(user))
@@ -74,8 +73,6 @@ router.route('/update/:id').post((req, res) => {
     })
     .catch((err) => res.status(400).json('Error: ' + err))
 })
-
-
 
 router.route('/login').post((req, res) => {
   User.findOne({ email: req.body.email }, function (err, result) {
@@ -102,21 +99,5 @@ router.route('/:specalization').get(function (req, res) {
     res.json(result)
   })
 })
-
-//   const update = async (ctx) => {
-//     let uin = ctx.request.body;
-//     const index = data.findIndex((e) => e.id === uin.id);
-//     let msg;
-//     if (index === -1) {
-//       msg = "no user";
-//       data.push(uin);
-//     } else {
-//       data[index] = uin;
-//       msg = "data updated";
-//     }
-//     ctx.body = { data: data, msg: msg };
-//   };
-
-//   router.put("/update/:id", update);
 
 module.exports = router

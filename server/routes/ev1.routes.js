@@ -6,7 +6,6 @@ const SFile = require('../models/ev1.model')
 const storage = multer.diskStorage({
   destination: (req, ev1doc, callback) => {
     callback(null, 'supload')
-    // destination: "upload",
   },
   filename: (req, file, callback) => {
     callback(null, file.originalname)
@@ -14,7 +13,6 @@ const storage = multer.diskStorage({
 })
 
 const supload = multer({ storage: storage})
-
 //GET ALL DATA
 router.get('/get', (req, res) => {
     SFile.find()
@@ -30,7 +28,6 @@ router.post('/add', supload.single('ev1doc'), (req, res) => {
       ev1doc: req.file.originalname,
       gid: req.body.gid,
     });
-
     newfile 
         .save()
         .then(() => res.json('new student file posted'))
@@ -38,7 +35,6 @@ router.post('/add', supload.single('ev1doc'), (req, res) => {
 });
 
 //GET DATA USING GID
-
 router.get('/get/:gid', (req, res) => { 
     let myquery = {
     gid: Object(req.params.gid),

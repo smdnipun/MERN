@@ -45,18 +45,6 @@ router.route('/get/:gid').get(function (req, res) {
   })
 })
 
-//  router.route("panel/:panelMember").get(function (req, res) {
-
-//   let myquery = {panelMember: Object( req.params.panelMember )};
-
-//     Group
-//       .find(myquery, function (err, result) {
-//         if (err) throw err;
-//         res.json(result);
-
-//       });
-//  });
-
 router.route('/panel/:panelMember').get(function (req, res) {
   let myquery = { panelMember: Object(req.params.panelMember) }
 
@@ -146,7 +134,6 @@ router.route('/update/:id').post((req, res) => {
     })
     .catch((err) => res.status(400).json('Error: ' + err))
 })
-
 router.route('/searchByGid/:gid').get((req, res) => {
   let myquery = {
     gid: Object(req.params.gid),
@@ -156,7 +143,6 @@ router.route('/searchByGid/:gid').get((req, res) => {
     res.json(result)
   })
 })
-
 router.route('/updateSupervisor/:id').post((req, res) => {
   Group.findById(req.params.id)
     .then((groups) => {
@@ -169,7 +155,6 @@ router.route('/updateSupervisor/:id').post((req, res) => {
     })
     .catch((err) => res.status(400).json('Error: ' + err))
 })
-
 router.route('/updateCoSupervisor/:id').post((req, res) => {
   Group.findById(req.params.id)
     .then((groups) => {

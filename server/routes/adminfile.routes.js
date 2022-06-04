@@ -3,7 +3,6 @@ const router = express.Router()
 const multer = require('multer')
 const File = require('../models/adminfile.model')
 
-
 const storage = multer.diskStorage({
   destination: (req, file, callback) => {
     callback(null, 'upload')
@@ -21,11 +20,10 @@ router.get('/get', (req, res) => {
   File.find()
     .then((file) => {
       res.json(file)
-      // https.get(file.secure_url, (filepdf) => filepdf.pipe(res));
     })
     .catch((err) => res.status(400).json(`Error: ${err}`));
 });
-
+//DISPPLAY DATA FILTER USING SPECIALIZATION
 router.get('/get/:specialization',(req,res) => {
   let myquery = {
     specialization: Object(req.params.specialization),
@@ -35,7 +33,6 @@ router.get('/get/:specialization',(req,res) => {
     res.json(result)
   })
 })
-
 //ADD NEW DATA
 router.post('/add', upload.single('file'), (req, res) => {
   const newfile = new File({
@@ -65,15 +62,5 @@ router.get('/:id', (req, res) => {
     .then((file) => res.json(file))
     .catch((err) => res.status(400).json(`Error: ${err}`))
 })
-
-//UPDATE DATA
-
-// router.post('/update/:id', (req, res) => { 
-//   File.findById(req.params.id)
-//     .then((newfile) => { 
-//       specialization: null,
-//       description: null,  
-//     })
-// })
 
 module.exports = router

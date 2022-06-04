@@ -25,10 +25,6 @@ const mark = new Schema({
   docfinal: {
     type: String,
   },
-
-  // status:{
-  //     type:String
-  // }
 })
 
 const Mark = mongoose.model('marks', mark)

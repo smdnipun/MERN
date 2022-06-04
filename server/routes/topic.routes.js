@@ -69,7 +69,6 @@ router.route('/update/:id').post((req, res) => {
     })
     .catch((err) => res.status(400).json('Error: ' + err))
 })
-
 router.route('/updatel/:id').post((req, res) => {
   Topic.findById(req.params.id)
     .then((topics) => {
