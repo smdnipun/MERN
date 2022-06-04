@@ -13,7 +13,6 @@ import { ListGroup } from 'react-bootstrap'
 import Grid from '@mui/material/Grid'
 import { Link } from '@mui/material'
 
-
 export default function DashBoard() {
   //Panel Member
   const [data, setData] = useState([])
@@ -36,7 +35,6 @@ export default function DashBoard() {
             setScheduleP(response.data)
             console.log(response.data)
           })
-
       })
 
     //  axios
@@ -62,7 +60,6 @@ export default function DashBoard() {
       .get(`http://localhost:5000/group/supervisour/${name}`)
       .then(function (response) {
         setSData(response.data)
-
       })
   }
 
@@ -96,7 +93,6 @@ export default function DashBoard() {
 
   const [schedule, setSchedule] = useState([])
 
-
   const loadStData = () => {
     let name = localStorage.getItem('userN')
     axios
@@ -110,7 +106,6 @@ export default function DashBoard() {
           .get(`http://localhost:5000/schedule/get/${id}`)
           .then(function (response) {
             setSchedule(response.data)
-
           })
       })
   }
@@ -321,19 +316,25 @@ export default function DashBoard() {
           </>
         ) : localStorage.getItem('userP') == 'Admin' ? (
           <>
-
+            <center>
+              <CardContent>
+                <Typography
+                  sx={{ fontSize: 30 }}
+                  color='text.secondary'
+                  gutterBottom
+                >
+                  Welcome to Admin Dash Board
+                </Typography>
+              </CardContent>
+            </center>
+            {/* <Card sx={{ minWidth: 275 }}>
             return (
 
-    <Card sx={{ minWidth: 275 }}>
-        <center>
-          <CardContent>
-          <Typography sx={{ fontSize: 30 }} color="text.secondary" gutterBottom>
-        Welcome to Admin Dash Board
-        </Typography>
-          </CardContent>
-        </center>
-    </Card>
+    
+      
+   
   );
+   </Card> */}
 
             <h1>Hello! {localStorage.getItem('userN')}</h1>
           </>

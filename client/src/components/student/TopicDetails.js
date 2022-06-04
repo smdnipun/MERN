@@ -4,11 +4,14 @@ import axios from 'axios'
 import { Navbar, Nav, Container, NavDropdown } from 'react-bootstrap'
 import NavBar from '../common/navBar';
 
+
 export default function TopicDetails() {
   let email = localStorage.getItem('user')
 
   const [topic, setTopic] = useState({})
   const [group, setGroup] = useState([])
+
+
 
   const loadData = () => {
     axios
@@ -32,11 +35,12 @@ export default function TopicDetails() {
       .catch(function (error) {
         console.log(error)
       })
-  }
+    }
 
   useEffect(() => {
     loadData()
   }, [])
+
 
   // This following section will display the table with the records of individuals.
   return (
@@ -57,17 +61,17 @@ export default function TopicDetails() {
           </thead>
           <tbody>
             <tr>
-              <td>{topic.topic}</td>
-              <td>{topic.specialization}</td>
-              <td>{topic.status}</td>
-              <td>{topic.link}</td>
-              <td>
-                {' '}
-                <Link to={`/panaltopic/${topic._id}`}>
-                  <button className='btn btn-primary'>update</button>
-                </Link>
-              </td>
-            </tr>
+              
+
+                            <td>{topic.topic}</td>
+                            <td>{topic.specialization}</td>
+                            <td>{topic.status}</td>
+                            <td>{topic.link}</td>
+                            <td> <Link to={`/panaltopic/${topic._id}`}>
+                            <button className='btn btn-primary'>update</button>
+                            </Link></td>
+             </tr>                          
+              
           </tbody>
         </table>
       </center>

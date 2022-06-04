@@ -14,12 +14,15 @@ export default function Viewgroups() {
     })
   }, [])
 
-  // This method fetches the records from the database.
-  useEffect(() => {
-    axios.get('/user').then((response) => {
-      setUsers(response.data)
-    })
-  }, [])
+// This method fetches the records from the database.
+useEffect(() => {
+  axios.get('/user')
+      .then((response) => {
+          setUsers(response.data);
+      })
+}, [])
+
+
 
   // This following section will display the table with the records of individuals.
   return (
@@ -34,7 +37,7 @@ export default function Viewgroups() {
             <tr>
               <th>Name</th>
               <th>Position</th>
-              <th>Email</th>
+              <th>Email</th> 
               <th>Phone</th>
               <th>Address</th>
               <th>User ID</th>
@@ -42,23 +45,22 @@ export default function Viewgroups() {
             </tr>
           </thead>
           <tbody>
-            {users.map((g) => (
-              <tr>
-                <td>{g.name}</td>
-                <td>{g.position}</td>
-                <td>{g.email}</td>
-                <td>{g.phone}</td>
-                <td>{g.address}</td>
-                <td>{g.id}</td>
-                <td>{g.specialization}</td>
-                <td>
-                  {' '}
-                  <Link to={`/edituser/${g._id}`}>
-                    <button className='btn btn-primary'>update</button>
-                  </Link>
-                </td>
-              </tr>
-            ))}
+              {
+                    users.map(g=>(
+                        <tr>
+                            <td>{g.name}</td>
+                            <td>{g.position}</td>
+                            <td>{g.email}</td>
+                            <td>{g.phone}</td>
+                            <td>{g.address}</td>
+                            <td>{g.id}</td>
+                            <td>{g.specialization}</td>
+                             <td> <Link to={`/edituser/${g._id}`}>
+                        <button className='btn btn-primary'>update</button>
+                        </Link></td>
+                        </tr>
+                    ))
+              }
           </tbody>
         </table>
       </center>
